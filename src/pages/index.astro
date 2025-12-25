@@ -1,0 +1,73 @@
+---
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="FasterUI - Awesome UI Dark Template for Web-flow Agency" />
+		<title>FasterUI - Web Design Agency</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body class="font-['Inter',sans-serif] antialiased relative">
+		<div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.15),rgba(139,92,246,0.15),rgba(59,130,246,0.15))] blur-[100px] -z-10"></div>
+		<Header />
+		<main class="relative z-0">
+			<Hero />
+			<Services />
+			<Portfolio />
+			<Pricing />
+			<FAQ />
+			<Contact />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		background: #ffffff;
+		color: #1a1a1a;
+		overflow-x: hidden;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 800;
+		line-height: 1.2;
+	}
+
+	button {
+		font-family: inherit;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+</style>
+

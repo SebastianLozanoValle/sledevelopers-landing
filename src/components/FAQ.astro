@@ -1,0 +1,114 @@
+---
+const faqs = [
+  {
+    question: "How can I contact Inkyy Team?",
+    answer: "You can reach us through our contact form on our website or by emailing us at hello@inkyy.com. We typically respond within 24 hours.",
+    open: true
+  },
+  {
+    question: "What services do you offer?",
+    answer: "We offer a wide range of services including web design, UI/UX design, responsive design, Webflow development, custom development, and e-commerce solutions.",
+    open: false
+  },
+  {
+    question: "Do you provide website maintenance services?",
+    answer: "Yes, we provide comprehensive website maintenance services to keep your site running smoothly and up-to-date.",
+    open: false
+  },
+  {
+    question: "How long does it take to design and develop a website?",
+    answer: "The timeline varies depending on the project scope, but typically ranges from 4-12 weeks for a complete website design and development.",
+    open: false
+  },
+  {
+    question: "Do you require a deposit for projects?",
+    answer: "Yes, we typically require a 50% deposit to begin work, with the remaining balance due upon project completion.",
+    open: false
+  }
+];
+---
+
+<section class="py-24 px-8 max-w-[1400px] mx-auto relative" id="faq">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Left Side - Title -->
+    <div class="relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50 rounded-3xl blur-3xl -z-10"></div>
+      <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-[1.1] m-0">
+        Frequently<br />
+        Asked<br />
+        Questions
+      </h2>
+    </div>
+
+    <!-- Right Side - FAQ Items -->
+    <div class="flex flex-col gap-4">
+      {faqs.map((faq, index) => (
+        <div class={`bg-gray-50 rounded-xl overflow-hidden transition-all ${faq.open ? '' : ''}`} data-faq-index={index}>
+          <button class="w-full p-6 flex justify-between items-center bg-transparent border-none text-left cursor-pointer font-bold text-gray-900 transition-colors hover:bg-gray-100">
+            <span class="text-base">{faq.question}</span>
+            {faq.open ? (
+              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            ) : (
+              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            )}
+          </button>
+          <div class={`${faq.open ? 'block' : 'hidden'} px-6 pb-6 text-gray-600 text-sm leading-relaxed`}>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('[data-faq-index] button');
+      
+      faqQuestions.forEach(function(question) {
+        question.addEventListener('click', function() {
+          const faqItem = question.closest('[data-faq-index]');
+          const answer = faqItem.querySelector('div');
+          const icon = faqItem.querySelector('button svg');
+          const isOpen = !answer.classList.contains('hidden');
+          
+          // Close all FAQ items
+          document.querySelectorAll('[data-faq-index]').forEach(function(item) {
+            const itemAnswer = item.querySelector('div');
+            const itemIcon = item.querySelector('button svg');
+            if (itemAnswer) {
+              itemAnswer.classList.add('hidden');
+              itemAnswer.classList.remove('block');
+            }
+            if (itemIcon) {
+              // Update icon to plus
+              itemIcon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+            }
+          });
+          
+          // Toggle current item
+          if (isOpen) {
+            // Close it
+            answer.classList.add('hidden');
+            answer.classList.remove('block');
+            if (icon) {
+              icon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+            }
+          } else {
+            // Open it
+            answer.classList.remove('hidden');
+            answer.classList.add('block');
+            if (icon) {
+              icon.innerHTML = '<path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+            }
+          }
+        });
+      });
+    });
+  })();
+</script>
