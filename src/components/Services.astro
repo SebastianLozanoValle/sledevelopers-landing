@@ -13,7 +13,8 @@
             Ya sea que quieras consultar una idea, agregar capacidades faltantes, expandir rápidamente tu equipo, o entregar un proyecto completo - te tenemos cubierto.
           </p>
         </div>
-        <div class="services-scroll-content">
+        <!-- Desktop: Scroll horizontal -->
+        <div class="services-scroll-content hidden md:flex">
           <div class="service-card">
             <div class="service-number">01</div>
             <h3 class="service-title">Consulta Inicial</h3>
@@ -129,7 +130,125 @@
             </svg>
             </div>
           </div>
+        </div>
 
+        <!-- Mobile: Layout vertical simple -->
+        <div class="services-mobile-content flex md:hidden flex-col gap-6 mt-8">
+          <div class="service-card">
+            <div class="service-number">01</div>
+            <h3 class="service-title">Consulta Inicial</h3>
+            <p class="service-description">
+              Recibimos tu proyecto y escuchamos tus necesidades. Analizamos tus objetivos y entendemos la visión de tu negocio para crear la mejor solución.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M50 35 L50 50 L65 65" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <circle cx="50" cy="50" r="4" fill="white"/>
+                <path d="M35 30 Q30 25 25 30" stroke="currentColor" stroke-width="2" fill="none" opacity="0.6"/>
+                <path d="M75 30 Q80 25 85 30" stroke="currentColor" stroke-width="2" fill="none" opacity="0.6"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">02</div>
+            <h3 class="service-title">Atención de Dudas</h3>
+            <p class="service-description">
+              Resolvemos todas tus preguntas y aclaramos cualquier inquietud. Estamos disponibles para guiarte en cada paso y asegurarnos de que entiendas completamente el proceso.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="40" r="12" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M50 55 L50 70 M50 75 L50 80" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="50" cy="40" r="3" fill="white"/>
+                <path d="M30 25 Q25 20 20 25" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
+                <path d="M80 25 Q85 20 90 25" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">03</div>
+            <h3 class="service-title">Análisis y Propuesta</h3>
+            <p class="service-description">
+              Estudiamos a fondo tu proyecto y creamos una propuesta detallada con estrategia, alcance, tiempos y presupuesto adaptado a tus necesidades específicas.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="20" width="50" height="60" rx="4" fill="currentColor" opacity="0.2"/>
+                <rect x="30" y="25" width="40" height="50" rx="2" fill="currentColor" opacity="0.3"/>
+                <line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="35" y1="45" x2="60" y2="45" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="35" y1="55" x2="55" y2="55" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="70" cy="30" r="8" fill="currentColor" opacity="0.4"/>
+                <path d="M70 26 L70 34 M66 30 L74 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">04</div>
+            <h3 class="service-title">Aprobación y Contrato</h3>
+            <p class="service-description">
+              Una vez aprobada la propuesta, formalizamos el acuerdo con un contrato claro que establece plazos, entregables y términos de colaboración.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="25" width="50" height="50" rx="4" fill="currentColor" opacity="0.2"/>
+                <path d="M35 40 L45 50 L65 30" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="30" y="30" width="40" height="40" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="70" cy="30" r="6" fill="currentColor" opacity="0.4"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">05</div>
+            <h3 class="service-title">Planificación y Diseño</h3>
+            <p class="service-description">
+              Creamos la arquitectura del proyecto, diseñamos wireframes, prototipos y la identidad visual. Todo planificado meticulosamente antes de comenzar el desarrollo.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="25" width="35" height="50" rx="4" fill="currentColor" opacity="0.3"/>
+                <rect x="25" y="30" width="25" height="40" rx="2" fill="currentColor" opacity="0.5"/>
+                <circle cx="30" cy="38" r="2" fill="white"/>
+                <circle cx="38" cy="38" r="2" fill="white"/>
+                <circle cx="46" cy="38" r="2" fill="white"/>
+                <rect x="30" y="45" width="20" height="3" rx="1" fill="white"/>
+                <rect x="30" y="52" width="20" height="3" rx="1" fill="white"/>
+                <rect x="45" y="35" width="30" height="45" rx="4" fill="currentColor" opacity="0.2"/>
+                <rect x="50" y="40" width="20" height="35" rx="2" fill="currentColor" opacity="0.4"/>
+                <path d="M75 60 L80 65 L75 70" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">06</div>
+            <h3 class="service-title">Desarrollo</h3>
+            <p class="service-description">
+              Construimos tu proyecto con las mejores prácticas, tecnologías modernas y código limpio. Desarrollo iterativo con entregas parciales para tu revisión.
+            </p>
+            <div class="service-icon">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="20" width="50" height="8" rx="2" fill="currentColor" opacity="0.4"/>
+                <rect x="25" y="32" width="50" height="8" rx="2" fill="currentColor" opacity="0.5"/>
+                <rect x="25" y="44" width="50" height="8" rx="2" fill="currentColor" opacity="0.6"/>
+                <circle cx="35" cy="24" r="1.5" fill="white"/>
+                <circle cx="42" cy="24" r="1.5" fill="white"/>
+                <circle cx="49" cy="24" r="1.5" fill="white"/>
+                <circle cx="56" cy="24" r="1.5" fill="white"/>
+                <circle cx="63" cy="24" r="1.5" fill="white"/>
+                <circle cx="70" cy="24" r="1.5" fill="white"/>
+                <rect x="30" y="36" width="40" height="2" rx="1" fill="white"/>
+                <rect x="30" y="48" width="40" height="2" rx="1" fill="white"/>
+                <rect x="20" y="60" width="6" height="6" fill="currentColor" opacity="0.3"/>
+                <rect x="30" y="65" width="4" height="4" fill="currentColor" opacity="0.4"/>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -144,6 +263,11 @@
     gsap.registerPlugin(ScrollTrigger);
 
     function initScrollAnimation() {
+      const isMobile = window.innerWidth <= 768;
+      
+      // Solo inicializar scroll horizontal en desktop
+      if (isMobile) return;
+      
       const scrollContainer = document.querySelector('.services-scroll-container');
       const scrollContent = document.querySelector('.services-scroll-content');
       
@@ -155,13 +279,12 @@
         if (cards.length === 0) return;
 
         const cardWidth = (cards[0] as HTMLElement).offsetWidth;
-        const isMobile = window.innerWidth <= 768;
-        const gap = isMobile ? 24 : (window.innerWidth <= 1024 ? 32 : 40);
+        const gap = window.innerWidth <= 1024 ? 32 : 40;
         // Usar el ancho del contenedor interno (max-w-[1400px])
         const contentInner = scrollContent.closest('.services-content-inner') as HTMLElement;
         const containerWidth = contentInner ? contentInner.offsetWidth : (scrollContainer as HTMLElement).offsetWidth;
         // Calcular el ancho total incluyendo el padding derecho
-        const paddingRight = isMobile ? 24 : (window.innerWidth <= 1024 ? 150 : 200);
+        const paddingRight = window.innerWidth <= 1024 ? 150 : 200;
         const totalWidth = (cardWidth + gap) * cards.length - gap + paddingRight;
         // Calcular la distancia de scroll necesaria
         const scrollDistance = Math.max(0, totalWidth - containerWidth);
@@ -219,6 +342,14 @@
     justify-content: center;
   }
 
+  @media (max-width: 768px) {
+    .services-scroll-container {
+      height: auto;
+      min-height: auto;
+      overflow: visible;
+    }
+  }
+
   .services-scroll-wrapper {
     width: 100%;
     height: 100%;
@@ -227,6 +358,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .services-scroll-wrapper {
+      height: auto;
+    }
   }
 
   .services-content-inner {
@@ -239,19 +376,45 @@
     padding-bottom: 80px;
   }
 
+  @media (max-width: 768px) {
+    .services-content-inner {
+      height: auto;
+      padding-top: 100px;
+      padding-bottom: 60px;
+      padding-left: 16px;
+      padding-right: 16px;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-content-inner {
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-top: 90px;
+      padding-bottom: 40px;
+    }
+  }
+
   .services-header {
     margin-bottom: 60px;
     margin-top: 0;
   }
 
   .services-scroll-content {
-    display: flex;
+    display: none;
     gap: 40px;
     width: fit-content;
     height: fit-content;
     will-change: transform;
     padding-right: 200px;
     align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .services-scroll-content {
+      display: flex;
+    }
   }
 
   .service-card {
@@ -323,65 +486,52 @@
     height: 100%;
   }
 
+  .services-mobile-content {
+    display: flex;
+  }
+
+  @media (min-width: 768px) {
+    .services-mobile-content {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
-    .services-scroll-container {
-      height: 100vh;
-      min-height: 600px;
+    .services-mobile-content {
+      width: 100%;
+      padding: 0;
+      margin-top: 32px;
     }
 
-    .services-content-inner {
-      padding-top: 120px;
-      padding-bottom: 60px;
-      justify-content: flex-start;
-    }
-
-    .services-header {
-      margin-bottom: 32px;
-      margin-top: 0;
-    }
-
-    .services-header h2 {
-      line-height: 1.1;
-    }
-
-    .services-header p {
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .services-scroll-content {
-      gap: 24px;
-      padding-right: 24px;
-      padding-left: 0;
-    }
-
-    .service-card {
-      width: calc(100vw - 48px);
-      max-width: 380px;
-      min-width: 300px;
+    .services-mobile-content .service-card {
+      width: 100%;
+      max-width: 100%;
+      min-width: auto;
       height: auto;
-      min-height: 420px;
-      padding: 28px;
+      min-height: auto;
+      padding: 28px 24px;
+      margin: 0;
+      border-radius: 20px;
     }
 
-    .service-number {
+    .services-mobile-content .service-number {
       font-size: 12px;
       margin-bottom: 12px;
     }
 
-    .service-title {
+    .services-mobile-content .service-title {
       font-size: 24px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       line-height: 1.2;
     }
 
-    .service-description {
-      font-size: 14px;
-      line-height: 1.5;
+    .services-mobile-content .service-description {
+      font-size: 15px;
+      line-height: 1.6;
       margin-bottom: 20px;
     }
 
-    .service-icon {
+    .services-mobile-content .service-icon {
       width: 80px;
       height: 80px;
       margin-top: 16px;
@@ -389,38 +539,32 @@
   }
 
   @media (max-width: 480px) {
-    .services-content-inner {
-      padding-top: 90px;
-      padding-bottom: 40px;
-    }
-
-    .services-header {
-      margin-bottom: 24px;
-    }
-
-    .services-scroll-content {
+    .services-mobile-content {
+      margin-top: 24px;
       gap: 20px;
-      padding-right: 20px;
     }
 
-    .service-card {
-      width: calc(100vw - 40px);
-      min-width: 280px;
-      padding: 24px;
-      min-height: 380px;
+    .services-mobile-content .service-card {
+      padding: 24px 20px;
+      border-radius: 16px;
     }
 
-    .service-title {
+    .services-mobile-content .service-title {
       font-size: 22px;
+      margin-bottom: 12px;
     }
 
-    .service-description {
-      font-size: 13px;
+    .services-mobile-content .service-description {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
     }
 
-    .service-icon {
+    .services-mobile-content .service-icon {
       width: 70px;
       height: 70px;
+      margin-top: 12px;
     }
   }
+
 </style>
