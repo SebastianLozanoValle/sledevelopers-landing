@@ -11,66 +11,70 @@
     <div class="embla" id="embla-portfolio">
       <div class="embla__viewport overflow-hidden">
         <div class="embla__container flex bg-transparent">
-          <div class="embla__slide flex-shrink-0 group">
-            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="embla__slide flex-shrink-0 group" data-url="https://hebrara.com/">
+            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 px-2 md:px-4">
               <div class="relative w-full h-[360px] md:h-[460px] xl:h-[540px] overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]" style="width: 1440px; height: 900px;">
                   <iframe
                     src="https://hebrara.com/"
-                    class="w-full h-full rounded-3xl"
+                    class="w-full h-full rounded-3xl portfolio-iframe"
                     style="border: none;"
                     loading="lazy"
                     title="Hebrara website preview"
                   ></iframe>
                 </div>
+                <a href="https://hebrara.com/" target="_blank" rel="noopener noreferrer" class="portfolio-overlay md:hidden"></a>
               </div>
             </div>
           </div>
 
-          <div class="embla__slide flex-shrink-0 group">
-            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="embla__slide flex-shrink-0 group" data-url="https://www.turismoencasasyfincas.com.co/">
+            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 px-2 md:px-4">
               <div class="relative w-full h-[360px] md:h-[460px] xl:h-[540px] overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]" style="width: 1440px; height: 900px;">
                   <iframe
                     src="https://www.turismoencasasyfincas.com.co/"
-                    class="w-full h-full"
+                    class="w-full h-full portfolio-iframe"
                     style="border: none;"
                     loading="lazy"
                     title="Turismo en Casas y Fincas website preview"
                   ></iframe>
                 </div>
+                <a href="https://www.turismoencasasyfincas.com.co/" target="_blank" rel="noopener noreferrer" class="portfolio-overlay md:hidden"></a>
               </div>
             </div>
           </div>
 
-          <div class="embla__slide flex-shrink-0 group">
-            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="embla__slide flex-shrink-0 group" data-url="https://hotelesilar.com/">
+            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 px-2 md:px-4">
               <div class="relative w-full h-[360px] md:h-[460px] xl:h-[540px] overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]" style="width: 1440px; height: 900px;">
                   <iframe
                     src="https://hotelesilar.com/"
-                    class="w-full h-full"
+                    class="w-full h-full portfolio-iframe"
                     style="border: none;"
                     loading="lazy"
                     title="Hoteles Ilar website preview"
                   ></iframe>
                 </div>
+                <a href="https://hotelesilar.com/" target="_blank" rel="noopener noreferrer" class="portfolio-overlay md:hidden"></a>
               </div>
             </div>
           </div>
 
-          <div class="embla__slide flex-shrink-0 group">
-            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="embla__slide flex-shrink-0 group" data-url="https://afecorp.com.co/">
+            <div class="relative w-full rounded-[32px] bg-transparent border border-slate-200/60 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 px-2 md:px-4">
               <div class="relative w-full h-[360px] md:h-[460px] xl:h-[540px] overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]" style="width: 1440px; height: 900px;">
                   <iframe
                     src="https://afecorp.com.co/"
-                    class="w-full h-full"
+                    class="w-full h-full portfolio-iframe"
                     style="border: none;"
                     loading="lazy"
                     title="AFE Corp website preview"
                   ></iframe>
                 </div>
+                <a href="https://afecorp.com.co/" target="_blank" rel="noopener noreferrer" class="portfolio-overlay md:hidden"></a>
               </div>
             </div>
           </div>
@@ -143,6 +147,25 @@
       padding: 0 2rem;
     }
   }
+
+  /* En mobile, deshabilitar scroll en iframes y hacer overlay clickeable */
+  @media (max-width: 768px) {
+    .portfolio-iframe {
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      cursor: pointer;
+      display: block;
+    }
+  }
 </style>
 
 <script>
@@ -160,7 +183,7 @@
       slidesToScroll: 1,
       containScroll: 'trimSnaps',
       loop: true,
-      dragFree: false,
+      dragFree: false, // Desactivar drag libre para que centre automáticamente
     });
     
     // Start from the first slide (index 0)
@@ -176,5 +199,50 @@
     if (nextButton) {
       nextButton.addEventListener('click', () => embla.scrollNext());
     }
+
+    // Auto-scroll cada 5 segundos
+    let autoplayInterval: ReturnType<typeof setInterval> | null = null;
+    let isUserInteracting = false;
+
+    function startAutoplay() {
+      if (autoplayInterval) return;
+      autoplayInterval = setInterval(() => {
+        if (!isUserInteracting) {
+          embla.scrollNext();
+        }
+      }, 5000); // 5 segundos
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    }
+
+    // Detectar interacción del usuario
+    embla.on('pointerDown', () => {
+      isUserInteracting = true;
+      stopAutoplay();
+    });
+
+    embla.on('pointerUp', () => {
+      setTimeout(() => {
+        isUserInteracting = false;
+        startAutoplay();
+      }, 3000); // Reanudar después de 3 segundos de inactividad
+    });
+
+    // Iniciar autoplay
+    startAutoplay();
+
+    // Pausar cuando la ventana no está visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
   });
 </script>

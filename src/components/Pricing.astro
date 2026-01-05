@@ -76,51 +76,52 @@ const services = [
 ];
 ---
 
-<section class="py-24 px-8 max-w-[1400px] mx-auto relative" id="pricing">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<section class="py-24 px-4 md:px-8 max-w-[1400px] mx-auto relative" id="pricing">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
     <!-- Left Side -->
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-6 md:gap-8">
       <div>
-        <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-none m-0">Precios</h2>
-        <p class="text-gray-500 text-lg leading-relaxed mt-4">Echa un vistazo a algunos de nuestros proyectos recientes para ver cómo hemos ayudado a empresas como la tuya a tener éxito en línea.</p>
+        <h2 class="text-[clamp(2rem,5vw,5rem)] font-extrabold text-gray-900 leading-tight m-0">Precios</h2>
+        <p class="text-gray-500 text-base md:text-lg leading-relaxed mt-3 md:mt-4">Echa un vistazo a algunos de nuestros proyectos recientes para ver cómo hemos ayudado a empresas como la tuya a tener éxito en línea.</p>
       </div>
       
-      <div class="bg-white border border-gray-200 rounded-2xl p-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-6">Agendemos una Reunión</h3>
-        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-none py-3.5 px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full">Agendar Reunión</button>
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8">
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Agendemos una Reunión</h3>
+        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-none py-3 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full text-sm md:text-base">Agendar Reunión</button>
       </div>
     </div>
 
     <!-- Right Side - Carrusel -->
     <div class="relative">
-      <div class="pricing-carousel-container overflow-hidden rounded-2xl">
-        <div class="pricing-carousel-wrapper flex gap-6 transition-transform duration-500 ease-in-out" id="pricingCarousel">
+      <div class="pricing-carousel-container overflow-hidden rounded-2xl" id="pricing-embla">
+        <div class="pricing-carousel-viewport overflow-hidden">
+          <div class="pricing-carousel-wrapper flex gap-6" id="pricingCarousel">
           <!-- Duplicar última tarjeta al inicio para loop infinito -->
           {services[services.length - 1] && (
-            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index="-1">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">{services[services.length - 1].title}</h3>
-              <p class="text-gray-500 text-base mb-8">{services[services.length - 1].description}</p>
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-8 md:p-12 pricing-slide" data-index="-1">
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 mt-4 md:mt-0">{services[services.length - 1].title}</h3>
+              <p class="text-gray-500 text-sm md:text-base mb-6 md:mb-8">{services[services.length - 1].description}</p>
               
-              <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                 {services[services.length - 1].features.map((feature) => (
-                  <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-5 h-5 md:w-6 md:h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="12" height="12" class="md:w-[14px] md:h-[14px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
                         <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
-                    <span class="text-gray-500 text-sm">{feature}</span>
+                    <span class="text-gray-500 text-xs md:text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
               
-              <div class="pt-8 border-t border-gray-200">
-                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+              <div class="pt-6 md:pt-8 border-t border-gray-200">
+                <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
                 <div class="flex items-baseline gap-2">
-                  <span class="text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
-                  <span class="text-xl text-gray-500">{services[services.length - 1].period}</span>
+                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
+                  <span class="text-lg md:text-xl text-gray-500">{services[services.length - 1].period}</span>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
@@ -128,30 +129,30 @@ const services = [
           )}
           
           {services.map((service, index) => (
-            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index={index}>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p class="text-gray-500 text-base mb-8">{service.description}</p>
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-8 md:p-12 pricing-slide" data-index={index}>
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 mt-4 md:mt-0">{service.title}</h3>
+              <p class="text-gray-500 text-sm md:text-base mb-6 md:mb-8">{service.description}</p>
               
-              <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                 {service.features.map((feature) => (
-                  <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-5 h-5 md:w-6 md:h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="12" height="12" class="md:w-[14px] md:h-[14px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
                         <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
-                    <span class="text-gray-500 text-sm">{feature}</span>
+                    <span class="text-gray-500 text-xs md:text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
               
-              <div class="pt-8 border-t border-gray-200">
-                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+              <div class="pt-6 md:pt-8 border-t border-gray-200">
+                <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
                 <div class="flex items-baseline gap-2">
-                  <span class="text-6xl font-extrabold text-gray-900">{service.price}</span>
-                  <span class="text-xl text-gray-500">{service.period}</span>
+                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{service.price}</span>
+                  <span class="text-lg md:text-xl text-gray-500">{service.period}</span>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
@@ -160,35 +161,36 @@ const services = [
           
           <!-- Duplicar primera tarjeta al final para loop infinito -->
           {services[0] && (
-            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index={services.length}>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">{services[0].title}</h3>
-              <p class="text-gray-500 text-base mb-8">{services[0].description}</p>
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-8 md:p-12 pricing-slide" data-index={services.length}>
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">{services[0].title}</h3>
+              <p class="text-gray-500 text-sm md:text-base mb-6 md:mb-8">{services[0].description}</p>
               
-              <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                 {services[0].features.map((feature) => (
-                  <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-5 h-5 md:w-6 md:h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="12" height="12" class="md:w-[14px] md:h-[14px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
                         <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
-                    <span class="text-gray-500 text-sm">{feature}</span>
+                    <span class="text-gray-500 text-xs md:text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
               
-              <div class="pt-8 border-t border-gray-200">
-                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+              <div class="pt-6 md:pt-8 border-t border-gray-200">
+                <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
                 <div class="flex items-baseline gap-2">
-                  <span class="text-6xl font-extrabold text-gray-900">{services[0].price}</span>
-                  <span class="text-xl text-gray-500">{services[0].period}</span>
+                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[0].price}</span>
+                  <span class="text-lg md:text-xl text-gray-500">{services[0].period}</span>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
       
@@ -217,105 +219,253 @@ const services = [
 </section>
 
 <script>
-  (function() {
-    let currentIndex = 1; // Empezar en 1 porque el índice 0 es la tarjeta duplicada
-    let isTransitioning = false;
+  import EmblaCarousel from 'embla-carousel';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const isMobile = window.innerWidth <= 768;
+    const pricingEmblaNode = document.getElementById('pricing-embla');
     const carousel = document.getElementById('pricingCarousel');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
-    if (!carousel || !prevBtn || !nextBtn) return;
-    
-    const totalCards = carousel.children.length;
-    const realTotalCards = totalCards - 2; // Restar las tarjetas duplicadas
-    const gap = 24; // gap-6 = 1.5rem = 24px
-    
-    function getCardWidth() {
-      if (!carousel) return 0;
-      const container = carousel.parentElement;
-      if (!container) return 0;
-      return container.offsetWidth;
-    }
+    // Inicializar sistema de desktop primero (siempre)
+    if (!isMobile) {
+      (function() {
+        let currentIndex = 1;
+        let isTransitioning = false;
+        
+        if (!carousel || !prevBtn || !nextBtn) return;
+        
+        const totalCards = carousel.children.length;
+        const realTotalCards = totalCards - 2;
+        const gap = 24;
+        
+        function getCardWidth() {
+          if (!carousel) return 0;
+          const container = carousel.closest('.pricing-carousel-container') as HTMLElement;
+          if (!container) return 0;
+          return container.offsetWidth;
+        }
 
-    function updateCarousel(skipTransition = false) {
-      if (!carousel) return;
-      if (skipTransition) {
-        carousel.style.transition = 'none';
-      } else {
-        carousel.style.transition = 'transform 0.5s ease-in-out';
-      }
-      
-      const containerWidth = getCardWidth();
-      const translateX = -(currentIndex * (containerWidth + gap));
-      carousel.style.transform = `translateX(${translateX}px)`;
-    }
+        function updateCarousel(skipTransition = false) {
+          if (!carousel) return;
+          if (skipTransition) {
+            carousel.style.transition = 'none';
+          } else {
+            carousel.style.transition = 'transform 0.5s ease-in-out';
+          }
+          
+          const containerWidth = getCardWidth();
+          const translateX = -(currentIndex * (containerWidth + gap));
+          carousel.style.transform = `translateX(${translateX}px)`;
+        }
 
-    function goToNext() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      
-      currentIndex++;
-      updateCarousel();
-      
-      // Si llegamos al final (tarjeta duplicada), saltar al inicio sin animación
-      if (currentIndex >= realTotalCards + 1) {
-        setTimeout(() => {
-          currentIndex = 1;
-          updateCarousel(true);
-          setTimeout(() => {
-            isTransitioning = false;
-          }, 50);
-        }, 500);
-      } else {
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 500);
-      }
-    }
+        function goToNext() {
+          if (isTransitioning) return;
+          isTransitioning = true;
+          
+          currentIndex++;
+          updateCarousel();
+          
+          if (currentIndex >= realTotalCards + 1) {
+            setTimeout(() => {
+              currentIndex = 1;
+              updateCarousel(true);
+              setTimeout(() => {
+                isTransitioning = false;
+              }, 50);
+            }, 500);
+          } else {
+            setTimeout(() => {
+              isTransitioning = false;
+            }, 500);
+          }
+        }
 
-    function goToPrev() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      
-      currentIndex--;
-      updateCarousel();
-      
-      // Si llegamos al inicio (tarjeta duplicada), saltar al final sin animación
-      if (currentIndex <= 0) {
-        setTimeout(() => {
-          currentIndex = realTotalCards;
-          updateCarousel(true);
-          setTimeout(() => {
-            isTransitioning = false;
-          }, 50);
-        }, 500);
-      } else {
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 500);
-      }
-    }
+        function goToPrev() {
+          if (isTransitioning) return;
+          isTransitioning = true;
+          
+          currentIndex--;
+          updateCarousel();
+          
+          if (currentIndex <= 0) {
+            setTimeout(() => {
+              currentIndex = realTotalCards;
+              updateCarousel(true);
+              setTimeout(() => {
+                isTransitioning = false;
+              }, 50);
+            }, 500);
+          } else {
+            setTimeout(() => {
+              isTransitioning = false;
+            }, 500);
+          }
+        }
 
-    prevBtn.addEventListener('click', goToPrev);
-    nextBtn.addEventListener('click', goToNext);
+        prevBtn.addEventListener('click', goToPrev);
+        nextBtn.addEventListener('click', goToNext);
 
-    // Inicializar posición
-    updateCarousel(true);
-    
-    // Ajustar en resize
-    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-    window.addEventListener('resize', () => {
-      if (resizeTimeout) clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
         updateCarousel(true);
-      }, 250);
-    });
-  })();
+        
+        // Auto-scroll cada 2.5 segundos
+        let autoplayInterval: ReturnType<typeof setInterval> | null = null;
+        let isUserInteracting = false;
+
+        function startAutoplay() {
+          if (autoplayInterval) return;
+          autoplayInterval = setInterval(() => {
+            if (!isUserInteracting && !isTransitioning) {
+              goToNext();
+            }
+          }, 2500); // 2.5 segundos
+        }
+
+        function stopAutoplay() {
+          if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+          }
+        }
+
+        // Detectar interacción del usuario
+        prevBtn.addEventListener('click', () => {
+          isUserInteracting = true;
+          stopAutoplay();
+          setTimeout(() => {
+            isUserInteracting = false;
+            startAutoplay();
+          }, 3000);
+        });
+
+        nextBtn.addEventListener('click', () => {
+          isUserInteracting = true;
+          stopAutoplay();
+          setTimeout(() => {
+            isUserInteracting = false;
+            startAutoplay();
+          }, 3000);
+        });
+
+        // Detectar hover sobre el carrusel
+        const container = carousel.closest('.pricing-carousel-container') as HTMLElement;
+        if (container) {
+          container.addEventListener('mouseenter', () => {
+            stopAutoplay();
+          });
+          container.addEventListener('mouseleave', () => {
+            isUserInteracting = false;
+            startAutoplay();
+          });
+        }
+
+        // Iniciar autoplay
+        startAutoplay();
+
+        // Pausar cuando la ventana no está visible
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stopAutoplay();
+          } else {
+            startAutoplay();
+          }
+        });
+        
+        let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+        window.addEventListener('resize', () => {
+          if (resizeTimeout) clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            updateCarousel(true);
+          }, 250);
+        });
+      })();
+    }
+    
+    // Inicializar Embla solo en mobile
+    if (isMobile && pricingEmblaNode && carousel) {
+      // Usar Embla en mobile para drag
+      const viewport = pricingEmblaNode.querySelector('.pricing-carousel-viewport') as HTMLElement;
+      if (viewport) {
+        // Agregar clase embla__container para compatibilidad
+        carousel.classList.add('embla__container');
+        const slides = carousel.querySelectorAll('.pricing-slide');
+        slides.forEach(slide => {
+          slide.classList.add('embla__slide');
+        });
+        
+        const embla = EmblaCarousel(viewport, {
+          align: 'center',
+          slidesToScroll: 1,
+          containScroll: 'trimSnaps',
+          loop: true,
+          dragFree: false, // Desactivar drag libre para que haga snap a cada tarjeta
+          watchDrag: true,
+          startIndex: 1, // Empezar en la primera tarjeta real (saltando la duplicada)
+        });
+        
+        // Asegurar que el drag funcione
+        embla.on('init', () => {
+          embla.reInit();
+        });
+
+        // Auto-scroll cada 2.5 segundos en mobile
+        let autoplayInterval: ReturnType<typeof setInterval> | null = null;
+        let isUserInteracting = false;
+
+        function startAutoplay() {
+          if (autoplayInterval) return;
+          autoplayInterval = setInterval(() => {
+            if (!isUserInteracting) {
+              embla.scrollNext();
+            }
+          }, 2500); // 2.5 segundos
+        }
+
+        function stopAutoplay() {
+          if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+          }
+        }
+
+        // Detectar interacción del usuario
+        embla.on('pointerDown', () => {
+          isUserInteracting = true;
+          stopAutoplay();
+        });
+
+        embla.on('pointerUp', () => {
+          setTimeout(() => {
+            isUserInteracting = false;
+            startAutoplay();
+          }, 3000); // Reanudar después de 3 segundos de inactividad
+        });
+
+        // Iniciar autoplay
+        startAutoplay();
+
+        // Pausar cuando la ventana no está visible
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stopAutoplay();
+          } else {
+            startAutoplay();
+          }
+        });
+      }
+    }
+  });
 </script>
 
 <style>
   .pricing-carousel-container {
     position: relative;
+  }
+
+  .pricing-carousel-viewport {
+    overflow: hidden;
+    width: 100%;
   }
   
   .pricing-carousel-wrapper {
@@ -327,6 +477,43 @@ const services = [
     min-width: 0;
     flex: 0 0 100%;
     box-sizing: border-box;
+  }
+
+  .pricing-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-carousel-viewport {
+      overflow: hidden;
+      touch-action: pan-y pinch-zoom;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .pricing-carousel-viewport:active {
+      cursor: grabbing;
+    }
+
+    .pricing-carousel-wrapper.embla__container {
+      display: flex;
+      will-change: transform;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .pricing-slide.embla__slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      padding: 0 0.5rem;
+      position: relative;
+    }
+
+    /* Asegurar que el drag funcione */
+    .pricing-carousel-wrapper.embla__container {
+      transition: none !important;
+    }
   }
   
   @media (max-width: 1024px) {

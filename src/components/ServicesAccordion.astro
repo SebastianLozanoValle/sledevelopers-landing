@@ -197,7 +197,8 @@ const services = [
   // Three.js 3D Element - Cargar modelo GLB
   document.addEventListener('DOMContentLoaded', async function() {
     const THREE = await import('three');
-    const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+    const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
+    const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js');
     
     const container = document.getElementById('threejs-container');
     if (!container) return;
@@ -228,7 +229,7 @@ const services = [
     const loader = new GLTFLoader();
     loader.load(
       '/Meshy_AI_Stylized_isometric_fl_0105015624_texture.glb',
-      function(gltf) {
+      function(gltf: any) {
         model = gltf.scene;
         
         // Calcular el bounding box para centrar y escalar el modelo
@@ -245,7 +246,7 @@ const services = [
         model.position.sub(center.multiplyScalar(scale));
         
         // Habilitar sombras
-        model.traverse(function(child) {
+        model.traverse(function(child: any) {
           if (child instanceof THREE.Mesh) {
             child.castShadow = true;
             child.receiveShadow = true;
@@ -255,12 +256,12 @@ const services = [
         modelGroup.add(model);
         scene.add(modelGroup);
       },
-      function(progress) {
+      function(progress: any) {
         // Progreso de carga (opcional)
         const percent = (progress.loaded / progress.total * 100);
         console.log('Cargando modelo:', percent.toFixed(0) + '%');
       },
-      function(error) {
+      function(error: any) {
         console.error('Error cargando modelo:', error);
       }
     );
@@ -316,14 +317,46 @@ const services = [
     camera.position.set(14, 12, 14);
     camera.lookAt(0, 0, 0);
 
+    // OrbitControls para interacción con mouse
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Suavizar movimiento
+    controls.dampingFactor = 0.05;
+    controls.enableZoom = true;
+    controls.enablePan = false; // Desactivar pan para mantener el modelo centrado
+    controls.minDistance = 10;
+    controls.maxDistance = 30;
+    controls.maxPolarAngle = Math.PI / 2.2; // Limitar rotación vertical
+    controls.minPolarAngle = Math.PI / 4;
+    controls.autoRotate = false; // Desactivar auto-rotación cuando hay interacción
+    controls.autoRotateSpeed = 0.5;
+
+    let isUserInteracting = false;
+    let autoRotateTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    // Detectar interacción del usuario
+    controls.addEventListener('start', () => {
+      isUserInteracting = true;
+      if (autoRotateTimeout) {
+        clearTimeout(autoRotateTimeout);
+        autoRotateTimeout = null;
+      }
+    });
+
+    controls.addEventListener('end', () => {
+      // Reanudar auto-rotación después de 3 segundos de inactividad
+      autoRotateTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 3000);
+    });
+
     // Animation
     let time = 0;
     function animate() {
       requestAnimationFrame(animate);
       time += 0.008;
 
-      // Rotación suave del modelo
-      if (modelGroup) {
+      // Rotación suave del modelo solo si no hay interacción
+      if (modelGroup && !isUserInteracting) {
         modelGroup.rotation.y += 0.005;
         modelGroup.position.y = Math.sin(time) * 0.1; // Flotación suave
       }
@@ -334,20 +367,25 @@ const services = [
       accentLight2.position.x = 2 + Math.cos(time * 1.2) * 0.5;
       accentLight2.position.z = -2 + Math.sin(time * 1.2) * 0.5;
 
-      // Subtle camera orbit - ángulo isométrico mejorado (muy alejado para modelo gigante)
-      // Radio y altura aumentados para que el modelo completo quepa
-      const radius = 18;
-      const height = 12;
-      camera.position.x = Math.cos(time * 0.15) * radius;
-      camera.position.z = Math.sin(time * 0.15) * radius;
-      camera.position.y = height + Math.sin(time * 0.1) * 0.2;
-      camera.lookAt(0, 0, 0);
+      // Auto-rotación de cámara solo si no hay interacción
+      if (!isUserInteracting) {
+        const radius = 18;
+        const height = 12;
+        camera.position.x = Math.cos(time * 0.15) * radius;
+        camera.position.z = Math.sin(time * 0.15) * radius;
+        camera.position.y = height + Math.sin(time * 0.1) * 0.2;
+        camera.lookAt(0, 0, 0);
+      }
+
+      // Actualizar controles (necesario para damping)
+      controls.update();
 
       renderer.render(scene, camera);
     }
 
     // Handle resize
     function handleResize() {
+      if (!container) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
       camera.aspect = width / height;

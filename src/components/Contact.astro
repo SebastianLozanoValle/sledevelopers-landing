@@ -16,22 +16,22 @@ const budgets = [
 ];
 ---
 
-<section class="mb-20 py-24 px-8 max-w-[1400px] mx-auto relative" id="contact">
-  <div class="w-4/5 mx-auto">
+<section class="mb-20 py-24 pt-32 md:pt-24 px-0 md:px-8 max-w-[1400px] mx-auto relative" id="contact">
+  <div class="w-full md:w-4/5 mx-auto px-0 md:px-0">
     <!-- Header -->
-    <div class="flex items-center justify-between mb-16 flex-wrap gap-6">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12 md:mb-16 gap-4 md:gap-6 px-4 md:px-0">
       <div class="flex items-center gap-2">
         <span class="bg-gray-900 w-2 h-2 rounded-full"></span>
         <span class="text-sm font-medium text-gray-600">Somos exploradores</span>
       </div>
-      <h2 class="text-[clamp(2rem,4vw,2.5rem)] font-extrabold text-gray-900 leading-tight">
+      <h2 class="text-[clamp(1.75rem,5vw,2.5rem)] font-extrabold text-gray-900 leading-tight">
         ¿Listo para dar el siguiente paso con nosotros?
       </h2>
     </div>
 
     <!-- Main Form Card -->
-    <div class="bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 shadow-lg" id="contact-form-container">
-      <form id="contact-form" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 lg:p-12 shadow-lg w-full" id="contact-form-container">
+      <form id="contact-form" class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         <!-- Left Side -->
         <div class="space-y-8">
           <button 
@@ -40,7 +40,7 @@ const budgets = [
           >
             Contáctanos
           </button>
-          <h3 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-gray-900 leading-tight">
+          <h3 class="text-[clamp(2rem,5vw,4rem)] font-extrabold text-gray-900 leading-tight">
             Hagamos un impacto
           </h3>
         </div>
@@ -55,7 +55,7 @@ const budgets = [
                 type="text"
                 id="name"
                 name="name"
-                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+                class="w-full md:w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-base md:text-lg bg-transparent transition-colors"
                 required
               />
             </div>
@@ -66,7 +66,7 @@ const budgets = [
                 type="text"
                 id="company"
                 name="company"
-                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+                class="w-full md:w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-base md:text-lg bg-transparent transition-colors"
               />
             </div>
             
@@ -76,7 +76,7 @@ const budgets = [
                 type="email"
                 id="email"
                 name="email"
-                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+                class="w-full md:w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-base md:text-lg bg-transparent transition-colors"
                 required
               />
             </div>
@@ -88,7 +88,7 @@ const budgets = [
                 id="phone"
                 name="phone"
                 placeholder="Tu número de teléfono"
-                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors placeholder:text-gray-400"
+                class="w-full md:w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-base md:text-lg bg-transparent transition-colors placeholder:text-gray-400"
               />
             </div>
           </div>
@@ -142,7 +142,7 @@ const budgets = [
               name="project"
               placeholder="Escribe algo conciso..."
               rows="4"
-              class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent resize-none transition-colors placeholder:text-gray-400"
+              class="w-full md:w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-base md:text-lg bg-transparent resize-none transition-colors placeholder:text-gray-400"
             ></textarea>
           </div>
 
