@@ -1,0 +1,407 @@
+---
+interface Props {
+  isVisible?: boolean;
+  isComplete?: boolean;
+}
+
+const { isVisible = true, isComplete = false } = Astro.props;
+---
+
+<div 
+  class="fixed inset-0 w-full h-full z-[9999] bg-white flex items-center justify-center"
+  id="loadingScreen"
+>
+  <!-- Logo animado - 3 hexágonos equiláteros empalmados -->
+  <div class="logo-container">
+    <!-- Hexágono 1 - Centro (elevado) -->
+    <div class="logo-hexagon bg-gray-600" style="top: 6px; left: 36px;"></div>
+    
+    <!-- Hexágono 2 - Izquierda (abajo) -->
+    <div class="logo-hexagon bg-gray-700" style="top: 48px; left: 12px;"></div>
+    
+    <!-- Hexágono 3 - Derecha (abajo) -->
+    <div class="logo-hexagon bg-gray-500" style="top: 48px; left: 60px;"></div>
+  </div>
+</div>
+
+<style>
+  /* Animación de cortina hacia arriba */
+  #loadingScreen {
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom;
+  }
+
+  #loadingScreen.curtain-up {
+    transform: translateY(-100%);
+  }
+
+  /* Logo animado - 3 hexágonos equiláteros empalmados */
+  .logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    transform: rotate(90deg); /* Rotación 90° a la derecha para coincidir con el logo original */
+    animation: logoNucleusRotate 8s ease-in-out infinite; /* Rotación del núcleo con aceleración final */
+  }
+
+  .logo-hexagon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    /* Hexágono equilátero perfecto */
+    clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  }
+
+  /* Hexágonos con rotación en pulsos - sin explosión */
+  .logo-hexagon:nth-child(1) {
+    animation: hexagonPulseRotate 8s ease-in-out infinite;
+  }
+
+  .logo-hexagon:nth-child(2) {
+    animation: hexagonPulseRotate 8s ease-in-out infinite;
+  }
+
+  .logo-hexagon:nth-child(3) {
+    animation: hexagonPulseRotate 8s ease-in-out infinite;
+  }
+
+  /* Rotación del núcleo con aceleración final */
+  @keyframes logoNucleusRotate {
+    0%, 18.75% { 
+      transform: rotate(90deg); /* Pausa inicial en posición correcta */
+    }
+    20% { 
+      transform: rotate(120deg); /* Empieza a rotar durante explosión */
+    }
+    25% { 
+      transform: rotate(180deg); 
+    }
+    30% { 
+      transform: rotate(240deg); 
+    }
+    35% { 
+      transform: rotate(300deg); 
+    }
+    40% { 
+      transform: rotate(360deg); 
+    }
+    45% { 
+      transform: rotate(390deg); 
+    }
+    50% { 
+      transform: rotate(420deg); 
+    }
+    55% { 
+      transform: rotate(440deg); 
+    }
+    60% { 
+      transform: rotate(445deg); 
+    }
+    65% { 
+      transform: rotate(448deg); 
+    }
+    70% { 
+      transform: rotate(449deg); /* Aceleración final */
+    }
+    75% { 
+      transform: rotate(449.5deg); /* Desaceleración suave */
+    }
+    80% { 
+      transform: rotate(450deg); /* Casi en posición */
+    }
+    85% { 
+      transform: rotate(450deg); 
+    }
+    90% { 
+      transform: rotate(450deg); 
+    }
+    95% { 
+      transform: rotate(450deg); 
+    }
+    100% { 
+      transform: rotate(450deg); /* Regresa a posición inicial (90deg + 360deg) */
+    }
+  }
+
+  /* Rotación con variaciones de velocidad - doble giro al final */
+  @keyframes hexagonPulseRotate {
+    0%, 18.75% { 
+      transform: rotate(0deg); /* Pausa inicial - sin rotación */
+    }
+    19% { 
+      transform: rotate(2deg); /* Inicio lento */
+    }
+    20% { 
+      transform: rotate(8deg); /* Aceleración */
+    }
+    21% { 
+      transform: rotate(18deg); /* Velocidad alta */
+    }
+    22% { 
+      transform: rotate(25deg); /* Desaceleración */
+    }
+    23% { 
+      transform: rotate(30deg); /* Velocidad baja */
+    }
+    24% { 
+      transform: rotate(40deg); /* Aceleración */
+    }
+    25% { 
+      transform: rotate(55deg); /* Velocidad alta */
+    }
+    26% { 
+      transform: rotate(65deg); /* Desaceleración */
+    }
+    27% { 
+      transform: rotate(70deg); /* Velocidad baja */
+    }
+    28% { 
+      transform: rotate(85deg); /* Aceleración */
+    }
+    29% { 
+      transform: rotate(105deg); /* Velocidad alta */
+    }
+    30% { 
+      transform: rotate(115deg); /* Desaceleración */
+    }
+    31% { 
+      transform: rotate(120deg); /* Velocidad baja */
+    }
+    32% { 
+      transform: rotate(140deg); /* Aceleración */
+    }
+    33% { 
+      transform: rotate(165deg); /* Velocidad alta */
+    }
+    34% { 
+      transform: rotate(175deg); /* Desaceleración */
+    }
+    35% { 
+      transform: rotate(180deg); /* Velocidad baja */
+    }
+    36% { 
+      transform: rotate(200deg); /* Aceleración */
+    }
+    37% { 
+      transform: rotate(225deg); /* Velocidad alta */
+    }
+    38% { 
+      transform: rotate(235deg); /* Desaceleración */
+    }
+    39% { 
+      transform: rotate(240deg); /* Velocidad baja */
+    }
+    40% { 
+      transform: rotate(260deg); /* Aceleración */
+    }
+    41% { 
+      transform: rotate(285deg); /* Velocidad alta */
+    }
+    42% { 
+      transform: rotate(295deg); /* Desaceleración */
+    }
+    43% { 
+      transform: rotate(300deg); /* Velocidad baja */
+    }
+    44% { 
+      transform: rotate(320deg); /* Aceleración */
+    }
+    45% { 
+      transform: rotate(345deg); /* Velocidad alta */
+    }
+    46% { 
+      transform: rotate(355deg); /* Desaceleración */
+    }
+    47% { 
+      transform: rotate(360deg); /* Velocidad baja - primera vuelta completa */
+    }
+    48% { 
+      transform: rotate(380deg); /* Aceleración */
+    }
+    49% { 
+      transform: rotate(405deg); /* Velocidad alta */
+    }
+    50% { 
+      transform: rotate(415deg); /* Desaceleración */
+    }
+    51% { 
+      transform: rotate(420deg); /* Velocidad baja */
+    }
+    52% { 
+      transform: rotate(440deg); /* Aceleración */
+    }
+    53% { 
+      transform: rotate(465deg); /* Velocidad alta */
+    }
+    54% { 
+      transform: rotate(475deg); /* Desaceleración */
+    }
+    55% { 
+      transform: rotate(480deg); /* Velocidad baja */
+    }
+    56% { 
+      transform: rotate(500deg); /* Aceleración */
+    }
+    57% { 
+      transform: rotate(525deg); /* Velocidad alta */
+    }
+    58% { 
+      transform: rotate(535deg); /* Desaceleración */
+    }
+    59% { 
+      transform: rotate(540deg); /* Velocidad baja */
+    }
+    60% { 
+      transform: rotate(560deg); /* Aceleración */
+    }
+    61% { 
+      transform: rotate(585deg); /* Velocidad alta */
+    }
+    62% { 
+      transform: rotate(595deg); /* Desaceleración */
+    }
+    63% { 
+      transform: rotate(600deg); /* Velocidad baja */
+    }
+    64% { 
+      transform: rotate(620deg); /* Aceleración */
+    }
+    65% { 
+      transform: rotate(645deg); /* Velocidad alta */
+    }
+    66% { 
+      transform: rotate(655deg); /* Desaceleración */
+    }
+    67% { 
+      transform: rotate(660deg); /* Velocidad baja */
+    }
+    68% { 
+      transform: rotate(680deg); /* Aceleración */
+    }
+    69% { 
+      transform: rotate(705deg); /* Velocidad alta */
+    }
+    70% { 
+      transform: rotate(715deg); /* Desaceleración */
+    }
+    71% { 
+      transform: rotate(720deg); /* Velocidad baja */
+    }
+    72% { 
+      transform: rotate(740deg); /* Aceleración */
+    }
+    73% { 
+      transform: rotate(765deg); /* Velocidad alta */
+    }
+    74% { 
+      transform: rotate(775deg); /* Desaceleración */
+    }
+    75% { 
+      transform: rotate(780deg); /* Velocidad baja */
+    }
+    76% { 
+      transform: rotate(800deg); /* Aceleración */
+    }
+    77% { 
+      transform: rotate(825deg); /* Velocidad alta */
+    }
+    78% { 
+      transform: rotate(835deg); /* Desaceleración */
+    }
+    79% { 
+      transform: rotate(840deg); /* Velocidad baja */
+    }
+    80% { 
+      transform: rotate(860deg); /* Aceleración */
+    }
+    81% { 
+      transform: rotate(885deg); /* Velocidad alta */
+    }
+    82% { 
+      transform: rotate(895deg); /* Desaceleración */
+    }
+    83% { 
+      transform: rotate(900deg); /* Velocidad baja */
+    }
+    84% { 
+      transform: rotate(920deg); /* Aceleración */
+    }
+    85% { 
+      transform: rotate(945deg); /* Velocidad alta */
+    }
+    86% { 
+      transform: rotate(955deg); /* Desaceleración */
+    }
+    87% { 
+      transform: rotate(960deg); /* Velocidad baja */
+    }
+    88% { 
+      transform: rotate(980deg); /* Aceleración */
+    }
+    89% { 
+      transform: rotate(1005deg); /* Velocidad alta */
+    }
+    90% { 
+      transform: rotate(1015deg); /* Desaceleración */
+    }
+    91% { 
+      transform: rotate(1020deg); /* Velocidad baja */
+    }
+    92% { 
+      transform: rotate(1040deg); /* Aceleración */
+    }
+    93% { 
+      transform: rotate(1065deg); /* Velocidad alta */
+    }
+    94% { 
+      transform: rotate(1075deg); /* Desaceleración */
+    }
+    95% { 
+      transform: rotate(1080deg); /* Velocidad baja */
+    }
+    96% { 
+      transform: rotate(1140deg); /* Aceleración - triple giro al final */
+    }
+    97% { 
+      transform: rotate(1215deg); /* Velocidad alta - triple giro */
+    }
+    98% { 
+      transform: rotate(1260deg); /* Desaceleración - triple giro */
+    }
+    99% { 
+      transform: rotate(1290deg); /* Velocidad baja - triple giro */
+    }
+    99.5% { 
+      transform: rotate(1350deg); /* Efecto látigo - va a dar otra vuelta */
+    }
+    99.7% { 
+      transform: rotate(1320deg); /* Efecto látigo - frena y se devuelve */
+    }
+    100% { 
+      transform: rotate(1340deg); /* Efecto látigo - regresa un poco a la posición */
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (!loadingScreen) return;
+
+    // Mostrar loader por 4 segundos (tiempo de la animación completa)
+    const timer = setTimeout(() => {
+      // Agregar clase para animación de cortina hacia arriba
+      loadingScreen.classList.add('curtain-up');
+      
+      // Remover el elemento después de la transición
+      setTimeout(() => {
+        if (loadingScreen.parentNode) {
+          loadingScreen.parentNode.removeChild(loadingScreen);
+        }
+      }, 1000);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  })();
+</script>
+

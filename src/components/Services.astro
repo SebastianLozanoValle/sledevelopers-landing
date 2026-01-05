@@ -1,88 +1,80 @@
 ---
+const services = [
+  {
+    id: 'service-1',
+    number: '01',
+    title: 'Diseño de Sitios Web',
+    description: 'Diseñamos sitios web modernos y funcionales que capturan la esencia de tu marca y proporcionan una experiencia de usuario excepcional. Desde conceptos iniciales hasta implementación completa.',
+    tags: ['Responsive Design', 'User Experience', 'Modern UI']
+  },
+  {
+    id: 'service-2',
+    number: '02',
+    title: 'Branding',
+    description: 'Desarrollamos identidades de marca sólidas que conectan emocionalmente con tu audiencia. Logotipos, paletas de colores, tipografías y guías de estilo que definen tu presencia visual.',
+    tags: ['Logo Design', 'Brand Identity', 'Style Guide']
+  },
+  {
+    id: 'service-3',
+    number: '03',
+    title: 'UX/UI',
+    description: 'Creamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario. Investigación, wireframes, prototipos y diseño visual que convierte usuarios en clientes satisfechos.',
+    tags: ['User Research', 'Wireframing', 'Prototyping']
+  },
+  {
+    id: 'service-4',
+    number: '04',
+    title: 'Motion Design',
+    description: 'Animaciones y transiciones que dan vida a tus interfaces. Micro-interacciones, transiciones de página y elementos animados que mejoran la experiencia y engagement del usuario.',
+    tags: ['Micro-interactions', 'Page Transitions', 'Loading Animations']
+  },
+  {
+    id: 'service-5',
+    number: '05',
+    title: 'SEO',
+    description: 'Optimización técnica y de contenido para mejorar tu visibilidad en motores de búsqueda. Estrategias SEO que aumentan el tráfico orgánico y mejoran el ranking de tu sitio web.',
+    tags: ['Technical SEO', 'Content Optimization', 'Keyword Research']
+  },
+  {
+    id: 'service-6',
+    number: '06',
+    title: 'Creación de Contenido',
+    description: 'Contenido estratégico que conecta con tu audiencia. Copywriting, storytelling y contenido visual que comunica efectivamente tu mensaje y valores de marca.',
+    tags: ['Copywriting', 'Storytelling', 'Visual Content']
+  },
+  {
+    id: 'service-7',
+    number: '07',
+    title: 'Página de Aterrizaje',
+    description: 'Páginas de aterrizaje optimizadas para conversión. Diseño centrado en objetivos específicos que maximiza las conversiones y genera resultados medibles para tus campañas.',
+    tags: ['Conversion Optimization', 'A/B Testing', 'Lead Generation']
+  },
+  {
+    id: 'service-8',
+    number: '08',
+    title: 'Desarrollo Webflow',
+    description: 'Desarrollo profesional en Webflow que combina diseño visual con funcionalidad avanzada. Sitios web rápidos, escalables y fáciles de mantener sin necesidad de código tradicional.',
+    tags: ['Custom Development', 'CMS Integration', 'Performance Optimization']
+  }
+];
 ---
 
 <section class="py-24 px-8 max-w-[1400px] mx-auto" id="services">
   <div class="flex flex-col gap-12">
-    <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-none m-0">What We do</h2>
+    <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-none m-0">Lo Que Hacemos</h2>
     
     <div class="grid grid-cols-2 gap-8 lg:grid-cols-4">
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
+      {services.map((service) => (
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-1.5">{service.title}</h3>
+          <p class="text-gray-500 text-sm leading-snug">{service.description}</p>
         </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">Web Design</h3>
-        <p class="text-gray-500 text-sm leading-snug">We design modern and user-friendly websites, blending creativity with clean, functional layouts. Focused on delivering seamless user experiences.</p>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">UI/UX Design</h3>
-        <p class="text-gray-500 text-sm leading-snug">I craft intuitive and visually engaging interfaces. Every design choice is driven by user experience.</p>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">Responsive Design</h3>
-        <p class="text-gray-500 text-sm leading-snug">Designing layouts that connect people and systems. Blending modern architecture with human-centered design.</p>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
-            <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">E-commerce Solutions</h3>
-        <p class="text-gray-500 text-sm leading-snug">Building seamless and high-performing online stores. Designed to convert visitors into loyal customers.</p>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">Webflow</h3>
-        <p class="text-gray-500 text-sm leading-snug">Designing impressive websites with pixel-perfect precision. Bringing ideas to life through powerful Webflow interactions.</p>
-      </div>
-
-      <div class="bg-purple-600 rounded-2xl p-5 flex items-center justify-center">
-        <span class="text-white text-4xl font-bold">W</span>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-        <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl mb-3 text-indigo-500">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
-            <rect x="13" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
-            <rect x="3" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
-            <rect x="13" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M3 13L11 5M13 3L21 11" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">Custom Development</h3>
-        <p class="text-gray-500 text-sm leading-snug">Building tailored digital solutions for unique needs. From concept to code, every detail is crafted with precision.</p>
-      </div>
-
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] overflow-hidden">
-        <div class="w-full h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg mb-3 flex items-center justify-center">
-          <div class="text-gray-400 text-xs">Image placeholder</div>
-        </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-1.5">Team</h3>
-        <p class="text-gray-500 text-sm leading-snug">Our dedicated team working together to bring your vision to life.</p>
-      </div>
+      ))}
     </div>
   </div>
 </section>

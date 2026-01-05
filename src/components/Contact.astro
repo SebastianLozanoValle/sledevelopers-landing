@@ -1,75 +1,496 @@
 ---
+const interests = [
+  'Desarrollo Web',
+  'Aplicación Móvil',
+  'Diseño UI/UX',
+  'E-commerce',
+  'Branding',
+  'Consultoría'
+];
+
+const budgets = [
+  '$20M - $40M',
+  '$40M - $100M',
+  '$100M - $200M',
+  '$200M+'
+];
 ---
 
-<section class="py-24 px-8 max-w-[800px] mx-auto relative" id="contact">
-  <!-- Decorative Background Shapes -->
-  <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl -z-10"></div>
-  <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-200/40 to-pink-200/40 rounded-full blur-3xl -z-10"></div>
-  
-  <div class="flex flex-col gap-12 items-center">
-    <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-gray-900 leading-none text-center">Let's Get in Touch</h2>
-    
-    <form class="flex flex-col gap-6 w-full max-w-[600px]" id="contact-form">
-      <div class="flex flex-col gap-2">
-        <label for="email" class="text-sm font-medium text-gray-900">email</label>
-        <input 
-          type="email" 
-          id="email"
-          name="email" 
-          placeholder="example@email.com" 
-          class="px-4 py-3 border border-gray-200 rounded-lg text-base font-inherit transition-colors focus:outline-none focus:border-indigo-500 bg-white text-gray-900 placeholder:text-gray-400" 
-          required 
-        />
+<section class="mb-20 py-24 px-8 max-w-[1400px] mx-auto relative" id="contact">
+  <div class="w-4/5 mx-auto">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-16 flex-wrap gap-6">
+      <div class="flex items-center gap-2">
+        <span class="bg-gray-900 w-2 h-2 rounded-full"></span>
+        <span class="text-sm font-medium text-gray-600">Somos exploradores</span>
       </div>
-      
-      <div class="flex flex-col gap-2">
-        <label for="name" class="text-sm font-medium text-gray-900">name</label>
-        <input 
-          type="text" 
-          id="name"
-          name="name" 
-          placeholder="full name" 
-          class="px-4 py-3 border border-gray-200 rounded-lg text-base font-inherit transition-colors focus:outline-none focus:border-indigo-500 bg-white text-gray-900 placeholder:text-gray-400" 
-          required 
-        />
-      </div>
-      
-      <div class="flex flex-col gap-2">
-        <label for="message" class="text-sm font-medium text-gray-900">message</label>
-        <textarea 
-          id="message"
-          name="message" 
-          placeholder="write your message..." 
-          rows="5" 
-          class="px-4 py-3 border border-gray-200 rounded-lg text-base font-inherit transition-colors focus:outline-none focus:border-indigo-500 bg-white resize-y min-h-[120px] text-gray-900 placeholder:text-gray-400" 
-          required
-        ></textarea>
-      </div>
-      
-      <button 
-        type="submit" 
-        class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-none py-4 px-8 rounded-lg text-base font-semibold cursor-pointer transition-all hover:shadow-lg w-full mt-2"
-      >
-        Get in Touch
-      </button>
-    </form>
+      <h2 class="text-[clamp(2rem,4vw,2.5rem)] font-extrabold text-gray-900 leading-tight">
+        ¿Listo para dar el siguiente paso con nosotros?
+      </h2>
+    </div>
+
+    <!-- Main Form Card -->
+    <div class="bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 shadow-lg" id="contact-form-container">
+      <form id="contact-form" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Left Side -->
+        <div class="space-y-8">
+          <button 
+            type="button"
+            class="bg-gray-100 text-gray-900 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+          >
+            Contáctanos
+          </button>
+          <h3 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-gray-900 leading-tight">
+            Hagamos un impacto
+          </h3>
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="space-y-8">
+          <!-- Contact Information -->
+          <div class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+                required
+              />
+            </div>
+            
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Tu Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors"
+                required
+              />
+            </div>
+            
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Tu Teléfono</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Tu número de teléfono"
+                class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent transition-colors placeholder:text-gray-400"
+              />
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-4">Estoy interesado en...</h4>
+            <div class="grid grid-cols-2 gap-3" id="interests-container">
+              {interests.map((interest) => (
+                <button
+                  type="button"
+                  data-interest={interest}
+                  class="interest-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 text-gray-900 hover:bg-gray-200"
+                >
+                  {interest}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Budget -->
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-4">Presupuesto del Proyecto (COP)</h4>
+            <div class="flex flex-wrap gap-3 relative" id="budget-container" style="min-height: 50px;">
+              {budgets.map((budget) => (
+                <button
+                  type="button"
+                  data-budget={budget}
+                  class="budget-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer bg-gray-100 text-gray-900 hover:bg-gray-200"
+                >
+                  {budget}
+                </button>
+              ))}
+              <button
+                type="button"
+                id="discountButton"
+                data-budget="Descuento 20%"
+                class="discount-button budget-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg whitespace-nowrap"
+              >
+                🎁 20% OFF
+              </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">*Marca esta casilla para obtener el descuento</p>
+          </div>
+
+          <!-- Project Description -->
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-4">Cuéntanos sobre tu proyecto.</h4>
+            <textarea
+              id="project"
+              name="project"
+              placeholder="Escribe algo conciso..."
+              rows="4"
+              class="w-4/5 border-0 border-b border-gray-300 focus:border-gray-900 focus:ring-0 pb-2 text-lg bg-transparent resize-none transition-colors placeholder:text-gray-400"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all hover:shadow-lg"
+            >
+              Enviar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
-<script is:inline>
+<script>
   (function() {
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData);
-          console.log('Form submitted:', data);
-          alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-          form.reset();
+    const form = document.getElementById('contact-form');
+    const interestButtons = document.querySelectorAll('.interest-btn');
+    const budgetButtons = document.querySelectorAll('.budget-btn');
+    
+    let selectedInterests = [];
+    window.selectedBudget = null; // Hacer global para que el botón de descuento pueda acceder
+
+    // Manejar selección de intereses
+    interestButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const interest = btn.getAttribute('data-interest');
+        if (!interest) return;
+        
+        if (selectedInterests.includes(interest)) {
+          selectedInterests = selectedInterests.filter(i => i !== interest);
+          btn.classList.remove('bg-gray-900', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-900');
+        } else {
+          selectedInterests.push(interest);
+          btn.classList.remove('bg-gray-100', 'text-gray-900');
+          btn.classList.add('bg-gray-900', 'text-white');
+        }
+      });
+    });
+
+    // Manejar selección de presupuesto
+    budgetButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const budget = btn.getAttribute('data-budget');
+        if (!budget) return;
+        
+        // Remover selección anterior
+        budgetButtons.forEach(b => {
+          b.classList.remove('bg-gray-900', 'text-white', 'ring-2', 'ring-purple-500');
+          if (b.id !== 'discountButton') {
+            b.classList.add('bg-gray-100', 'text-gray-900');
+          }
         });
+        
+        // Seleccionar nuevo presupuesto
+        window.selectedBudget = budget;
+        if (btn.id === 'discountButton') {
+          btn.classList.add('ring-2', 'ring-purple-500');
+        } else {
+          btn.classList.remove('bg-gray-100', 'text-gray-900');
+          btn.classList.add('bg-gray-900', 'text-white');
+        }
+      });
+    });
+
+    // Manejar envío del formulario
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          company: formData.get('company'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          project: formData.get('project'),
+          interests: selectedInterests,
+          budget: window.selectedBudget
+        };
+        
+        console.log('Form submitted:', data);
+        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+        
+        // Resetear formulario
+        form.reset();
+        selectedInterests = [];
+        window.selectedBudget = null;
+        
+        // Resetear botones
+        interestButtons.forEach(btn => {
+          btn.classList.remove('bg-gray-900', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-900');
+        });
+        
+        budgetButtons.forEach(btn => {
+          btn.classList.remove('bg-gray-900', 'text-white', 'ring-2', 'ring-purple-500');
+          if (btn.id !== 'discountButton') {
+            btn.classList.add('bg-gray-100', 'text-gray-900');
+          }
+        });
+      });
+    }
+  })();
+
+  // Botón de descuento que evita ser clickeado
+  (function() {
+    const discountButton = document.getElementById('discountButton');
+    if (!discountButton) return;
+
+    const container = discountButton.parentElement;
+    if (!container) return;
+
+    let isMoving = false;
+    let clickCount = 0;
+    let returnToOriginalTimeout: ReturnType<typeof setTimeout> | undefined = undefined;
+    let originalPosition = { x: 0, y: 0 };
+    let isMouseNear = false;
+
+    // Guardar posición original
+    function saveOriginalPosition() {
+      const rect = discountButton.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      originalPosition = {
+        x: rect.left - containerRect.left,
+        y: rect.top - containerRect.top
+      };
+    }
+
+    // Función para tirar confeti
+    function triggerConfetti() {
+      const colors = ['#8B5CF6', '#3B82F6', '#EC4899', '#10B981', '#F59E0B'];
+      const confettiCount = 100;
+      
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10px';
+        confetti.style.borderRadius = '50%';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.zIndex = '9999';
+        confetti.style.opacity = '1';
+        
+        document.body.appendChild(confetti);
+        
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 2 + Math.random() * 3;
+        const x = Math.cos(angle) * velocity;
+        const y = Math.sin(angle) * velocity + 2;
+        
+        let posX = parseFloat(confetti.style.left);
+        let posY = -10;
+        
+        function animate() {
+          posX += x;
+          posY += y;
+          y += 0.1; // gravedad
+          
+          confetti.style.left = posX + 'px';
+          confetti.style.top = posY + 'px';
+          confetti.style.opacity = String(Math.max(0, parseFloat(confetti.style.opacity) - 0.01));
+          
+          if (posY < window.innerHeight && parseFloat(confetti.style.opacity) > 0) {
+            requestAnimationFrame(animate);
+          } else {
+            confetti.remove();
+          }
+        }
+        
+        requestAnimationFrame(animate);
+      }
+    }
+
+    function getRandomPosition() {
+      if (!container || !discountButton) return { x: 0, y: 0 };
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = discountButton.getBoundingClientRect();
+      
+      // Área disponible para mover el botón
+      const maxX = containerRect.width - buttonRect.width;
+      const maxY = containerRect.height - buttonRect.height;
+      
+      // Generar posición aleatoria pero dentro del contenedor
+      const randomX = Math.random() * Math.max(0, maxX);
+      const randomY = Math.random() * Math.max(0, maxY);
+      
+      return {
+        x: Math.max(0, randomX),
+        y: Math.max(0, randomY)
+      };
+    }
+
+    function moveButton() {
+      if (isMoving || !discountButton || clickCount > 0) return;
+      isMoving = true;
+      isMouseNear = true;
+
+      // Cancelar timeout de retorno si existe
+      if (returnToOriginalTimeout !== undefined) {
+        clearTimeout(returnToOriginalTimeout);
+        returnToOriginalTimeout = undefined;
+      }
+
+      const position = getRandomPosition();
+      
+      discountButton.style.position = 'absolute';
+      discountButton.style.transform = `translate(${position.x}px, ${position.y}px)`;
+      
+      setTimeout(() => {
+        isMoving = false;
+        
+        // Después de 1.5 segundos, volver a posición original si el mouse no está cerca
+        returnToOriginalTimeout = setTimeout(() => {
+          if (!isMouseNear && clickCount === 0) {
+            returnToOriginal();
+          }
+        }, 1500);
+      }, 300);
+    }
+
+    function returnToOriginal() {
+      if (!discountButton || clickCount > 0) return;
+      
+      discountButton.style.position = 'static';
+      discountButton.style.transform = 'translate(0, 0)';
+      isMouseNear = false;
+    }
+
+    // Guardar posición original al cargar
+    setTimeout(() => {
+      saveOriginalPosition();
+    }, 100);
+
+    // Detectar cuando el mouse se acerca al botón
+    discountButton.addEventListener('mouseenter', function(e) {
+      isMouseNear = true;
+      if (returnToOriginalTimeout !== undefined) {
+        clearTimeout(returnToOriginalTimeout);
+        returnToOriginalTimeout = undefined;
+      }
+      // Solo mover si no ha sido clickeado aún
+      if (clickCount === 0) {
+        moveButton();
+      }
+    });
+
+    discountButton.addEventListener('mouseleave', function(e) {
+      isMouseNear = false;
+    });
+
+    // Detectar cuando el mouse está cerca (dentro de un radio)
+    container.addEventListener('mousemove', function(e) {
+      if (clickCount > 0 || isMoving) return;
+
+      const buttonRect = discountButton.getBoundingClientRect();
+      
+      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+      
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - buttonCenterX, 2) + 
+        Math.pow(e.clientY - buttonCenterY, 2)
+      );
+      
+      if (distance < 80) {
+        isMouseNear = true;
+        if (returnToOriginalTimeout !== undefined) {
+          clearTimeout(returnToOriginalTimeout);
+          returnToOriginalTimeout = undefined;
+        }
+        moveButton();
+      } else {
+        isMouseNear = false;
+      }
+    });
+
+    // Permitir click después de varios intentos o si el usuario es persistente
+    discountButton.addEventListener('click', function(e) {
+      clickCount++;
+      
+      if (clickCount >= 3) {
+        // Cancelar timeout de retorno
+        if (returnToOriginalTimeout !== undefined) {
+          clearTimeout(returnToOriginalTimeout);
+          returnToOriginalTimeout = undefined;
+        }
+        
+        // Después de 3 intentos, permitir el click
+        discountButton.style.position = 'static';
+        discountButton.style.transform = 'translate(0, 0)';
+        discountButton.style.cursor = 'pointer';
+        discountButton.classList.add('success');
+        
+        // Tirar confeti
+        triggerConfetti();
+        
+        // Seleccionar el descuento como presupuesto
+        const allBudgetButtons = document.querySelectorAll('.budget-btn');
+        allBudgetButtons.forEach(b => {
+          b.classList.remove('bg-gray-900', 'text-white', 'ring-2', 'ring-purple-500');
+          if (b !== discountButton && b.id !== 'discountButton') {
+            b.classList.add('bg-gray-100', 'text-gray-900');
+          }
+        });
+        discountButton.classList.add('ring-2', 'ring-purple-500');
+        
+        // Actualizar el presupuesto seleccionado
+        window.selectedBudget = 'Descuento 20%';
+        
+        // Aquí puedes agregar la lógica del descuento
+        setTimeout(() => {
+          alert('¡Felicidades! Has obtenido un 20% de descuento. Usa el código: SLE20OFF');
+        }, 500);
+      } else {
+        // Mover el botón cuando intentan clickearlo
+        e.preventDefault();
+        moveButton();
       }
     });
   })();
 </script>
+
+<style>
+  .discount-button {
+    left: 0;
+    top: 0;
+    transform: translate(0, 0);
+  }
+
+  .discount-button.success {
+    animation: pulse 0.5s ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+</style>

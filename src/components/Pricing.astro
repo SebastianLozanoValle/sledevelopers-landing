@@ -1,4 +1,79 @@
 ---
+// Datos de servicios con pricing
+const services = [
+  {
+    id: 'service-1',
+    number: '01',
+    title: 'Diseño de Sitios Web',
+    description: 'Diseñamos sitios web modernos y funcionales que capturan la esencia de tu marca y proporcionan una experiencia de usuario excepcional.',
+    price: '$10.000.000',
+    period: 'proyecto',
+    features: ['Diseño Responsive', 'Experiencia de Usuario', 'UI Moderna', 'Wireframes', 'Prototipos', 'Diseño Final']
+  },
+  {
+    id: 'service-2',
+    number: '02',
+    title: 'Branding',
+    description: 'Desarrollamos identidades de marca sólidas que conectan emocionalmente con tu audiencia.',
+    price: '$7.200.000',
+    period: 'proyecto',
+    features: ['Diseño de Logo', 'Identidad de Marca', 'Guía de Estilo', 'Paleta de Colores', 'Tipografía', 'Lineamientos de Marca']
+  },
+  {
+    id: 'service-3',
+    number: '03',
+    title: 'UX/UI',
+    description: 'Creamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario.',
+    price: '$12.800.000',
+    period: 'proyecto',
+    features: ['Investigación de Usuario', 'Wireframing', 'Prototipado', 'Diseño UI', 'Pruebas de Usuario', 'Sistema de Diseño']
+  },
+  {
+    id: 'service-4',
+    number: '04',
+    title: 'Motion Design',
+    description: 'Animaciones y transiciones que dan vida a tus interfaces.',
+    price: '$6.000.000',
+    period: 'proyecto',
+    features: ['Micro-interacciones', 'Transiciones de Página', 'Animaciones de Carga', 'Contenido de Video', 'Motion Graphics', 'After Effects']
+  },
+  {
+    id: 'service-5',
+    number: '05',
+    title: 'SEO',
+    description: 'Optimización técnica y de contenido para mejorar tu visibilidad en motores de búsqueda.',
+    price: '$4.800.000',
+    period: 'mes',
+    features: ['SEO Técnico', 'Optimización de Contenido', 'Investigación de Keywords', 'Link Building', 'Analytics', 'Reportes Mensuales']
+  },
+  {
+    id: 'service-6',
+    number: '06',
+    title: 'Creación de Contenido',
+    description: 'Contenido estratégico que conecta con tu audiencia.',
+    price: '$4.000.000',
+    period: 'mes',
+    features: ['Copywriting', 'Storytelling', 'Contenido Visual', 'Publicaciones de Blog', 'Redes Sociales', 'Estrategia de Contenido']
+  },
+  {
+    id: 'service-7',
+    number: '07',
+    title: 'Landing Page',
+    description: 'Páginas de aterrizaje optimizadas para conversión.',
+    price: '$7.200.000',
+    period: 'proyecto',
+    features: ['Optimización de Conversión', 'Pruebas A/B', 'Generación de Leads', 'Diseño Responsive', 'Configuración de Analytics', 'Optimización']
+  },
+  {
+    id: 'service-8',
+    number: '08',
+    title: 'Desarrollo Webflow',
+    description: 'Desarrollo profesional en Webflow que combina diseño visual con funcionalidad avanzada.',
+    price: '$14.000.000',
+    period: 'proyecto',
+    features: ['Desarrollo Personalizado', 'Integración CMS', 'Optimización de Rendimiento', 'Diseño Responsive', 'Configuración SEO', 'Capacitación']
+  }
+];
 ---
 
 <section class="py-24 px-8 max-w-[1400px] mx-auto relative" id="pricing">
@@ -6,79 +81,257 @@
     <!-- Left Side -->
     <div class="flex flex-col gap-8">
       <div>
-        <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-none m-0">Pricing</h2>
-        <p class="text-gray-500 text-lg leading-relaxed mt-4">Take a look at some of our recent projects to see how we've helped businesses like yours succeed online.</p>
+        <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-none m-0">Precios</h2>
+        <p class="text-gray-500 text-lg leading-relaxed mt-4">Echa un vistazo a algunos de nuestros proyectos recientes para ver cómo hemos ayudado a empresas como la tuya a tener éxito en línea.</p>
       </div>
       
       <div class="bg-white border border-gray-200 rounded-2xl p-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-6">Let's Schedule a Meeting</h3>
-        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-none py-3.5 px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full">Schedule Meeting</button>
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Agendemos una Reunión</h3>
+        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-none py-3.5 px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full">Agendar Reunión</button>
       </div>
     </div>
 
-    <!-- Right Side -->
-    <div class="bg-white border border-gray-200 rounded-2xl p-10">
-      <h3 class="text-2xl font-bold text-gray-900 mb-4">Unlimited Services</h3>
-      <p class="text-gray-500 text-base mb-8">Take a look at some of our recent projects to see how some businesses like yours succeed online.</p>
-      
-      <div class="grid grid-cols-2 gap-4 mb-8">
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-gray-500 text-sm">Unlimited requests</span>
+    <!-- Right Side - Carrusel -->
+    <div class="relative">
+      <div class="pricing-carousel-container overflow-hidden rounded-2xl">
+        <div class="pricing-carousel-wrapper flex gap-6 transition-transform duration-500 ease-in-out" id="pricingCarousel">
+          <!-- Duplicar última tarjeta al inicio para loop infinito -->
+          {services[services.length - 1] && (
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index="-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">{services[services.length - 1].title}</h3>
+              <p class="text-gray-500 text-base mb-8">{services[services.length - 1].description}</p>
+              
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                {services[services.length - 1].features.map((feature) => (
+                  <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <span class="text-gray-500 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div class="pt-8 border-t border-gray-200">
+                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
+                  <span class="text-xl text-gray-500">{services[services.length - 1].period}</span>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          )}
+          
+          {services.map((service, index) => (
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index={index}>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+              <p class="text-gray-500 text-base mb-8">{service.description}</p>
+              
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                {service.features.map((feature) => (
+                  <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <span class="text-gray-500 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div class="pt-8 border-t border-gray-200">
+                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-6xl font-extrabold text-gray-900">{service.price}</span>
+                  <span class="text-xl text-gray-500">{service.period}</span>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          ))}
+          
+          <!-- Duplicar primera tarjeta al final para loop infinito -->
+          {services[0] && (
+            <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-10" data-index={services.length}>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">{services[0].title}</h3>
+              <p class="text-gray-500 text-base mb-8">{services[0].description}</p>
+              
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                {services[0].features.map((feature) => (
+                  <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-600">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <span class="text-gray-500 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div class="pt-8 border-t border-gray-200">
+                <div class="text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-6xl font-extrabold text-gray-900">{services[0].price}</span>
+                  <span class="text-xl text-gray-500">{services[0].period}</span>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       
-      <div class="flex items-baseline gap-2 pt-8 border-t border-gray-200">
-        <span class="text-6xl font-extrabold text-gray-900">$3,250</span>
-        <span class="text-xl text-gray-500">mo</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-400 ml-auto">
-          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Flechas de navegación -->
+      <button 
+        class="pricing-arrow pricing-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-gray-200 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-50 transition-all z-10"
+        id="prevBtn"
+        aria-label="Tarjeta anterior"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-700">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>
+      </button>
+      
+      <button 
+        class="pricing-arrow pricing-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-gray-200 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-50 transition-all z-10"
+        id="nextBtn"
+        aria-label="Tarjeta siguiente"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-700">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    let currentIndex = 1; // Empezar en 1 porque el índice 0 es la tarjeta duplicada
+    let isTransitioning = false;
+    const carousel = document.getElementById('pricingCarousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (!carousel || !prevBtn || !nextBtn) return;
+    
+    const totalCards = carousel.children.length;
+    const realTotalCards = totalCards - 2; // Restar las tarjetas duplicadas
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    
+    function getCardWidth() {
+      if (!carousel) return 0;
+      const container = carousel.parentElement;
+      if (!container) return 0;
+      return container.offsetWidth;
+    }
+
+    function updateCarousel(skipTransition = false) {
+      if (!carousel) return;
+      if (skipTransition) {
+        carousel.style.transition = 'none';
+      } else {
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+      }
+      
+      const containerWidth = getCardWidth();
+      const translateX = -(currentIndex * (containerWidth + gap));
+      carousel.style.transform = `translateX(${translateX}px)`;
+    }
+
+    function goToNext() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex++;
+      updateCarousel();
+      
+      // Si llegamos al final (tarjeta duplicada), saltar al inicio sin animación
+      if (currentIndex >= realTotalCards + 1) {
+        setTimeout(() => {
+          currentIndex = 1;
+          updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 50);
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    }
+
+    function goToPrev() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex--;
+      updateCarousel();
+      
+      // Si llegamos al inicio (tarjeta duplicada), saltar al final sin animación
+      if (currentIndex <= 0) {
+        setTimeout(() => {
+          currentIndex = realTotalCards;
+          updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 50);
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    }
+
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+
+    // Inicializar posición
+    updateCarousel(true);
+    
+    // Ajustar en resize
+    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+    window.addEventListener('resize', () => {
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateCarousel(true);
+      }, 250);
+    });
+  })();
+</script>
+
+<style>
+  .pricing-carousel-container {
+    position: relative;
+  }
+  
+  .pricing-carousel-wrapper {
+    display: flex;
+    gap: 1.5rem; /* gap-6 = 24px */
+  }
+  
+  .pricing-card {
+    min-width: 0;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 1024px) {
+    .pricing-arrow {
+      display: none;
+    }
+  }
+</style>

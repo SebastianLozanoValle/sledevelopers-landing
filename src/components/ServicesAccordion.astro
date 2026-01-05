@@ -1,0 +1,362 @@
+---
+const services = [
+  {
+    id: 'service-1',
+    number: '01',
+    title: 'Diseño de Sitios Web',
+    description: 'Diseñamos sitios web modernos y funcionales que capturan la esencia de tu marca y proporcionan una experiencia de usuario excepcional. Desde conceptos iniciales hasta implementación completa.',
+    tags: ['Responsive Design', 'User Experience', 'Modern UI']
+  },
+  {
+    id: 'service-2',
+    number: '02',
+    title: 'Branding',
+    description: 'Desarrollamos identidades de marca sólidas que conectan emocionalmente con tu audiencia. Logotipos, paletas de colores, tipografías y guías de estilo que definen tu presencia visual.',
+    tags: ['Logo Design', 'Brand Identity', 'Style Guide']
+  },
+  {
+    id: 'service-3',
+    number: '03',
+    title: 'UX/UI',
+    description: 'Creamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario. Investigación, wireframes, prototipos y diseño visual que convierte usuarios en clientes satisfechos.',
+    tags: ['User Research', 'Wireframing', 'Prototyping']
+  },
+  {
+    id: 'service-4',
+    number: '04',
+    title: 'Motion Design',
+    description: 'Animaciones y transiciones que dan vida a tus interfaces. Micro-interacciones, transiciones de página y elementos animados que mejoran la experiencia y engagement del usuario.',
+    tags: ['Micro-interactions', 'Page Transitions', 'Loading Animations']
+  },
+  {
+    id: 'service-5',
+    number: '05',
+    title: 'SEO',
+    description: 'Optimización técnica y de contenido para mejorar tu visibilidad en motores de búsqueda. Estrategias SEO que aumentan el tráfico orgánico y mejoran el ranking de tu sitio web.',
+    tags: ['Technical SEO', 'Content Optimization', 'Keyword Research']
+  },
+  {
+    id: 'service-6',
+    number: '06',
+    title: 'Creación de Contenido',
+    description: 'Contenido estratégico que conecta con tu audiencia. Copywriting, storytelling y contenido visual que comunica efectivamente tu mensaje y valores de marca.',
+    tags: ['Copywriting', 'Storytelling', 'Visual Content']
+  },
+  {
+    id: 'service-7',
+    number: '07',
+    title: 'Página de Aterrizaje',
+    description: 'Páginas de aterrizaje optimizadas para conversión. Diseño centrado en objetivos específicos que maximiza las conversiones y genera resultados medibles para tus campañas.',
+    tags: ['Conversion Optimization', 'A/B Testing', 'Lead Generation']
+  },
+  {
+    id: 'service-8',
+    number: '08',
+    title: 'Desarrollo Webflow',
+    description: 'Desarrollo profesional en Webflow que combina diseño visual con funcionalidad avanzada. Sitios web rápidos, escalables y fáciles de mantener sin necesidad de código tradicional.',
+    tags: ['Custom Development', 'CMS Integration', 'Performance Optimization']
+  }
+];
+---
+
+<section class="py-24 px-8 max-w-[1400px] mx-auto relative" id="services-accordion">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Left Side - Title -->
+    <div class="relative pt-8 lg:pt-16">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50 rounded-3xl blur-3xl -z-10"></div>
+      <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-[1.1] m-0">
+        Detalles de<br />
+        Nuestros<br />
+        Servicios
+      </h2>
+      <!-- 3D Element -->
+      <div id="threejs-container" class="mt-8 w-full h-96 lg:h-[500px]"></div>
+    </div>
+
+    <!-- Right Side - Services Accordion -->
+    <div class="flex flex-col gap-4">
+      {services.map((service, index) => (
+        <div class={`bg-gray-50 rounded-xl overflow-hidden transition-all ${index === 0 ? '' : ''}`} data-service-index={index} data-service-id={service.id}>
+          <button class="w-full p-6 flex justify-between items-center bg-transparent border-none text-left cursor-pointer font-bold text-gray-900 transition-colors hover:bg-gray-100">
+            <div class="flex items-center gap-4">
+              <span class="text-2xl font-extrabold text-gray-400">{service.number}</span>
+              <span class="text-base">{service.title}</span>
+            </div>
+            {index === 0 ? (
+              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            ) : (
+              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            )}
+          </button>
+          <div class={`service-content accordion-content ${index === 0 ? 'accordion-open' : 'accordion-closed'} px-6 pb-6 text-gray-600`}>
+            <div class="service-content-inner">
+              <p class="text-sm leading-relaxed mb-4">{service.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span class="px-3 py-1 bg-white rounded-full text-xs font-medium text-gray-700 border border-gray-200">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .accordion-content.accordion-open {
+    max-height: 1000px;
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .accordion-content.accordion-closed {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .service-content-inner {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .accordion-content.accordion-open .service-content-inner {
+    opacity: 1;
+  }
+
+  .accordion-content.accordion-closed .service-content-inner {
+    opacity: 0;
+  }
+
+  button svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const serviceItems = document.querySelectorAll('[data-service-index]');
+      
+      serviceItems.forEach(function(serviceItem) {
+        const button = serviceItem.querySelector('button');
+        const content = serviceItem.querySelector('.service-content');
+        const icon = serviceItem.querySelector('button svg');
+        
+        if (!button || !content || !icon) return;
+        
+        button.addEventListener('click', function() {
+          const isOpen = content.classList.contains('accordion-open');
+          
+          // Close all service items
+          document.querySelectorAll('[data-service-index]').forEach(function(item) {
+            const itemContent = item.querySelector('.service-content');
+            const itemIcon = item.querySelector('button svg');
+            
+            if (itemContent && itemIcon) {
+              itemContent.classList.remove('accordion-open');
+              itemContent.classList.add('accordion-closed');
+              // Update icon to plus
+              itemIcon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+            }
+          });
+          
+          // Toggle current item
+          if (isOpen) {
+            // Close it
+            content.classList.remove('accordion-open');
+            content.classList.add('accordion-closed');
+            icon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+          } else {
+            // Open it
+            content.classList.remove('accordion-closed');
+            content.classList.add('accordion-open');
+            icon.innerHTML = '<path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+          }
+        });
+      });
+    });
+  })();
+
+  // Three.js 3D Element - Cargar modelo GLB
+  document.addEventListener('DOMContentLoaded', async function() {
+    const THREE = await import('three');
+    const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+    
+    const container = document.getElementById('threejs-container');
+    if (!container) return;
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    // FOV aumentado a 60 para capturar más del modelo, far plane aumentado para modelos grandes
+    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    // Colors para luces
+    const colors = {
+      purple: 0x8B5CF6,
+      blue: 0x3B82F6,
+      pink: 0xEC4899,
+      indigo: 0x6366F1
+    };
+
+    let model = null;
+    const modelGroup = new THREE.Group();
+
+    // Cargar modelo 3D
+    const loader = new GLTFLoader();
+    loader.load(
+      '/Meshy_AI_Stylized_isometric_fl_0105015624_texture.glb',
+      function(gltf) {
+        model = gltf.scene;
+        
+        // Calcular el bounding box para centrar y escalar el modelo
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        
+        // Calcular escala para que quepa bien en la escena (EL DOBLE DE GRANDE)
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 16 / maxDim; // Modelo GIGANTE (doble del anterior)
+        model.scale.multiplyScalar(scale);
+        
+        // Centrar el modelo
+        model.position.sub(center.multiplyScalar(scale));
+        
+        // Habilitar sombras
+        model.traverse(function(child) {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        modelGroup.add(model);
+        scene.add(modelGroup);
+      },
+      function(progress) {
+        // Progreso de carga (opcional)
+        const percent = (progress.loaded / progress.total * 100);
+        console.log('Cargando modelo:', percent.toFixed(0) + '%');
+      },
+      function(error) {
+        console.error('Error cargando modelo:', error);
+      }
+    );
+
+    // Advanced lighting setup - mejorado
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    // Main directional light (sun) - más intensa
+    const sunLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    sunLight.position.set(8, 10, 6);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 50;
+    sunLight.shadow.camera.left = -15;
+    sunLight.shadow.camera.right = 15;
+    sunLight.shadow.camera.top = 15;
+    sunLight.shadow.camera.bottom = -15;
+    scene.add(sunLight);
+
+    // Fill light (luz de relleno)
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    fillLight.position.set(-5, 5, -5);
+    scene.add(fillLight);
+
+    // Accent lights - más intensas y mejor posicionadas
+    const accentLight1 = new THREE.PointLight(colors.purple, 0.8, 15);
+    accentLight1.position.set(-3, 4, 3);
+    scene.add(accentLight1);
+
+    const accentLight2 = new THREE.PointLight(colors.blue, 0.7, 15);
+    accentLight2.position.set(3, 4, -3);
+    scene.add(accentLight2);
+
+    const accentLight3 = new THREE.PointLight(colors.pink, 0.6, 12);
+    accentLight3.position.set(0, 5, 4);
+    scene.add(accentLight3);
+
+    // Rim light for depth - más intensa
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    rimLight.position.set(-6, 3, -6);
+    scene.add(rimLight);
+
+    // Hemisphere light para iluminación natural
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+    hemiLight.position.set(0, 10, 0);
+    scene.add(hemiLight);
+
+    // Camera setup - ángulo isométrico mejorado (muy alejado para modelo gigante)
+    // Ajustado para que el modelo completo quepa en vista
+    camera.position.set(14, 12, 14);
+    camera.lookAt(0, 0, 0);
+
+    // Animation
+    let time = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      time += 0.008;
+
+      // Rotación suave del modelo
+      if (modelGroup) {
+        modelGroup.rotation.y += 0.005;
+        modelGroup.position.y = Math.sin(time) * 0.1; // Flotación suave
+      }
+
+      // Animate lights
+      accentLight1.position.x = -2 + Math.sin(time) * 0.5;
+      accentLight1.position.z = 2 + Math.cos(time) * 0.5;
+      accentLight2.position.x = 2 + Math.cos(time * 1.2) * 0.5;
+      accentLight2.position.z = -2 + Math.sin(time * 1.2) * 0.5;
+
+      // Subtle camera orbit - ángulo isométrico mejorado (muy alejado para modelo gigante)
+      // Radio y altura aumentados para que el modelo completo quepa
+      const radius = 18;
+      const height = 12;
+      camera.position.x = Math.cos(time * 0.15) * radius;
+      camera.position.z = Math.sin(time * 0.15) * radius;
+      camera.position.y = height + Math.sin(time * 0.1) * 0.2;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+
+    // Handle resize
+    function handleResize() {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    }
+
+    window.addEventListener('resize', handleResize);
+    animate();
+  });
+</script>
+
