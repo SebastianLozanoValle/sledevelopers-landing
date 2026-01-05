@@ -317,37 +317,41 @@ const services = [
     camera.position.set(14, 12, 14);
     camera.lookAt(0, 0, 0);
 
-    // OrbitControls para interacción con mouse
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Suavizar movimiento
-    controls.dampingFactor = 0.05;
-    controls.enableZoom = true;
-    controls.enablePan = false; // Desactivar pan para mantener el modelo centrado
-    controls.minDistance = 10;
-    controls.maxDistance = 30;
-    controls.maxPolarAngle = Math.PI / 2.2; // Limitar rotación vertical
-    controls.minPolarAngle = Math.PI / 4;
-    controls.autoRotate = false; // Desactivar auto-rotación cuando hay interacción
-    controls.autoRotateSpeed = 0.5;
-
+    // OrbitControls para interacción con mouse (solo en desktop)
+    const isMobile = window.innerWidth <= 768;
+    let controls: any = null;
     let isUserInteracting = false;
     let autoRotateTimeout: ReturnType<typeof setTimeout> | null = null;
 
-    // Detectar interacción del usuario
-    controls.addEventListener('start', () => {
-      isUserInteracting = true;
-      if (autoRotateTimeout) {
-        clearTimeout(autoRotateTimeout);
-        autoRotateTimeout = null;
-      }
-    });
+    if (!isMobile) {
+      controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // Suavizar movimiento
+      controls.dampingFactor = 0.05;
+      controls.enableZoom = true;
+      controls.enablePan = false; // Desactivar pan para mantener el modelo centrado
+      controls.minDistance = 10;
+      controls.maxDistance = 30;
+      controls.maxPolarAngle = Math.PI / 2.2; // Limitar rotación vertical
+      controls.minPolarAngle = Math.PI / 4;
+      controls.autoRotate = false; // Desactivar auto-rotación cuando hay interacción
+      controls.autoRotateSpeed = 0.5;
 
-    controls.addEventListener('end', () => {
-      // Reanudar auto-rotación después de 3 segundos de inactividad
-      autoRotateTimeout = setTimeout(() => {
-        isUserInteracting = false;
-      }, 3000);
-    });
+      // Detectar interacción del usuario
+      controls.addEventListener('start', () => {
+        isUserInteracting = true;
+        if (autoRotateTimeout) {
+          clearTimeout(autoRotateTimeout);
+          autoRotateTimeout = null;
+        }
+      });
+
+      controls.addEventListener('end', () => {
+        // Reanudar auto-rotación después de 3 segundos de inactividad
+        autoRotateTimeout = setTimeout(() => {
+          isUserInteracting = false;
+        }, 3000);
+      });
+    }
 
     // Animation
     let time = 0;
@@ -367,8 +371,8 @@ const services = [
       accentLight2.position.x = 2 + Math.cos(time * 1.2) * 0.5;
       accentLight2.position.z = -2 + Math.sin(time * 1.2) * 0.5;
 
-      // Auto-rotación de cámara solo si no hay interacción
-      if (!isUserInteracting) {
+      // Auto-rotación de cámara solo si no hay interacción (o si es mobile)
+      if (!isUserInteracting || isMobile) {
         const radius = 18;
         const height = 12;
         camera.position.x = Math.cos(time * 0.15) * radius;
@@ -377,8 +381,10 @@ const services = [
         camera.lookAt(0, 0, 0);
       }
 
-      // Actualizar controles (necesario para damping)
-      controls.update();
+      // Actualizar controles solo si existen (solo en desktop)
+      if (controls) {
+        controls.update();
+      }
 
       renderer.render(scene, camera);
     }
