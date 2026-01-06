@@ -5,11 +5,13 @@
       <!-- HEADER -->
       <div class="services-header">
         <h2 class="text-[clamp(2rem,6vw,5rem)] font-extrabold text-gray-900 leading-tight mb-3 md:mb-4">
-          Aprovecha toda la <span class="text-blue-500">experiencia en comercio digital</span>
+          Un proceso claro para transformar
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#082347] to-blue-600">
+            ideas en proyectos digitales sólidos
+          </span>
         </h2>
         <p class="text-base md:text-lg text-gray-600 max-w-2xl">
-          Ya sea que quieras consultar una idea, agregar capacidades faltantes,
-          expandir rápidamente tu equipo o entregar un proyecto completo.
+          Te acompañamos en cada etapa del desarrollo web y de software, desde la idea inicial hasta la entrega y el soporte, con una metodología pensada para lograr resultados reales.
         </p>
       </div>
 
@@ -17,29 +19,44 @@
       <div class="services-scroll-content hidden md:flex">
         <div class="service-card">
           <div class="service-number">01</div>
-          <h3 class="service-title">Consulta Inicial</h3>
-          <p class="service-description">Escuchamos tu idea y analizamos objetivos.</p>
+          <h3 class="service-title">Descubrimiento</h3>
+          <p class="service-description">
+            Escuchamos tu idea, tus objetivos y el contexto del negocio, alineando desde el inicio expectativas y poder abordarlo de la mejor forma.
+          </p>
         </div>
+
         <div class="service-card">
           <div class="service-number">02</div>
-          <h3 class="service-title">Atención de Dudas</h3>
-          <p class="service-description">Aclaramos inquietudes y definimos el camino.</p>
+          <h3 class="service-title">Definición del plan</h3>
+          <p class="service-description">
+            Traducimos los objetivos en un plan de trabajo claro, definiendo alcance, prioridades y tiempos para que todo avance con orden y transparencia.
+          </p>
         </div>
+
         <div class="service-card">
           <div class="service-number">03</div>
-          <h3 class="service-title">Análisis y Propuesta</h3>
-          <p class="service-description">Propuesta clara con tiempos y alcance.</p>
+          <h3 class="service-title">Diseño y desarrollo</h3>
+          <p class="service-description">
+            Diseñamos y desarrollamos tu proyecto de forma estructurada, validando avances y manteniendo una comunicación constante.
+          </p>
         </div>
+
         <div class="service-card">
           <div class="service-number">04</div>
-          <h3 class="service-title">Contrato</h3>
-          <p class="service-description">Formalizamos el acuerdo.</p>
+          <h3 class="service-title">Entrega y revisión</h3>
+          <p class="service-description">
+            Revisamos cada detalle, realizamos pruebas de calidad y validamos el resultado final para entregar un proyecto sólido y bien terminado.
+          </p>
         </div>
+
         <div class="service-card">
           <div class="service-number">05</div>
-          <h3 class="service-title">Diseño</h3>
-          <p class="service-description">Wireframes y prototipos.</p>
+          <h3 class="service-title">Acompañamiento</h3>
+          <p class="service-description">
+            Después de la entrega, seguimos a tu lado con soporte, mantenimiento y mejoras para que tu proyecto evolucione y crezca con el tiempo.
+          </p>
         </div>
+
         <div class="service-card">
           <div class="service-number">06</div>
           <h3 class="service-title">Desarrollo</h3>
@@ -80,10 +97,8 @@
       const containerWidth = container.offsetWidth;
       const scrollDistance = Math.max(0, totalWidth - containerWidth);
 
-      // 🔥 OFFSET MÁS A LA DERECHA (mitad visible al entrar)
       const startOffset = cardWidth * 1.1;
 
-      // Posición inicial
       gsap.set(content, {
         x: startOffset
       });

@@ -5,21 +5,35 @@
          transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
          translate-y-0"
 >
-  <div class="max-w-[1400px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+  <div
+    class="max-w-[1400px] mx-auto px-4 md:px-8
+           relative flex items-center justify-between"
+  >
 
-    <!-- LOGO -->
-    <div class="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 logo-shadow">
+    <!-- LOGO BOX -->
+    <div
+      id="logo-box"
+      class="header-box px-6 py-3 flex items-center gap-2
+             cursor-pointer"
+    >
       <img
-        src="/LogoBlanco.png"
+        id="logo-img"
+        src="/LogoAzul.png"
         alt="SLE Development Logo"
-        class="h-7 md:h-8 w-auto image-shadow"
+        class="h-7 md:h-8 w-auto shrink-0"
       />
-      <span class="hidden sm:inline">SLE DEVELOPMENT</span>
+
+      <span
+        id="logo-text"
+        class="logo-text text-base font-semibold hidden sm:inline"
+      >
+        SLE DEVELOPMENT
+      </span>
     </div>
 
-    <!-- NAV DESKTOP -->
-    <nav class="hidden md:flex justify-center">
-      <div class="flex gap-10 lg:gap-6 items-center bg-white rounded-2xl px-10 py-4 nav-shadow">
+    <!-- NAV CENTRADO -->
+    <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2">
+      <div class="header-box flex gap-10 lg:gap-6 items-center px-10 py-4 relative">
         <a href="#home" class="nav-link">
           Inicio
           <span class="nav-underline"></span>
@@ -40,53 +54,91 @@
     </nav>
 
     <!-- CTA -->
-    <div class="flex items-center gap-4 md:gap-6">
-      <a href="#contact" class="nav-link text-shadow hidden md:inline-block">
-        Contacto
-        <span class="nav-underline"></span>
-      </a>
+    <div class="flex items-center gap-4 md:gap-6 ml-auto">
 
-      <a
-        href="#contact"
-        class="bg-blue-500 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-xl
-               font-semibold whitespace-nowrap text-sm md:text-base
-               cta-shadow
-               transition-all duration-300
-               hover:bg-blue-600
-               hover:-translate-y-0.5
-               hover:shadow-xl
-               active:scale-[0.97]"
-      >
+      <!-- CONTACTO -->
+      <div class="header-box px-6 py-3 hidden md:flex items-center">
+        <a href="#contact" class="nav-link">
+          Contacto
+          <span class="nav-underline"></span>
+        </a>
+      </div>
+
+      <!-- EMPEZAR -->
+      <a href="#contact" class="cta-button">
         Empezar
       </a>
     </div>
+
   </div>
 </header>
 
 <style>
-  /* ========= SOMBRA UNIFICADA ========= */
-  .nav-shadow,
-  .cta-shadow,
-  .image-shadow {
+  /* ========= VARIABLES ========= */
+  :root {
+    --brand-blue: #082347;
+    --brand-blue-hover: #061a35;
+  }
+
+  /* ========= HEADER BOX ========= */
+  .header-box {
+    background: white;
+    border-radius: 1rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition:
+      background-color 0.6s cubic-bezier(0.4,0,0.2,1),
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
-  .logo-shadow,
-  .text-shadow {
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  .header-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
   }
 
-  /* ========= LINKS ========= */
+  /* ========= LOGO TEXT ========= */
+  .logo-text {
+    color: var(--brand-blue);
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 220px;
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      max-width 0.5s ease,
+      opacity 0.35s ease,
+      transform 0.5s ease,
+      color 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .logo-collapsed .logo-text {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  .logo-collapsed:hover .logo-text,
+  .logo-collapsed.logo-forced-open .logo-text {
+    max-width: 220px;
+    opacity: 1;
+    transform: translateX(8px);
+  }
+
+  /* ========= NAV LINKS ========= */
   .nav-link {
     position: relative;
     font-weight: 500;
-    color: #4b5563;
-    transition: color 0.25s ease, transform 0.25s ease;
+    color: var(--brand-blue);
+    letter-spacing: 0;
+    transition:
+      color 0.6s cubic-bezier(0.4,0,0.2,1),
+      transform 0.25s ease,
+      letter-spacing 0.25s ease;
   }
 
   .nav-link:hover {
-    color: #111827;
     transform: translateY(-2px);
+    letter-spacing: 0.04em;
   }
 
   .nav-underline {
@@ -95,8 +147,10 @@
     bottom: -6px;
     height: 2px;
     width: 0;
-    background-color: #111827;
-    transition: width 0.25s ease;
+    background-color: var(--brand-blue);
+    transition:
+      width 0.25s ease,
+      background-color 0.6s cubic-bezier(0.4,0,0.2,1);
   }
 
   .nav-link:hover .nav-underline,
@@ -105,25 +159,68 @@
   }
 
   .nav-link.active {
-    color: #111827;
-    transform: translateY(-2px);
+    font-weight: 600;
   }
 
-  /* ========= HEADER STATES ========= */
-  .header-hidden {
-    transform: translateY(-110%);
+  /* ========= CTA BUTTON ========= */
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #082347, #2563eb);
+    color: #ffffff;
+    padding: 0.75rem 1.25rem;
+    line-height: 1;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: scale(1);
+    transition:
+      transform 0.25s cubic-bezier(0.4,0,0.2,1),
+      box-shadow 0.3s ease;
   }
 
-  .header-visible {
-    transform: translateY(0);
+  .cta-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-button:active {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  /* ========= HEADER SCROLLED ========= */
+  .header-scrolled .header-box {
+    background: linear-gradient(90deg, #082347, #2563eb);
+  }
+
+  .header-scrolled .logo-text {
+    color: #ffffff;
+  }
+
+  .header-scrolled .nav-link {
+    color: #ffffff;
+  }
+
+  .header-scrolled .nav-underline {
+    background-color: #ffffff;
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    /* ===== ACTIVE STATE ===== */
+    const header = document.getElementById('main-header');
+    const hero = document.getElementById('hero');
+    const logoBox = document.getElementById('logo-box');
+    const logoImg = document.getElementById('logo-img');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    let lastScrollY = window.scrollY;
+
+    // Active state
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navLinks.forEach(l => l.classList.remove('active'));
@@ -131,27 +228,37 @@
       });
     });
 
-    /* ===== SCROLL HIDE / SHOW (PRO) ===== */
-    const header = document.getElementById('main-header');
-    let lastScrollY = window.scrollY;
+    // 🔹 CAMBIO DE ESTILO AL SALIR DEL HERO
+    if (hero) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            header.classList.add('header-scrolled');
+            if (logoImg) logoImg.src = '/LogoBlanco.png';
+          } else {
+            header.classList.remove('header-scrolled');
+            if (logoImg) logoImg.src = '/LogoAzul.png';
+          }
+        },
+        { threshold: 0.2 }
+      );
 
+      observer.observe(hero);
+    }
+
+    // Logo collapse (sin cambios)
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
 
-      // Scroll hacia abajo → ocultar
-      if (delta > 15 && currentScrollY > 120) {
-        header.classList.add('header-hidden');
-        header.classList.remove('header-visible');
-      }
-
-      // Scroll hacia arriba → mostrar
-      if (delta < -10) {
-        header.classList.remove('header-hidden');
-        header.classList.add('header-visible');
+      if (currentScrollY > lastScrollY && currentScrollY > 120) {
+        logoBox.classList.add('logo-collapsed');
       }
 
       lastScrollY = currentScrollY;
+    });
+
+    logoBox.addEventListener('click', () => {
+      logoBox.classList.toggle('logo-forced-open');
     });
   });
 </script>

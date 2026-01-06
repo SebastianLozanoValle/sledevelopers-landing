@@ -1,11 +1,92 @@
----
----
-
-<section class="relative min-h-screen flex items-center justify-center py-32 px-8 overflow-hidden">
+<section
+  id="hero"
+  class="relative min-h-screen flex items-center justify-center py-32 px-8 overflow-hidden"
+>
   <div class="max-w-[1200px] text-center z-[2] relative">
-    <h1 class="text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[1.1] text-gray-900 mb-12">Soluciones Digitales que Impulsan tu Negocio.</h1>
-    <button class="bg-gray-900 text-white px-10 py-4 rounded-lg text-lg font-semibold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)]">Contáctanos</button>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <h1
+      class="max-w-[900px] mx-auto
+             text-4xl md:text-6xl lg:text-4xl xl:text-6xl 2xl:text-8xl
+             font-extrabold leading-[1.05] tracking-tight mb-4
+             text-black
+             opacity-0 translate-y-2 animate-hero-title"
+    >
+      Desarrollamos tecnología para que
+      <span
+        class="bg-clip-text text-transparent bg-gradient-to-r from-[#082347] to-blue-600"
+      >
+        tu negocio escale
+      </span>
+    </h1>
+
+    <!-- SUBTÍTULO -->
+    <p
+      class="max-w-[520px] mx-auto
+             text-lg lg:text-base xl:text-lg 2xl:text-xl
+             leading-relaxed text-gray-600
+             mb-8
+             opacity-0 translate-y-2 animate-hero-subtitle"
+    >
+      Sitios web, software, automatización, inteligencia artificial y marketing
+      integrados, todo en un mismo lugar.
+    </p>
+
+    <!-- SEPARADOR -->
+    <div
+      class="h-px w-24 mx-auto bg-gray-200 mb-10 opacity-0 animate-hero-divider"
+    ></div>
+
+    <!-- CTA -->
+    <button
+      class="px-10 py-4 text-lg font-semibold cursor-pointer
+             text-white
+             opacity-0 animate-hero-cta
+             transform-gpu will-change-transform
+             transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+             hover:scale-[1.08]
+             hover:-translate-y-1
+             hover:shadow-[0_18px_40px_rgba(0,0,0,0.25)]
+             active:scale-[1.02]"
+      style="
+        background: linear-gradient(90deg, #082347, #2563eb);
+        border-radius: 1rem;
+      "
+    >
+      Contáctanos
+    </button>
+
   </div>
-  <div class="absolute top-0 left-0 right-0 bottom-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.15),rgba(139,92,246,0.15),rgba(59,130,246,0.15))] blur-[100px] z-[1]"></div>
+
+  <!-- FONDO DECORATIVO -->
+  <div
+    class="absolute top-0 left-0 right-0 bottom-0
+           bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.15),rgba(139,92,246,0.15),rgba(59,130,246,0.15))]
+           blur-[100px] z-[1]"
+  ></div>
 </section>
 
+<style>
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-hero-title {
+    animation: heroFadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-hero-subtitle {
+    animation: heroFadeUp 0.6s ease-out 0.1s forwards;
+  }
+
+  .animate-hero-divider {
+    animation: heroFadeUp 0.6s ease-out 0.2s forwards;
+  }
+
+  .animate-hero-cta {
+    animation: heroFadeUp 0.6s ease-out 0.3s forwards;
+  }
+</style>
