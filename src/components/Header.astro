@@ -1,116 +1,157 @@
----
----
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 w-full z-[1000]
+         py-4 md:py-5
+         transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+         translate-y-0"
+>
+  <div class="max-w-[1400px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
 
-<header class="fixed top-0 left-0 right-0 w-full z-[1000] py-4 md:py-5 bg-white/80 backdrop-blur-sm border-b border-gray-100">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4 w-full">
-    <div class="flex-shrink-0">
-      <div class="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900">
-        <img src="/LogoBlanco.png" alt="SLE Development Logo" class="h-7 md:h-8 w-auto" />
-        <span class="hidden sm:inline">SLE Development</span>
-      </div>
+    <!-- LOGO -->
+    <div class="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 logo-shadow">
+      <img
+        src="/LogoBlanco.png"
+        alt="SLE Development Logo"
+        class="h-7 md:h-8 w-auto image-shadow"
+      />
+      <span class="hidden sm:inline">SLE DEVELOPMENT</span>
     </div>
-    
-    <nav class="flex-1 hidden md:flex justify-center bg-white rounded-xl py-3 px-8 mx-auto max-w-[600px] lg:px-6">
-      <div class="flex gap-10 lg:gap-6 items-center">
-        <a href="#home" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 whitespace-nowrap">Inicio</a>
-        <a href="#about" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 whitespace-nowrap">Nosotros</a>
-        <a href="#how-it-works" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 whitespace-nowrap">Cómo Funciona</a>
-        <a href="#services" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 whitespace-nowrap">Servicios</a>
+
+    <!-- NAV DESKTOP -->
+    <nav class="hidden md:flex justify-center">
+      <div class="flex gap-10 lg:gap-6 items-center bg-white rounded-2xl px-10 py-4 nav-shadow">
+        <a href="#home" class="nav-link">
+          Inicio
+          <span class="nav-underline"></span>
+        </a>
+        <a href="#about" class="nav-link">
+          Nosotros
+          <span class="nav-underline"></span>
+        </a>
+        <a href="#how-it-works" class="nav-link">
+          Cómo Funciona
+          <span class="nav-underline"></span>
+        </a>
+        <a href="#services" class="nav-link">
+          Servicios
+          <span class="nav-underline"></span>
+        </a>
       </div>
     </nav>
-    
-    <div class="flex-shrink-0 flex items-center gap-4 md:gap-6">
-      <a href="#contact" class="hidden md:inline-block no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 text-sm md:text-base">Contacto</a>
-      <a href="#contact" class="bg-blue-500 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg no-underline font-semibold transition-colors hover:bg-blue-600 whitespace-nowrap text-sm md:text-base">Empezar</a>
-      
-      <!-- Botón menú hamburguesa para móvil -->
-      <button 
-        id="mobile-menu-button"
-        class="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
-        aria-label="Toggle menu"
+
+    <!-- CTA -->
+    <div class="flex items-center gap-4 md:gap-6">
+      <a href="#contact" class="nav-link text-shadow hidden md:inline-block">
+        Contacto
+        <span class="nav-underline"></span>
+      </a>
+
+      <a
+        href="#contact"
+        class="bg-blue-500 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-xl
+               font-semibold whitespace-nowrap text-sm md:text-base
+               cta-shadow
+               transition-all duration-300
+               hover:bg-blue-600
+               hover:-translate-y-0.5
+               hover:shadow-xl
+               active:scale-[0.97]"
       >
-        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+        Empezar
+      </a>
     </div>
   </div>
-  
-  <!-- Menú móvil desplegable -->
-  <nav id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
-    <div class="max-w-[1400px] mx-auto px-4 py-4 flex flex-col gap-4">
-      <a href="#home" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 py-2">Inicio</a>
-      <a href="#about" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 py-2">Nosotros</a>
-      <a href="#how-it-works" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 py-2">Cómo Funciona</a>
-      <a href="#services" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 py-2">Servicios</a>
-      <a href="#contact" class="no-underline text-gray-600 font-medium transition-colors hover:text-gray-900 py-2">Contacto</a>
-    </div>
-  </nav>
 </header>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    
-    if (menuButton && mobileMenu && menuIcon && closeIcon) {
-      menuButton.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        
-        if (isHidden) {
-          mobileMenu.classList.remove('hidden');
-          menuIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
-        } else {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        }
-      });
-      
-      // Cerrar menú al hacer clic en un enlace
-      const menuLinks = mobileMenu.querySelectorAll('a');
-      menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        });
-      });
-      
-      // Cerrar menú al hacer clic fuera
-      document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target as Node) && !menuButton.contains(e.target as Node)) {
-          if (!mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-          }
-        }
-      });
-    }
-  });
-</script>
-
 <style>
-  #mobile-menu {
-    animation: slideDown 0.3s ease-out;
+  /* ========= SOMBRA UNIFICADA ========= */
+  .nav-shadow,
+  .cta-shadow,
+  .image-shadow {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
-  
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .logo-shadow,
+  .text-shadow {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ========= LINKS ========= */
+  .nav-link {
+    position: relative;
+    font-weight: 500;
+    color: #4b5563;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: #111827;
+    transform: translateY(-2px);
+  }
+
+  .nav-underline {
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    background-color: #111827;
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover .nav-underline,
+  .nav-link.active .nav-underline {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: #111827;
+    transform: translateY(-2px);
+  }
+
+  /* ========= HEADER STATES ========= */
+  .header-hidden {
+    transform: translateY(-110%);
+  }
+
+  .header-visible {
+    transform: translateY(0);
   }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ===== ACTIVE STATE ===== */
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    /* ===== SCROLL HIDE / SHOW (PRO) ===== */
+    const header = document.getElementById('main-header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+
+      // Scroll hacia abajo → ocultar
+      if (delta > 15 && currentScrollY > 120) {
+        header.classList.add('header-hidden');
+        header.classList.remove('header-visible');
+      }
+
+      // Scroll hacia arriba → mostrar
+      if (delta < -10) {
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  });
+</script>
