@@ -1,0 +1,252 @@
+---
+const products = [
+  {
+    id: 'crm',
+    title: 'CRM',
+    subtitle: 'Customer Relationship Management',
+    description: 'Gestiona tus relaciones con clientes de forma eficiente. Centraliza información de contacto, historial de ventas, seguimiento de oportunidades y automatiza procesos comerciales.',
+    icon: '👥',
+    features: ['Gestión de contactos', 'Pipeline de ventas', 'Automatización de seguimientos', 'Reportes y analytics', 'Integración con email', 'Mobile friendly'],
+    color: 'from-blue-500 to-cyan-500'
+  },
+  {
+    id: 'lms',
+    title: 'LMS',
+    subtitle: 'Learning Management System',
+    description: 'Plataforma completa para crear, gestionar y entregar cursos online. Ideal para empresas que capacitan equipos o instituciones educativas.',
+    icon: '📚',
+    features: ['Creación de cursos', 'Evaluaciones y certificados', 'Seguimiento de progreso', 'Foros y comunidades', 'Gamificación', 'Multi-idioma'],
+    color: 'from-purple-500 to-pink-500'
+  },
+  {
+    id: 'ops',
+    title: 'OPS',
+    subtitle: 'Operations Management System',
+    description: 'Optimiza las operaciones de tu negocio con un sistema integral que gestiona inventario, producción, logística y recursos de forma coordinada.',
+    icon: '⚙️',
+    features: ['Gestión de inventario', 'Control de producción', 'Logística y distribución', 'Optimización de recursos', 'Reportes operativos', 'Integración con otros sistemas'],
+    color: 'from-orange-500 to-red-500'
+  },
+  {
+    id: 'erp',
+    title: 'ERP',
+    subtitle: 'Enterprise Resource Planning',
+    description: 'Sistema integral para gestionar todos los recursos de tu empresa: finanzas, recursos humanos, inventario, ventas y más, todo en un solo lugar.',
+    icon: '🏢',
+    features: ['Gestión financiera', 'Control de inventario', 'Recursos humanos', 'Ventas y compras', 'Reportes ejecutivos', 'Escalabilidad empresarial'],
+    color: 'from-indigo-500 to-blue-500'
+  },
+  {
+    id: 'hrm',
+    title: 'HRM',
+    subtitle: 'Human Resource Management',
+    description: 'Gestiona el talento humano de tu empresa: reclutamiento, nómina, evaluaciones de desempeño, capacitación y desarrollo de equipos.',
+    icon: '👔',
+    features: ['Reclutamiento y selección', 'Gestión de nómina', 'Evaluaciones de desempeño', 'Capacitación y desarrollo', 'Asistencia y horarios', 'Beneficios y prestaciones'],
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    id: 'pos',
+    title: 'POS',
+    subtitle: 'Point of Sale',
+    description: 'Sistema de punto de venta completo para tiendas físicas y online. Gestiona ventas, inventario, clientes y reportes en tiempo real.',
+    icon: '💳',
+    features: ['Ventas en punto de venta', 'Gestión de inventario', 'Múltiples métodos de pago', 'Facturación electrónica', 'Reportes de ventas', 'Integración con e-commerce'],
+    color: 'from-teal-500 to-cyan-500'
+  },
+  {
+    id: 'inventory',
+    title: 'Inventory Management',
+    subtitle: 'Sistema de Inventario',
+    description: 'Control total de tu inventario con seguimiento en tiempo real, alertas de stock bajo, gestión de proveedores y reportes detallados.',
+    icon: '📦',
+    features: ['Control de stock en tiempo real', 'Alertas automáticas', 'Gestión de proveedores', 'Códigos de barras', 'Reportes de inventario', 'Multi-almacén'],
+    color: 'from-amber-500 to-orange-500'
+  },
+  {
+    id: 'project',
+    title: 'Project Management',
+    subtitle: 'Gestión de Proyectos',
+    description: 'Organiza, planifica y ejecuta proyectos de forma eficiente. Gestiona tareas, recursos, tiempos y colaboración en equipo.',
+    icon: '📊',
+    features: ['Gestión de tareas', 'Planificación de recursos', 'Seguimiento de tiempos', 'Colaboración en equipo', 'Reportes de progreso', 'Integración con herramientas'],
+    color: 'from-violet-500 to-purple-500'
+  },
+  {
+    id: 'appointment',
+    title: 'Sistema de Agendamiento',
+    subtitle: 'Appointment Scheduling System',
+    description: 'Gestiona citas y reservas de forma eficiente. Calendarios interactivos, recordatorios automáticos y gestión de disponibilidad en tiempo real.',
+    icon: '📅',
+    features: ['Calendario interactivo', 'Reservas online', 'Recordatorios automáticos', 'Gestión de disponibilidad', 'Confirmaciones por email/SMS', 'Integración con calendarios'],
+    color: 'from-blue-500 to-indigo-500'
+  },
+  {
+    id: 'booking',
+    title: 'Sistema de Reservas',
+    subtitle: 'Booking Management System',
+    description: 'Sistema completo para gestionar reservas de servicios, espacios o recursos. Ideal para hoteles, restaurantes, salones y más.',
+    icon: '🏨',
+    features: ['Reservas online 24/7', 'Gestión de disponibilidad', 'Pagos online integrados', 'Confirmaciones automáticas', 'Cancelaciones y modificaciones', 'Reportes de ocupación'],
+    color: 'from-rose-500 to-pink-500'
+  },
+  {
+    id: 'helpdesk',
+    title: 'Help Desk / Tickets',
+    subtitle: 'Sistema de Soporte y Tickets',
+    description: 'Gestiona solicitudes de soporte, tickets de clientes y resolución de problemas de forma organizada y eficiente.',
+    icon: '🎫',
+    features: ['Creación de tickets', 'Asignación automática', 'Seguimiento de estado', 'Base de conocimientos', 'Chat en vivo', 'Métricas de satisfacción'],
+    color: 'from-yellow-500 to-orange-500'
+  },
+  {
+    id: 'document',
+    title: 'Gestión Documental',
+    subtitle: 'Document Management System',
+    description: 'Organiza, almacena y gestiona documentos de forma segura. Control de versiones, búsqueda avanzada y flujos de aprobación.',
+    icon: '📄',
+    features: ['Almacenamiento seguro', 'Control de versiones', 'Búsqueda avanzada', 'Flujos de aprobación', 'Compartición controlada', 'Firma digital'],
+    color: 'from-slate-500 to-gray-600'
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics & Reporting',
+    subtitle: 'Sistema de Análisis y Reportes',
+    description: 'Visualiza y analiza datos de tu negocio con dashboards interactivos, reportes personalizados y métricas en tiempo real.',
+    icon: '📈',
+    features: ['Dashboards interactivos', 'Reportes personalizados', 'Métricas en tiempo real', 'Exportación de datos', 'Alertas automáticas', 'Integración con múltiples fuentes'],
+    color: 'from-emerald-500 to-teal-500'
+  }
+];
+---
+
+<section class="pt-32 pb-24 px-4 md:px-8 w-full overflow-hidden" id="products">
+  <div class="max-w-[1400px] mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-tight mb-4">
+        Sistemas Genéricos
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#082347] to-blue-600">
+          Listos para Usar
+        </span>
+      </h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Soluciones probadas y optimizadas que puedes implementar rápidamente en tu negocio. Sistemas completos, escalables y personalizables.
+      </p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <a href={`/productos/${product.id}`} class="product-card group">
+          <!-- Preview Image -->
+          <div class="product-image-container mb-6 rounded-xl overflow-hidden bg-gray-100 aspect-video">
+            <img
+              src={`/product-preview-${product.id}.jpg`}
+              alt={`${product.title} preview`}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%23e5e7eb\' width=\'400\' height=\'300\'/%3E%3Ctext fill=\'%239ca3af\' font-family=\'sans-serif\' font-size=\'20\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E${product.title}%3C/text%3E%3C/svg%3E'"
+            />
+          </div>
+          
+          <div class={`product-icon bg-gradient-to-br ${product.color} text-white text-4xl w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300`}>
+            {product.icon}
+          </div>
+          
+          <div class="product-number text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+            {product.id.toUpperCase()}
+          </div>
+          
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-2">
+            {product.title}
+          </h3>
+          
+          <p class="text-sm text-gray-500 mb-4 font-medium">
+            {product.subtitle}
+          </p>
+          
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            {product.description}
+          </p>
+          
+          <div class="space-y-3 mb-6">
+            {product.features.slice(0, 4).map((feature) => (
+              <div class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm text-gray-700">{feature}</span>
+              </div>
+            ))}
+            {product.features.length > 4 && (
+              <p class="text-sm text-gray-500 italic">+{product.features.length - 4} funcionalidades más</p>
+            )}
+          </div>
+          
+          <div class="product-cta">
+            Ver Detalles
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    contain: layout style paint;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+  }
+
+  .product-image-container {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  }
+
+  .product-icon {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .product-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #082347, #2563eb);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    text-align: center;
+  }
+
+  .product-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(8, 35, 71, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      padding: 24px;
+    }
+  }
+</style>
+

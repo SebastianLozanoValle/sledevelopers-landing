@@ -60,14 +60,14 @@ const services = [
       <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-[1.1] m-0">
         Nuestros<br />
         Servicios<br />
-      </h2>
+          </h2>
       <!-- 3D Element -->
       <div id="threejs-container" class="mt-8 w-full h-96 lg:h-[500px]"></div>
-    </div>
+      </div>
 
     <!-- Right Side - Services Accordion -->
     <div class="flex flex-col gap-4">
-      {services.map((service, index) => (
+        {services.map((service, index) => (
         <div class={`bg-gray-50 rounded-xl overflow-hidden transition-all ${index === 0 ? '' : ''}`} data-service-index={index} data-service-id={service.id}>
           <button class="w-full p-6 flex justify-between items-center bg-transparent border-none text-left cursor-pointer font-bold text-gray-900 transition-colors hover:bg-gray-100">
             <div class="flex items-center gap-4">
@@ -94,10 +94,10 @@ const services = [
                   </span>
                 ))}
               </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   </div>
 </section>
@@ -138,6 +138,13 @@ const services = [
 
   button svg {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Prevenir interacción con el canvas 3D */
+  #threejs-container canvas {
+    pointer-events: none;
+    touch-action: none;
+    user-select: none;
   }
 </style>
 
@@ -186,24 +193,39 @@ const services = [
     });
   })();
 
-  // Three.js 3D Element - Cargar modelo GLB
-  document.addEventListener('DOMContentLoaded', async function() {
-    const THREE = await import('three');
-    const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
-    const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js');
+  // Three.js 3D Element - Lazy load solo cuando sea visible
+  let threeJsLoaded = false;
+  let threeJsObserver: IntersectionObserver | null = null;
+  
+  function initThreeJS() {
+    if (threeJsLoaded) return;
+    threeJsLoaded = true;
     
-    const container = document.getElementById('threejs-container');
-    if (!container) return;
+    (async function() {
+      const container = document.getElementById('threejs-container');
+      if (!container) return;
+      
+      // Dynamic import solo cuando sea necesario
+      // @ts-ignore - three.js dynamic import types
+      const THREE = await import('three');
+      const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
 
     // Scene setup
+    // @ts-ignore - three.js types
     const scene = new THREE.Scene();
     // FOV aumentado a 60 para capturar más del modelo, far plane aumentado para modelos grandes
+    // @ts-ignore - three.js types
     const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // Renderer optimizado: sin antialias para mejor rendimiento, pixel ratio limitado
+    // @ts-ignore - three.js types
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: false, // Deshabilitado para mejor rendimiento
+      powerPreference: "high-performance" // Priorizar rendimiento
+    });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Reducido de 2 a 1.5
+    renderer.shadowMap.enabled = false; // Deshabilitar sombras para mejor rendimiento
     container.appendChild(renderer.domElement);
 
     // Colors para luces
@@ -214,7 +236,8 @@ const services = [
       indigo: 0x6366F1
     };
 
-    let model = null;
+    let model: any = null;
+    // @ts-ignore - three.js types
     const modelGroup = new THREE.Group();
 
     // Cargar modelo 3D
@@ -225,82 +248,85 @@ const services = [
         model = gltf.scene;
         
         // Calcular el bounding box para centrar y escalar el modelo
+        // @ts-ignore - three.js types
         const box = new THREE.Box3().setFromObject(model);
+        // @ts-ignore - three.js types
         const center = box.getCenter(new THREE.Vector3());
+        // @ts-ignore - three.js types
         const size = box.getSize(new THREE.Vector3());
         
-        // Calcular escala para que quepa bien en la escena (EL DOBLE DE GRANDE)
+        // Calcular escala para que quepa bien en la escena
         const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 16 / maxDim; // Modelo GIGANTE (doble del anterior)
-        model.scale.multiplyScalar(scale);
+        const scale = 16 / maxDim;
+        if (model) {
+          model.scale.multiplyScalar(scale);
+          // Centrar el modelo
+          model.position.sub(center.multiplyScalar(scale));
+        }
         
-        // Centrar el modelo
-        model.position.sub(center.multiplyScalar(scale));
-        
-        // Habilitar sombras
-        model.traverse(function(child: any) {
-          if (child instanceof THREE.Mesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
-          }
-        });
-        
-        modelGroup.add(model);
+        // Optimizar modelo (sin sombras para mejor rendimiento)
+        if (model) {
+          model.traverse(function(child: any) {
+            // @ts-ignore - three.js types
+            if (child instanceof THREE.Mesh) {
+            child.castShadow = false;
+            child.receiveShadow = false;
+              // Optimizar materiales
+              if (child.material) {
+                if (Array.isArray(child.material)) {
+                  child.material.forEach((mat: any) => {
+                    if (mat) mat.needsUpdate = false;
+                  });
+                } else if (child.material) {
+                  child.material.needsUpdate = false;
+                }
+              }
+            }
+          });
+          modelGroup.add(model);
+        }
         scene.add(modelGroup);
       },
       function(progress: any) {
-        // Progreso de carga (opcional)
-        const percent = (progress.loaded / progress.total * 100);
-        console.log('Cargando modelo:', percent.toFixed(0) + '%');
+        // Progreso de carga (silencioso en producción)
       },
       function(error: any) {
         console.error('Error cargando modelo:', error);
       }
     );
 
-    // Advanced lighting setup - mejorado
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Lighting setup optimizado - menos luces para mejor rendimiento
+    // @ts-ignore - three.js types
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    // Main directional light (sun) - más intensa
-    const sunLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    // Main directional light (simplificada, sin sombras)
+    // @ts-ignore - three.js types
+    const sunLight = new THREE.DirectionalLight(0xffffff, 1.0);
     sunLight.position.set(8, 10, 6);
-    sunLight.castShadow = true;
-    sunLight.shadow.mapSize.width = 2048;
-    sunLight.shadow.mapSize.height = 2048;
-    sunLight.shadow.camera.near = 0.5;
-    sunLight.shadow.camera.far = 50;
-    sunLight.shadow.camera.left = -15;
-    sunLight.shadow.camera.right = 15;
-    sunLight.shadow.camera.top = 15;
-    sunLight.shadow.camera.bottom = -15;
+    sunLight.castShadow = false; // Sin sombras
     scene.add(sunLight);
 
     // Fill light (luz de relleno)
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    // @ts-ignore - three.js types
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
     fillLight.position.set(-5, 5, -5);
     scene.add(fillLight);
 
-    // Accent lights - más intensas y mejor posicionadas
-    const accentLight1 = new THREE.PointLight(colors.purple, 0.8, 15);
+    // Accent lights reducidas (solo 2 en lugar de 3)
+    // @ts-ignore - three.js types
+    const accentLight1 = new THREE.PointLight(colors.purple, 0.6, 15);
     accentLight1.position.set(-3, 4, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(colors.blue, 0.7, 15);
+    // @ts-ignore - three.js types
+    const accentLight2 = new THREE.PointLight(colors.blue, 0.5, 15);
     accentLight2.position.set(3, 4, -3);
     scene.add(accentLight2);
 
-    const accentLight3 = new THREE.PointLight(colors.pink, 0.6, 12);
-    accentLight3.position.set(0, 5, 4);
-    scene.add(accentLight3);
-
-    // Rim light for depth - más intensa
-    const rimLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    rimLight.position.set(-6, 3, -6);
-    scene.add(rimLight);
-
     // Hemisphere light para iluminación natural
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+    // @ts-ignore - three.js types
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.5);
     hemiLight.position.set(0, 10, 0);
     scene.add(hemiLight);
 
@@ -309,90 +335,107 @@ const services = [
     camera.position.set(14, 12, 14);
     camera.lookAt(0, 0, 0);
 
-    // OrbitControls para interacción con mouse (solo en desktop)
-    const isMobile = window.innerWidth <= 768;
-    let controls: any = null;
-    let isUserInteracting = false;
-    let autoRotateTimeout: ReturnType<typeof setTimeout> | null = null;
+    // Sin controles de mouse - solo rotación automática para mejor rendimiento
 
-    if (!isMobile) {
-      controls = new OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true; // Suavizar movimiento
-      controls.dampingFactor = 0.05;
-      controls.enableZoom = true;
-      controls.enablePan = false; // Desactivar pan para mantener el modelo centrado
-      controls.minDistance = 10;
-      controls.maxDistance = 30;
-      controls.maxPolarAngle = Math.PI / 2.2; // Limitar rotación vertical
-      controls.minPolarAngle = Math.PI / 4;
-      controls.autoRotate = false; // Desactivar auto-rotación cuando hay interacción
-      controls.autoRotateSpeed = 0.5;
-
-      // Detectar interacción del usuario
-      controls.addEventListener('start', () => {
-        isUserInteracting = true;
-        if (autoRotateTimeout) {
-          clearTimeout(autoRotateTimeout);
-          autoRotateTimeout = null;
+      // Animation loop optimizado - pausar cuando no es visible
+      let time = 0;
+      let animationId: number = 0;
+      let isVisible = true;
+      let isPageVisible = !document.hidden;
+      
+      // Observer para visibilidad en viewport
+      const visibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && isPageVisible && !animationId) {
+            animate();
+          } else if (!isVisible && animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = 0;
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      visibilityObserver.observe(container);
+      
+      // Pausar cuando la página no está visible
+      document.addEventListener('visibilitychange', () => {
+        isPageVisible = !document.hidden;
+        if (!isPageVisible && animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = 0;
+        } else if (isPageVisible && isVisible && !animationId) {
+          animate();
         }
       });
+      
+      function animate() {
+        if (!isVisible || !isPageVisible) {
+          animationId = 0;
+          return;
+        }
+        
+        animationId = requestAnimationFrame(animate);
+        time += 0.01; // Aumentado para movimiento más visible
 
-      controls.addEventListener('end', () => {
-        // Reanudar auto-rotación después de 3 segundos de inactividad
-        autoRotateTimeout = setTimeout(() => {
-          isUserInteracting = false;
-        }, 3000);
-      });
-    }
+        // Rotación suave del modelo (sin interacción de usuario)
+        if (modelGroup) {
+          modelGroup.rotation.y += 0.008; // Aumentado de 0.005 a 0.008
+          modelGroup.position.y = Math.sin(time) * 0.2; // Aumentado de 0.1 a 0.2
+        }
 
-    // Animation
-    let time = 0;
-    function animate() {
-      requestAnimationFrame(animate);
-      time += 0.008;
+        // Animate lights (movimiento más visible)
+        accentLight1.position.x = -2 + Math.sin(time) * 0.8;
+        accentLight1.position.z = 2 + Math.cos(time) * 0.8;
+        accentLight2.position.x = 2 + Math.cos(time * 1.2) * 0.8;
+        accentLight2.position.z = -2 + Math.sin(time * 1.2) * 0.8;
 
-      // Rotación suave del modelo solo si no hay interacción
-      if (modelGroup && !isUserInteracting) {
-        modelGroup.rotation.y += 0.005;
-        modelGroup.position.y = Math.sin(time) * 0.1; // Flotación suave
-      }
-
-      // Animate lights
-      accentLight1.position.x = -2 + Math.sin(time) * 0.5;
-      accentLight1.position.z = 2 + Math.cos(time) * 0.5;
-      accentLight2.position.x = 2 + Math.cos(time * 1.2) * 0.5;
-      accentLight2.position.z = -2 + Math.sin(time * 1.2) * 0.5;
-
-      // Auto-rotación de cámara solo si no hay interacción (o si es mobile)
-      if (!isUserInteracting || isMobile) {
+        // Auto-rotación de cámara (movimiento más fluido y visible)
         const radius = 18;
         const height = 12;
-        camera.position.x = Math.cos(time * 0.15) * radius;
-        camera.position.z = Math.sin(time * 0.15) * radius;
-        camera.position.y = height + Math.sin(time * 0.1) * 0.2;
+        camera.position.x = Math.cos(time * 0.2) * radius; // Aumentado de 0.1 a 0.2
+        camera.position.z = Math.sin(time * 0.2) * radius;
+        camera.position.y = height + Math.sin(time * 0.15) * 0.5; // Aumentado movimiento vertical
         camera.lookAt(0, 0, 0);
+
+        renderer.render(scene, camera);
       }
+      
+      animate();
 
-      // Actualizar controles solo si existen (solo en desktop)
-      if (controls) {
-        controls.update();
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    // Handle resize
-    function handleResize() {
-      if (!container) return;
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-
-    window.addEventListener('resize', handleResize);
-    animate();
+      // Handle resize - optimizado con debounce
+      let resizeTimeout: ReturnType<typeof setTimeout>;
+      const handleResize = () => {
+        if (!container) return;
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const width = container.clientWidth;
+          const height = container.clientHeight;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+        }, 150);
+      };
+      window.addEventListener('resize', handleResize, { passive: true });
+    })(); // Cerrar función async
+  }
+  
+  // IntersectionObserver para lazy loading
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('threejs-container');
+    if (!container) return;
+    
+    threeJsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initThreeJS();
+        }
+      });
+    }, {
+      rootMargin: '100px' // Cargar 100px antes de que sea visible
+    });
+    
+    threeJsObserver.observe(container);
   });
 </script>
 

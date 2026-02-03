@@ -1,0 +1,397 @@
+---
+// Todas las funcionalidades de todos los productos con precios y tiempos
+const allFeatures = [
+  // CRM Features
+  { id: 'crm-contact', name: 'Gestión de contactos', category: 'CRM', price: 200000, time: '2 semanas', product: 'CRM' },
+  { id: 'crm-pipeline', name: 'Pipeline de ventas', category: 'CRM', price: 300000, time: '3 semanas', product: 'CRM' },
+  { id: 'crm-automation', name: 'Automatización de seguimientos', category: 'CRM', price: 250000, time: '2 semanas', product: 'CRM' },
+  { id: 'crm-reports', name: 'Reportes y analytics', category: 'CRM', price: 200000, time: '2 semanas', product: 'CRM' },
+  { id: 'crm-email', name: 'Integración con email', category: 'CRM', price: 150000, time: '1 semana', product: 'CRM' },
+  { id: 'crm-mobile', name: 'Mobile friendly', category: 'CRM', price: 250000, time: '2 semanas', product: 'CRM' },
+  
+  // LMS Features
+  { id: 'lms-courses', name: 'Creación de cursos', category: 'LMS', price: 400000, time: '4 semanas', product: 'LMS' },
+  { id: 'lms-evaluations', name: 'Evaluaciones y certificados', category: 'LMS', price: 300000, time: '3 semanas', product: 'LMS' },
+  { id: 'lms-progress', name: 'Seguimiento de progreso', category: 'LMS', price: 250000, time: '2 semanas', product: 'LMS' },
+  { id: 'lms-forums', name: 'Foros y comunidades', category: 'LMS', price: 200000, time: '2 semanas', product: 'LMS' },
+  { id: 'lms-gamification', name: 'Gamificación', category: 'LMS', price: 350000, time: '3 semanas', product: 'LMS' },
+  { id: 'lms-multilang', name: 'Multi-idioma', category: 'LMS', price: 200000, time: '2 semanas', product: 'LMS' },
+  
+  // OPS Features
+  { id: 'ops-inventory', name: 'Gestión de inventario', category: 'OPS', price: 400000, time: '4 semanas', product: 'OPS' },
+  { id: 'ops-production', name: 'Control de producción', category: 'OPS', price: 500000, time: '5 semanas', product: 'OPS' },
+  { id: 'ops-logistics', name: 'Logística y distribución', category: 'OPS', price: 450000, time: '4 semanas', product: 'OPS' },
+  { id: 'ops-optimization', name: 'Optimización de recursos', category: 'OPS', price: 350000, time: '3 semanas', product: 'OPS' },
+  { id: 'ops-reports', name: 'Reportes operativos', category: 'OPS', price: 200000, time: '2 semanas', product: 'OPS' },
+  { id: 'ops-integration', name: 'Integración con otros sistemas', category: 'OPS', price: 300000, time: '3 semanas', product: 'OPS' },
+  
+  // ERP Features
+  { id: 'erp-financial', name: 'Gestión financiera', category: 'ERP', price: 500000, time: '5 semanas', product: 'ERP' },
+  { id: 'erp-inventory', name: 'Control de inventario', category: 'ERP', price: 400000, time: '4 semanas', product: 'ERP' },
+  { id: 'erp-hr', name: 'Recursos humanos', category: 'ERP', price: 400000, time: '4 semanas', product: 'ERP' },
+  { id: 'erp-sales', name: 'Ventas y compras', category: 'ERP', price: 350000, time: '3 semanas', product: 'ERP' },
+  { id: 'erp-executive', name: 'Reportes ejecutivos', category: 'ERP', price: 250000, time: '2 semanas', product: 'ERP' },
+  { id: 'erp-scalability', name: 'Escalabilidad empresarial', category: 'ERP', price: 600000, time: '6 semanas', product: 'ERP' },
+  
+  // HRM Features
+  { id: 'hrm-recruitment', name: 'Reclutamiento y selección', category: 'HRM', price: 350000, time: '3 semanas', product: 'HRM' },
+  { id: 'hrm-payroll', name: 'Gestión de nómina', category: 'HRM', price: 400000, time: '4 semanas', product: 'HRM' },
+  { id: 'hrm-performance', name: 'Evaluaciones de desempeño', category: 'HRM', price: 300000, time: '3 semanas', product: 'HRM' },
+  { id: 'hrm-training', name: 'Capacitación y desarrollo', category: 'HRM', price: 300000, time: '3 semanas', product: 'HRM' },
+  { id: 'hrm-attendance', name: 'Asistencia y horarios', category: 'HRM', price: 250000, time: '2 semanas', product: 'HRM' },
+  { id: 'hrm-benefits', name: 'Beneficios y prestaciones', category: 'HRM', price: 200000, time: '2 semanas', product: 'HRM' },
+  
+  // POS Features
+  { id: 'pos-sales', name: 'Ventas en punto de venta', category: 'POS', price: 400000, time: '4 semanas', product: 'POS' },
+  { id: 'pos-inventory', name: 'Gestión de inventario', category: 'POS', price: 350000, time: '3 semanas', product: 'POS' },
+  { id: 'pos-payments', name: 'Múltiples métodos de pago', category: 'POS', price: 300000, time: '3 semanas', product: 'POS' },
+  { id: 'pos-billing', name: 'Facturación electrónica', category: 'POS', price: 250000, time: '2 semanas', product: 'POS' },
+  { id: 'pos-reports', name: 'Reportes de ventas', category: 'POS', price: 200000, time: '2 semanas', product: 'POS' },
+  { id: 'pos-ecommerce', name: 'Integración con e-commerce', category: 'POS', price: 350000, time: '3 semanas', product: 'POS' },
+  
+  // Inventory Features
+  { id: 'inv-realtime', name: 'Control de stock en tiempo real', category: 'Inventory', price: 300000, time: '3 semanas', product: 'Inventory' },
+  { id: 'inv-alerts', name: 'Alertas automáticas', category: 'Inventory', price: 150000, time: '1 semana', product: 'Inventory' },
+  { id: 'inv-suppliers', name: 'Gestión de proveedores', category: 'Inventory', price: 250000, time: '2 semanas', product: 'Inventory' },
+  { id: 'inv-barcode', name: 'Códigos de barras', category: 'Inventory', price: 200000, time: '2 semanas', product: 'Inventory' },
+  { id: 'inv-reports', name: 'Reportes de inventario', category: 'Inventory', price: 200000, time: '2 semanas', product: 'Inventory' },
+  { id: 'inv-multilocation', name: 'Multi-almacén', category: 'Inventory', price: 350000, time: '3 semanas', product: 'Inventory' },
+  
+  // Project Management Features
+  { id: 'pm-tasks', name: 'Gestión de tareas', category: 'Project', price: 300000, time: '3 semanas', product: 'Project' },
+  { id: 'pm-resources', name: 'Planificación de recursos', category: 'Project', price: 350000, time: '3 semanas', product: 'Project' },
+  { id: 'pm-tracking', name: 'Seguimiento de tiempos', category: 'Project', price: 250000, time: '2 semanas', product: 'Project' },
+  { id: 'pm-collaboration', name: 'Colaboración en equipo', category: 'Project', price: 300000, time: '3 semanas', product: 'Project' },
+  { id: 'pm-reports', name: 'Reportes de progreso', category: 'Project', price: 200000, time: '2 semanas', product: 'Project' },
+  { id: 'pm-integrations', name: 'Integración con herramientas', category: 'Project', price: 300000, time: '3 semanas', product: 'Project' },
+  
+  // Appointment Scheduling Features
+  { id: 'appt-calendar', name: 'Calendario interactivo', category: 'Appointment', price: 300000, time: '3 semanas', product: 'Appointment' },
+  { id: 'appt-booking', name: 'Reservas online', category: 'Appointment', price: 250000, time: '2 semanas', product: 'Appointment' },
+  { id: 'appt-reminders', name: 'Recordatorios automáticos', category: 'Appointment', price: 200000, time: '2 semanas', product: 'Appointment' },
+  { id: 'appt-availability', name: 'Gestión de disponibilidad', category: 'Appointment', price: 250000, time: '2 semanas', product: 'Appointment' },
+  { id: 'appt-confirmations', name: 'Confirmaciones por email/SMS', category: 'Appointment', price: 200000, time: '2 semanas', product: 'Appointment' },
+  { id: 'appt-integration', name: 'Integración con calendarios', category: 'Appointment', price: 250000, time: '2 semanas', product: 'Appointment' },
+  
+  // Booking Management Features
+  { id: 'book-online', name: 'Reservas online 24/7', category: 'Booking', price: 350000, time: '3 semanas', product: 'Booking' },
+  { id: 'book-availability', name: 'Gestión de disponibilidad', category: 'Booking', price: 300000, time: '3 semanas', product: 'Booking' },
+  { id: 'book-payments', name: 'Pagos online integrados', category: 'Booking', price: 300000, time: '3 semanas', product: 'Booking' },
+  { id: 'book-confirmations', name: 'Confirmaciones automáticas', category: 'Booking', price: 200000, time: '2 semanas', product: 'Booking' },
+  { id: 'book-cancellations', name: 'Cancelaciones y modificaciones', category: 'Booking', price: 200000, time: '2 semanas', product: 'Booking' },
+  { id: 'book-reports', name: 'Reportes de ocupación', category: 'Booking', price: 200000, time: '2 semanas', product: 'Booking' },
+  
+  // Help Desk Features
+  { id: 'hd-tickets', name: 'Creación de tickets', category: 'Helpdesk', price: 250000, time: '2 semanas', product: 'Helpdesk' },
+  { id: 'hd-assignment', name: 'Asignación automática', category: 'Helpdesk', price: 200000, time: '2 semanas', product: 'Helpdesk' },
+  { id: 'hd-tracking', name: 'Seguimiento de estado', category: 'Helpdesk', price: 200000, time: '2 semanas', product: 'Helpdesk' },
+  { id: 'hd-knowledge', name: 'Base de conocimientos', category: 'Helpdesk', price: 300000, time: '3 semanas', product: 'Helpdesk' },
+  { id: 'hd-chat', name: 'Chat en vivo', category: 'Helpdesk', price: 350000, time: '3 semanas', product: 'Helpdesk' },
+  { id: 'hd-metrics', name: 'Métricas de satisfacción', category: 'Helpdesk', price: 200000, time: '2 semanas', product: 'Helpdesk' },
+  
+  // Document Management Features
+  { id: 'doc-storage', name: 'Almacenamiento seguro', category: 'Document', price: 300000, time: '3 semanas', product: 'Document' },
+  { id: 'doc-versions', name: 'Control de versiones', category: 'Document', price: 250000, time: '2 semanas', product: 'Document' },
+  { id: 'doc-search', name: 'Búsqueda avanzada', category: 'Document', price: 200000, time: '2 semanas', product: 'Document' },
+  { id: 'doc-approval', name: 'Flujos de aprobación', category: 'Document', price: 300000, time: '3 semanas', product: 'Document' },
+  { id: 'doc-sharing', name: 'Compartición controlada', category: 'Document', price: 200000, time: '2 semanas', product: 'Document' },
+  { id: 'doc-signature', name: 'Firma digital', category: 'Document', price: 300000, time: '3 semanas', product: 'Document' },
+  
+  // Analytics & Reporting Features
+  { id: 'analytics-dashboards', name: 'Dashboards interactivos', category: 'Analytics', price: 400000, time: '4 semanas', product: 'Analytics' },
+  { id: 'analytics-reports', name: 'Reportes personalizados', category: 'Analytics', price: 300000, time: '3 semanas', product: 'Analytics' },
+  { id: 'analytics-realtime', name: 'Métricas en tiempo real', category: 'Analytics', price: 350000, time: '3 semanas', product: 'Analytics' },
+  { id: 'analytics-export', name: 'Exportación de datos', category: 'Analytics', price: 200000, time: '2 semanas', product: 'Analytics' },
+  { id: 'analytics-alerts', name: 'Alertas automáticas', category: 'Analytics', price: 200000, time: '2 semanas', product: 'Analytics' },
+  { id: 'analytics-integrations', name: 'Integración con múltiples fuentes', category: 'Analytics', price: 400000, time: '4 semanas', product: 'Analytics' },
+];
+
+const categories = ['CRM', 'LMS', 'OPS', 'ERP', 'HRM', 'POS', 'Inventory', 'Project', 'Appointment', 'Booking', 'Helpdesk', 'Document', 'Analytics'];
+---
+
+<section class="py-12 px-4 md:px-8 w-full" id="custom-product">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="product-card custom-product-card">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl">
+          🎯
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-1">
+            ¿Requieres un producto a la medida?
+          </h3>
+          <p class="text-gray-600">
+            Selecciona las funcionalidades que necesitas y genera una cotización personalizada
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Selector -->
+      <div class="mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto p-4 border border-gray-200 rounded-xl">
+          {categories.map((category) => {
+            const categoryFeatures = allFeatures.filter(f => f.category === category);
+            return (
+              <div class="category-group">
+                <h4 class="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wider">
+                  {category}
+                </h4>
+                <div class="space-y-2">
+                  {categoryFeatures.map((feature) => (
+                    <label class="feature-checkbox flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                      <input
+                        type="checkbox"
+                        class="feature-input mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        data-price={feature.price}
+                        data-time={feature.time}
+                        data-feature-id={feature.id}
+                        data-feature-name={feature.name}
+                      />
+                      <div class="flex-1">
+                        <div class="font-medium text-sm text-gray-900">{feature.name}</div>
+                        <div class="text-xs text-gray-500 mt-1">
+                          ${feature.price.toLocaleString('es-CO')} • {feature.time}
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-gray-50 rounded-xl p-6 mb-6">
+        <h4 class="font-bold text-gray-900 mb-4">Resumen de cotización</h4>
+        <div class="space-y-3 mb-4" id="selected-features-list">
+          <p class="text-sm text-gray-500">Selecciona funcionalidades para ver el resumen</p>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-semibold text-gray-700">Total estimado:</span>
+            <span class="text-2xl font-extrabold text-gray-900" id="total-price">$0</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-semibold text-gray-700">Tiempo estimado:</span>
+            <span class="text-lg font-bold text-gray-900" id="total-time">0 semanas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote Form -->
+      <form id="quote-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Nombre completo *
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Juan Pérez"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Email *
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="juan@empresa.com"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Teléfono *
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="+57 300 123 4567"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Empresa
+            </label>
+            <input
+              type="text"
+              name="company"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Mi Empresa S.A.S"
+            />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Mensaje adicional (opcional)
+          </label>
+          <textarea
+            name="message"
+            rows="4"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Cuéntanos más sobre tu proyecto..."
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-[#082347] to-blue-600 text-white py-4 rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:scale-[1.02]"
+        >
+          Generar Cotización
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .custom-product-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 24px;
+    padding: 32px;
+  }
+
+  .feature-checkbox {
+    transition: all 0.2s ease;
+  }
+
+  .feature-checkbox:has(input:checked) {
+    background: #eff6ff;
+    border-color: #3b82f6;
+  }
+
+  .feature-input:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .category-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .category-group:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.feature-input');
+    const totalPriceEl = document.getElementById('total-price');
+    const totalTimeEl = document.getElementById('total-time');
+    const selectedFeaturesList = document.getElementById('selected-features-list');
+    const form = document.getElementById('quote-form');
+
+    function updateSummary() {
+      const selected = Array.from(checkboxes).filter(cb => cb.checked);
+      const totalPrice = selected.reduce((sum, cb) => sum + parseInt(cb.dataset.price || '0'), 0);
+      
+      // Calcular tiempo total (sumar semanas)
+      const totalWeeks = selected.reduce((sum, cb) => {
+        const timeStr = cb.dataset.time || '0 semanas';
+        const weeks = parseInt(timeStr.match(/\d+/)?.[0] || '0');
+        return sum + weeks;
+      }, 0);
+
+      totalPriceEl.textContent = `$${totalPrice.toLocaleString('es-CO')}`;
+      totalTimeEl.textContent = `${totalWeeks} ${totalWeeks === 1 ? 'semana' : 'semanas'}`;
+
+      if (selected.length === 0) {
+        selectedFeaturesList.innerHTML = '<p class="text-sm text-gray-500">Selecciona funcionalidades para ver el resumen</p>';
+      } else {
+        selectedFeaturesList.innerHTML = selected.map(cb => {
+          const name = cb.dataset.featureName || '';
+          const price = parseInt(cb.dataset.price || '0');
+          const time = cb.dataset.time || '';
+          return `
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-700">${name}</span>
+              <span class="text-gray-600">$${price.toLocaleString('es-CO')} • ${time}</span>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', updateSummary);
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const selectedFeatures = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => ({
+          id: cb.dataset.featureId,
+          name: cb.dataset.featureName,
+          price: parseInt(cb.dataset.price || '0'),
+          time: cb.dataset.time
+        }));
+
+      const totalPrice = selectedFeatures.reduce((sum, f) => sum + f.price, 0);
+      const totalWeeks = selectedFeatures.reduce((sum, f) => {
+        const weeks = parseInt(f.time.match(/\d+/)?.[0] || '0');
+        return sum + weeks;
+      }, 0);
+
+      if (selectedFeatures.length === 0) {
+        alert('Por favor selecciona al menos una funcionalidad');
+        return;
+      }
+
+      const quoteData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        company: formData.get('company') || '',
+        message: formData.get('message') || '',
+        features: selectedFeatures,
+        totalPrice,
+        totalTime: `${totalWeeks} ${totalWeeks === 1 ? 'semana' : 'semanas'}`
+      };
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      try {
+        const response = await fetch('/api/quote', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(quoteData),
+        });
+
+        if (response.ok) {
+          alert('¡Cotización enviada exitosamente! Te contactaremos pronto.');
+          form.reset();
+          checkboxes.forEach(cb => cb.checked = false);
+          updateSummary();
+        } else {
+          throw new Error('Error al enviar la cotización');
+        }
+      } catch (error) {
+        alert('Error al enviar la cotización. Por favor intenta de nuevo.');
+        console.error(error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  });
+</script>
+

@@ -1,10 +1,6 @@
 ---
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
-import Portfolio from '../components/Portfolio.astro';
 import Pricing from '../components/Pricing.astro';
-import ServicesAccordion from '../components/ServicesAccordion.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import LoadingScreen from '../components/LoadingScreen.astro';
@@ -17,8 +13,8 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="SLE Development - Desarrollo web y soluciones digitales" />
-		<title>SLE Development - Desarrollo Web y Soluciones Digitales</title>
+		<meta name="description" content="SLE Development - Precios por servicio. Transparencia desde el inicio." />
+		<title>Precios - SLE Development</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -29,11 +25,9 @@ import "../styles/global.css";
 		<div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.15),rgba(139,92,246,0.15),rgba(59,130,246,0.15))] blur-[100px] -z-10"></div>
 		<Header />
 		<main class="relative z-0">
-			<Hero />
-			<Services />
-			<Portfolio />
-			<ServicesAccordion />
-			<Pricing />
+			<div class="pt-32">
+				<Pricing />
+			</div>
 			<Contact />
 		</main>
 		<Footer />

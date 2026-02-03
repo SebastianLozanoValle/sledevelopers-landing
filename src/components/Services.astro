@@ -51,14 +51,6 @@
 
         <div class="service-card">
           <div class="service-number">05</div>
-          <h3 class="service-title">Acompañamiento</h3>
-          <p class="service-description">
-            Después de la entrega, seguimos a tu lado con soporte, mantenimiento y mejoras para que tu proyecto evolucione y crezca con el tiempo.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">06</div>
           <h3 class="service-title">Desarrollo</h3>
           <p class="service-description">Construcción iterativa.</p>
         </div>
@@ -66,7 +58,43 @@
 
       <!-- MOBILE -->
       <div class="services-mobile-content flex md:hidden flex-col gap-6 mt-10">
-        <div class="service-card">…</div>
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3 class="service-title">Descubrimiento</h3>
+          <p class="service-description">
+            Escuchamos tu idea, tus objetivos y el contexto del negocio, alineando desde el inicio expectativas y poder abordarlo de la mejor forma.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3 class="service-title">Definición del plan</h3>
+          <p class="service-description">
+            Traducimos los objetivos en un plan de trabajo claro, definiendo alcance, prioridades y tiempos para que todo avance con orden y transparencia.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3 class="service-title">Diseño y desarrollo</h3>
+          <p class="service-description">
+            Diseñamos y desarrollamos tu proyecto de forma estructurada, validando avances y manteniendo una comunicación constante.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h3 class="service-title">Entrega y revisión</h3>
+          <p class="service-description">
+            Revisamos cada detalle, realizamos pruebas de calidad y validamos el resultado final para entregar un proyecto sólido y bien terminado.
+          </p>
+          </div>
+
+        <div class="service-card">
+          <div class="service-number">05</div>
+          <h3 class="service-title">Desarrollo</h3>
+          <p class="service-description">Construcción iterativa.</p>
+        </div>
       </div>
 
     </div>
@@ -74,50 +102,98 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
+  // Lazy load GSAP solo cuando sea necesario
+  let gsapLoaded = false;
+  let gsapObserver: IntersectionObserver | null = null;
+  
+  async function initServicesScroll() {
+    if (window.innerWidth <= 768 || gsapLoaded) return;
+    gsapLoaded = true;
+    
     const { gsap } = await import('gsap');
     const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-
     gsap.registerPlugin(ScrollTrigger);
 
-    function initServicesScroll() {
-      if (window.innerWidth <= 768) return;
+    const container = document.querySelector('.services-scroll-container') as HTMLElement;
+    const content = document.querySelector('.services-scroll-content') as HTMLElement;
+    if (!container || !content) return;
 
-      const container = document.querySelector('.services-scroll-container');
-      const content = document.querySelector('.services-scroll-content');
-      if (!container || !content) return;
+    const cards = content.querySelectorAll('.service-card');
+    if (!cards.length) return;
 
-      const cards = content.querySelectorAll('.service-card');
-      if (!cards.length) return;
+    const cardWidth = (cards[0] as HTMLElement).offsetWidth;
+    const gap = 40;
 
-      const cardWidth = cards[0].offsetWidth;
-      const gap = 40;
+    const totalWidth = (cardWidth + gap) * cards.length;
+    const containerWidth = container.offsetWidth;
+    const scrollDistance = Math.max(0, totalWidth - containerWidth);
 
-      const totalWidth = (cardWidth + gap) * cards.length;
-      const containerWidth = container.offsetWidth;
-      const scrollDistance = Math.max(0, totalWidth - containerWidth);
+    const startOffset = cardWidth * 1.1;
 
-      const startOffset = cardWidth * 1.1;
+    // Añadir clase para optimización durante animación
+    content.classList.add('animating');
+    
+    gsap.set(content, {
+      x: startOffset
+    });
 
-      gsap.set(content, {
-        x: startOffset
-      });
-
-      gsap.to(content, {
-        x: -scrollDistance,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top bottom-=100',
-          end: 'bottom top',
-          scrub: 0.6,
-          invalidateOnRefresh: true
+    gsap.to(content, {
+      x: -scrollDistance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top bottom-=100',
+        end: 'bottom top',
+        scrub: 0.6,
+        invalidateOnRefresh: true,
+        onUpdate: () => {
+          // Mantener will-change solo durante animación activa
+          if (!content.classList.contains('animating')) {
+            content.classList.add('animating');
+          }
+        },
+        onLeave: () => {
+          // Remover will-change cuando termine la animación
+          content.classList.remove('animating');
+        }
+      }
+    });
+    
+    // Optimizar resize con debounce
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    
+    // Limpiar observer
+    if (gsapObserver) {
+      gsapObserver.disconnect();
+      gsapObserver = null;
+    }
+  }
+  
+  // IntersectionObserver para lazy loading de GSAP
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) return;
+    
+    const container = document.querySelector('.services-scroll-container');
+    if (!container) return;
+    
+    gsapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initServicesScroll();
         }
       });
-    }
-
-    initServicesScroll();
-    window.addEventListener('resize', () => ScrollTrigger.refresh());
+    }, {
+      rootMargin: '200px' // Cargar antes de que sea visible
+    });
+    
+    gsapObserver.observe(container);
   });
 </script>
 
@@ -133,16 +209,33 @@
     padding-bottom: 120px;
   }
 
+  @media (max-width: 1024px) {
+    .services-content-inner {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
   .services-header {
     margin-bottom: 60px;
+  }
+
+  @media (max-width: 1024px) {
+    .services-header {
+      margin-bottom: 50px;
+    }
   }
 
   .services-scroll-content {
     display: flex;
     gap: 40px;
     width: fit-content;
-    will-change: transform;
     padding-right: 200px;
+    contain: layout style paint;
+  }
+  
+  .services-scroll-content.animating {
+    will-change: transform;
   }
 
   .service-card {
@@ -156,11 +249,17 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    contain: layout style paint;
   }
 
   .service-card:hover {
+    will-change: transform;
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card:not(:hover) {
+    will-change: auto;
   }
 
   .service-number {
@@ -185,17 +284,89 @@
 
   @media (max-width: 768px) {
     .services-scroll-content {
-      display: none;
+      display: none !important;
     }
 
     .services-content-inner {
-      padding-top: 100px;
-      padding-bottom: 80px;
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    .services-header {
+      margin-bottom: 32px;
+    }
+
+    .services-header h2 {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    .services-header p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .services-mobile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 24px;
     }
 
     .service-card {
       width: 100%;
       height: auto;
+      min-height: auto;
+      padding: 24px 20px;
+      border-radius: 16px;
+    }
+
+    .service-number {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .service-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .service-description {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-content-inner {
+      padding-top: 50px;
+      padding-bottom: 32px;
+    }
+
+    .services-header {
+      margin-bottom: 24px;
+    }
+
+    .services-header h2 {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .services-mobile-content {
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      padding: 20px 16px;
+    }
+
+    .service-title {
+      font-size: 18px;
+    }
+
+    .service-description {
+      font-size: 13px;
     }
   }
 </style>

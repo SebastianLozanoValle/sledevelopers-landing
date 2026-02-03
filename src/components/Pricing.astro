@@ -78,18 +78,17 @@ const services = [
       
       <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8">
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Conversemos sobre tu proyecto</h3>
-<button class="bg-gradient-to-r from-[#082347] to-blue-600 text-white border-none py-3 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full text-sm md:text-base">
-  Agendar llamada
-</button>
-
+        <a href="#contact" id="schedule-call-btn" class="bg-gradient-to-r from-[#082347] to-blue-600 text-white border-none py-3 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full text-sm md:text-base inline-flex items-center justify-center">
+          Agendar llamada
+        </a>
       </div>
     </div>
 
     <!-- Right Side - Carrusel -->
-    <div class="relative">
-      <div class="pricing-carousel-container overflow-hidden rounded-2xl" id="pricing-embla">
-        <div class="pricing-carousel-viewport overflow-hidden">
-          <div class="pricing-carousel-wrapper flex gap-6" id="pricingCarousel">
+    <div class="relative w-full">
+      <div class="pricing-carousel-container overflow-hidden rounded-2xl w-full" id="pricing-embla">
+        <div class="pricing-carousel-viewport overflow-hidden w-full">
+          <div class="pricing-carousel-wrapper flex gap-6" id="pricingCarousel" style="transform: translateX(0);">
           <!-- Duplicar última tarjeta al inicio para loop infinito -->
           {services[services.length - 1] && (
             <div class="pricing-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl p-8 md:p-12 pricing-slide" data-index="-1">
@@ -111,13 +110,17 @@ const services = [
               
               <div class="pt-6 md:pt-8 border-t border-gray-200">
                 <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-center justify-between">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
-                  <span class="text-lg md:text-xl text-gray-500">{services[services.length - 1].period}</span>
+                    <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
+                    <span class="text-lg md:text-xl text-gray-500">{services[services.length - 1].period}</span>
+                  </div>
+                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[services.length - 1].title}>
+                    <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
                 </div>
-                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
               </div>
             </div>
           )}
@@ -142,13 +145,17 @@ const services = [
               
               <div class="pt-6 md:pt-8 border-t border-gray-200">
                 <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-center justify-between">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{service.price}</span>
-                  <span class="text-lg md:text-xl text-gray-500">{service.period}</span>
+                    <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{service.price}</span>
+                    <span class="text-lg md:text-xl text-gray-500">{service.period}</span>
+                  </div>
+                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={service.title}>
+                    <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
                 </div>
-                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
               </div>
             </div>
           ))}
@@ -174,13 +181,17 @@ const services = [
               
               <div class="pt-6 md:pt-8 border-t border-gray-200">
                 <div class="text-xs md:text-sm font-medium text-gray-500 mb-2">A partir de</div>
+                <div class="flex items-center justify-between">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[0].price}</span>
-                  <span class="text-lg md:text-xl text-gray-500">{services[0].period}</span>
+                    <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[0].price}</span>
+                    <span class="text-lg md:text-xl text-gray-500">{services[0].period}</span>
+                  </div>
+                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[0].title}>
+                    <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
                 </div>
-                <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 ml-auto mt-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
               </div>
             </div>
           )}
@@ -190,21 +201,21 @@ const services = [
       
       <!-- Flechas de navegación -->
       <button 
-        class="pricing-arrow pricing-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-gray-200 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-50 transition-all z-10"
+        class="pricing-arrow pricing-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gradient-to-r from-[#082347] to-blue-600 border-none rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:opacity-90 transition-all z-10"
         id="prevBtn"
         aria-label="Tarjeta anterior"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-700">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
           <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       
       <button 
-        class="pricing-arrow pricing-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-gray-200 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-50 transition-all z-10"
+        class="pricing-arrow pricing-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gradient-to-r from-[#082347] to-blue-600 border-none rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:opacity-90 transition-all z-10"
         id="nextBtn"
         aria-label="Tarjeta siguiente"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-700">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
           <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
@@ -213,9 +224,16 @@ const services = [
 </section>
 
 <script>
-  import EmblaCarousel from 'embla-carousel';
+  // Lazy load Embla solo cuando sea necesario
+  let pricingEmblaLoaded = false;
+  let pricingEmblaObserver: IntersectionObserver | null = null;
   
-  document.addEventListener('DOMContentLoaded', () => {
+  async function initPricingCarousel() {
+    if (pricingEmblaLoaded) return;
+    pricingEmblaLoaded = true;
+    
+    const EmblaCarousel = (await import('embla-carousel')).default;
+  
     const isMobile = window.innerWidth <= 768;
     const pricingEmblaNode = document.getElementById('pricing-embla');
     const carousel = document.getElementById('pricingCarousel');
@@ -227,83 +245,340 @@ const services = [
       (function() {
         let currentIndex = 1;
         let isTransitioning = false;
-        
-        if (!carousel || !prevBtn || !nextBtn) return;
-        
-        const totalCards = carousel.children.length;
+    
+    if (!carousel || !prevBtn || !nextBtn) return;
+    
+    const totalCards = carousel.children.length;
         const realTotalCards = totalCards - 2;
         const gap = 24;
-        
-        function getCardWidth() {
-          if (!carousel) return 0;
+    
+    function getCardWidth() {
+      if (!carousel) return 0;
           const container = carousel.closest('.pricing-carousel-container') as HTMLElement;
-          if (!container) return 0;
-          return container.offsetWidth;
-        }
+      if (!container) return 0;
+      return container.offsetWidth;
+    }
 
-        function updateCarousel(skipTransition = false) {
-          if (!carousel) return;
-          if (skipTransition) {
-            carousel.style.transition = 'none';
-          } else {
-            carousel.style.transition = 'transform 0.5s ease-in-out';
+    function updateCarousel(skipTransition = false) {
+      if (!carousel) return;
+      if (skipTransition) {
+        carousel.style.transition = 'none';
+      } else {
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+      }
+      
+      const containerWidth = getCardWidth();
+          if (containerWidth === 0) {
+            // Si aún no se ha calculado el ancho, esperar un frame
+            requestAnimationFrame(() => updateCarousel(skipTransition));
+            return;
+          }
+      const translateX = -(currentIndex * (containerWidth + gap));
+      carousel.style.transform = `translateX(${translateX}px)`;
+    }
+
+        // Actualizar botón de agendar llamada con el servicio actual
+        function updateScheduleButton() {
+          console.log('🔘 updateScheduleButton() llamado');
+          const scheduleBtn = document.getElementById('schedule-call-btn');
+          if (!scheduleBtn || !carousel) {
+            console.log('❌ No se encontró scheduleBtn o carousel');
+            return;
           }
           
-          const containerWidth = getCardWidth();
-          const translateX = -(currentIndex * (containerWidth + gap));
-          carousel.style.transform = `translateX(${translateX}px)`;
-        }
-
-        function goToNext() {
-          if (isTransitioning) return;
-          isTransitioning = true;
-          
-          currentIndex++;
-          updateCarousel();
-          
-          if (currentIndex >= realTotalCards + 1) {
-            setTimeout(() => {
-              currentIndex = 1;
-              updateCarousel(true);
-              setTimeout(() => {
-                isTransitioning = false;
-              }, 50);
-            }, 500);
+          // Obtener el índice real (ignorar tarjetas duplicadas)
+          let realIndex = currentIndex;
+          console.log('🔘 currentIndex inicial:', currentIndex);
+          if (realIndex <= 0) {
+            realIndex = realTotalCards; // Última tarjeta real
+            console.log('🔘 realIndex ajustado a última tarjeta:', realIndex);
+          } else if (realIndex >= realTotalCards + 1) {
+            realIndex = 1; // Primera tarjeta real
+            console.log('🔘 realIndex ajustado a primera tarjeta:', realIndex);
           } else {
-            setTimeout(() => {
-              isTransitioning = false;
-            }, 500);
+            console.log('🔘 realIndex sin ajuste:', realIndex);
           }
-        }
-
-        function goToPrev() {
-          if (isTransitioning) return;
-          isTransitioning = true;
           
-          currentIndex--;
-          updateCarousel();
+          const visibleCard = carousel.children[realIndex] as HTMLElement;
+          if (!visibleCard) {
+            console.log('❌ No se encontró visibleCard en índice:', realIndex);
+            return;
+          }
           
-          if (currentIndex <= 0) {
-            setTimeout(() => {
-              currentIndex = realTotalCards;
-              updateCarousel(true);
-              setTimeout(() => {
-                isTransitioning = false;
-              }, 50);
-            }, 500);
+          const cardTitle = visibleCard.querySelector('h3')?.textContent?.trim();
+          console.log('🔘 cardTitle encontrado:', cardTitle);
+          if (!cardTitle) {
+            console.log('❌ No se encontró cardTitle');
+            return;
+          }
+          
+          // Mapear títulos a intereses
+          const titleToInterest: Record<string, string> = {
+            'Sitios Web': 'Sitios Web',
+            'E-Commerce': 'E-Commerce',
+            'Apps y Software a Medida': 'Apps y Software a Medida',
+            'Bots con IA': 'Bots con IA',
+            'Automatización de Procesos': 'Automatización de Procesos',
+            'Marketing Digital': 'Marketing Digital',
+            'Gestión de Redes Sociales': 'Gestión de Redes Sociales'
+          };
+          
+          const interest = titleToInterest[cardTitle];
+          console.log('🔘 interest mapeado:', interest);
+          if (interest) {
+            const href = `#contact?interest=${encodeURIComponent(interest)}`;
+            console.log('✅ scheduleBtn href actualizado a:', href);
+            scheduleBtn.setAttribute('href', href);
           } else {
-            setTimeout(() => {
-              isTransitioning = false;
-            }, 500);
+            console.log('❌ No se encontró interés, usando #contact');
+            scheduleBtn.setAttribute('href', '#contact');
           }
+    }
+
+    function goToNext() {
+          console.log('➡️ goToNext() llamado');
+          if (isTransitioning) {
+            console.log('⏸️ goToNext bloqueado - isTransitioning = true');
+            return;
+          }
+      isTransitioning = true;
+      
+      currentIndex++;
+          console.log('➡️ currentIndex actualizado a:', currentIndex);
+      updateCarousel();
+      
+      if (currentIndex >= realTotalCards + 1) {
+        setTimeout(() => {
+          currentIndex = 1;
+          updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+                console.log('➡️ Actualizando botones después de loop');
+                updateScheduleButton();
+                updateArrowLinks();
+          }, 50);
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+              console.log('➡️ Actualizando botones después de goToNext');
+              updateScheduleButton();
+              updateArrowLinks();
+        }, 500);
+      }
+    }
+
+    function goToPrev() {
+          console.log('⬅️ goToPrev() llamado');
+          if (isTransitioning) {
+            console.log('⏸️ goToPrev bloqueado - isTransitioning = true');
+            return;
+          }
+      isTransitioning = true;
+      
+      currentIndex--;
+          console.log('⬅️ currentIndex actualizado a:', currentIndex);
+      updateCarousel();
+      
+      if (currentIndex <= 0) {
+        setTimeout(() => {
+          currentIndex = realTotalCards;
+          updateCarousel(true);
+          setTimeout(() => {
+            isTransitioning = false;
+                console.log('⬅️ Actualizando botones después de loop');
+                updateScheduleButton();
+                updateArrowLinks();
+          }, 50);
+        }, 500);
+      } else {
+        setTimeout(() => {
+          isTransitioning = false;
+              console.log('⬅️ Actualizando botones después de goToPrev');
+              updateScheduleButton();
+              updateArrowLinks();
+        }, 500);
+      }
+    }
+
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+
+        // Actualizar enlaces de flechas en las tarjetas
+        function updateArrowLinks() {
+          console.log('🔗 updateArrowLinks() llamado');
+          const arrowLinks = document.querySelectorAll('.schedule-arrow-link');
+          console.log('🔗 Enlaces encontrados:', arrowLinks.length);
+          
+          arrowLinks.forEach((link, index) => {
+            const serviceTitle = link.getAttribute('data-service-title');
+            console.log(`🔗 Enlace ${index + 1} - serviceTitle:`, serviceTitle);
+            
+            if (!serviceTitle) {
+              console.log(`❌ Enlace ${index + 1} no tiene serviceTitle`);
+              return;
+            }
+            
+            // Mapear títulos a intereses
+            const titleToInterest: Record<string, string> = {
+              'Sitios Web': 'Sitios Web',
+              'E-Commerce': 'E-Commerce',
+              'Apps y Software a Medida': 'Apps y Software a Medida',
+              'Bots con IA': 'Bots con IA',
+              'Automatización de Procesos': 'Automatización de Procesos',
+              'Marketing Digital': 'Marketing Digital',
+              'Gestión de Redes Sociales': 'Gestión de Redes Sociales'
+            };
+            
+            const interest = titleToInterest[serviceTitle];
+            console.log(`🔗 Enlace ${index + 1} - interest mapeado:`, interest);
+            
+            if (interest) {
+              const href = `#contact?interest=${encodeURIComponent(interest)}`;
+              console.log(`✅ Enlace ${index + 1} - href actualizado a:`, href);
+              link.setAttribute('href', href);
+            } else {
+              link.setAttribute('href', '#contact');
+            }
+          });
         }
-
-        prevBtn.addEventListener('click', goToPrev);
-        nextBtn.addEventListener('click', goToNext);
-
-        updateCarousel(true);
         
-        // Auto-scroll cada 2.5 segundos
+        // Agregar event listeners a las flechas
+        function setupArrowClickListeners() {
+          const arrowLinks = document.querySelectorAll('.schedule-arrow-link');
+          if (arrowLinks.length === 0) return;
+          
+          // Usar delegación de eventos en el contenedor
+          const carouselContainer = document.getElementById('pricingCarousel');
+          if (carouselContainer) {
+            carouselContainer.addEventListener('click', (e) => {
+              const target = e.target as HTMLElement;
+              const arrowLink = target.closest('.schedule-arrow-link') as HTMLElement;
+              
+              if (arrowLink) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const href = arrowLink.getAttribute('href');
+                if (href) {
+                  window.location.hash = href.replace('#', '');
+                  
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    const headerHeight = 100;
+                    const targetPosition = contactSection.offsetTop - headerHeight;
+                    window.scrollTo({
+                      top: targetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                }
+              }
+            }, { passive: false });
+          }
+        }
+
+        // Inicializar botón después de que el carrusel esté listo
+        function initScheduleButton() {
+          setTimeout(() => {
+            updateScheduleButton();
+            updateArrowLinks();
+            setupArrowClickListeners();
+          }, 800);
+        }
+
+        // Esperar a que el DOM esté listo y el contenedor tenga ancho antes de inicializar
+        function initCarousel() {
+          const containerWidth = getCardWidth();
+          if (containerWidth === 0) {
+            // Si aún no tiene ancho, esperar un poco más
+            setTimeout(initCarousel, 50);
+            return;
+          }
+    updateCarousel(true);
+        }
+        
+        // Inicializar después de que todo esté listo
+        if (document.readyState === 'complete') {
+          setTimeout(() => {
+            initCarousel();
+            initScheduleButton();
+          }, 200);
+        } else {
+          window.addEventListener('load', () => {
+            setTimeout(() => {
+              initCarousel();
+              initScheduleButton();
+            }, 200);
+          });
+        }
+        
+        // Listener global en el documento para capturar clicks en flechas
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          const arrowLink = target.closest('.schedule-arrow-link') as HTMLElement;
+          
+          if (arrowLink) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const href = arrowLink.getAttribute('href');
+            if (href) {
+              window.location.hash = href.replace('#', '');
+              
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                const headerHeight = 100;
+                const targetPosition = contactSection.offsetTop - headerHeight;
+                window.scrollTo({
+                  top: targetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }
+          }
+        }, { capture: true });
+        
+        // También inicializar listeners inmediatamente cuando el DOM esté listo
+        function setupListenersImmediately() {
+          
+          // Intentar múltiples veces para asegurar que los elementos existan
+          const trySetup = (attempt: number) => {
+            console.log(`📋 Intento ${attempt} de configurar listeners`);
+            const arrowLinks = document.querySelectorAll('.schedule-arrow-link');
+            console.log(`📋 Flechas encontradas en intento ${attempt}:`, arrowLinks.length);
+            
+            if (arrowLinks.length > 0) {
+              console.log('✅ Flechas encontradas, configurando listeners');
+              setupArrowClickListeners();
+            } else if (attempt < 10) {
+              console.log(`⏳ No hay flechas aún, reintentando en 500ms...`);
+              setTimeout(() => trySetup(attempt + 1), 500);
+            } else {
+              console.error('❌ No se encontraron flechas después de 10 intentos');
+            }
+          };
+          
+          trySetup(1);
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            console.log('📋 DOMContentLoaded - Configurando listeners de flechas');
+            setTimeout(setupListenersImmediately, 500);
+          });
+        } else {
+          console.log('📋 DOM ya listo - Configurando listeners de flechas');
+          setTimeout(setupListenersImmediately, 500);
+        }
+        
+        // También intentar cuando la ventana carga completamente
+        window.addEventListener('load', () => {
+          console.log('📋 window.load - Configurando listeners de flechas');
+          setTimeout(setupListenersImmediately, 1000);
+        });
+        
+        // Auto-scroll cada 6 segundos
         let autoplayInterval: ReturnType<typeof setInterval> | null = null;
         let isUserInteracting = false;
 
@@ -312,8 +587,9 @@ const services = [
           autoplayInterval = setInterval(() => {
             if (!isUserInteracting && !isTransitioning) {
               goToNext();
+              // updateScheduleButton se llama dentro de goToNext
             }
-          }, 2500); // 2.5 segundos
+          }, 6000); // 6 segundos
         }
 
         function stopAutoplay() {
@@ -366,14 +642,14 @@ const services = [
           }
         });
         
-        let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-        window.addEventListener('resize', () => {
-          if (resizeTimeout) clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            updateCarousel(true);
-          }, 250);
-        });
-      })();
+    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+    window.addEventListener('resize', () => {
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateCarousel(true);
+      }, 250);
+    });
+  })();
     }
     
     // Inicializar Embla solo en mobile
@@ -403,7 +679,7 @@ const services = [
           embla.reInit();
         });
 
-        // Auto-scroll cada 2.5 segundos en mobile
+        // Auto-scroll cada 6 segundos en mobile
         let autoplayInterval: ReturnType<typeof setInterval> | null = null;
         let isUserInteracting = false;
 
@@ -413,7 +689,7 @@ const services = [
             if (!isUserInteracting) {
               embla.scrollNext();
             }
-          }, 2500); // 2.5 segundos
+          }, 6000); // 6 segundos
         }
 
         function stopAutoplay() {
@@ -449,33 +725,78 @@ const services = [
         });
       }
     }
+    
+    // Limpiar observer
+    if (pricingEmblaObserver) {
+      pricingEmblaObserver.disconnect();
+      pricingEmblaObserver = null;
+    }
+  }
+  
+  // IntersectionObserver para lazy loading de Pricing Embla
+  document.addEventListener('DOMContentLoaded', () => {
+    const pricingEmblaNode = document.getElementById('pricing-embla');
+    if (!pricingEmblaNode) return;
+    
+    // Desktop siempre inicializa inmediatamente
+    if (window.innerWidth > 768) {
+      initPricingCarousel();
+      return;
+    }
+    
+    // Mobile: lazy load cuando sea visible
+    pricingEmblaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initPricingCarousel();
+        }
+      });
+    }, {
+      rootMargin: '200px'
+    });
+    
+    pricingEmblaObserver.observe(pricingEmblaNode);
   });
 </script>
 
 <style>
   .pricing-carousel-container {
     position: relative;
+    contain: layout style paint;
   }
 
   .pricing-carousel-viewport {
     overflow: hidden;
     width: 100%;
+    contain: layout style paint;
   }
   
   .pricing-carousel-wrapper {
     display: flex;
     gap: 1.5rem; /* gap-6 = 24px */
+    will-change: transform;
   }
   
   .pricing-card {
     min-width: 0;
     flex: 0 0 100%;
     box-sizing: border-box;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
   }
 
   .pricing-slide {
     flex: 0 0 100%;
     min-width: 0;
+    width: 100%;
+  }
+  
+  @media (min-width: 1024px) {
+    .pricing-card {
+      flex: 0 0 calc(100% - 0px);
+      width: 100%;
+    }
   }
 
   @media (max-width: 768px) {

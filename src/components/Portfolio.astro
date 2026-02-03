@@ -32,11 +32,19 @@
                   class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]"
                   style="width: 1440px; height: 900px;"
                 >
+                  <div class="iframe-placeholder absolute inset-0 flex items-center justify-center bg-gray-50 rounded-3xl z-0">
+                    <div class="text-center">
+                      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                      <p class="text-gray-400 font-medium">Cargando vista previa...</p>
+                    </div>
+                  </div>
                   <iframe
                     src="https://hebrara.com/"
-                    class="w-full h-full rounded-3xl portfolio-iframe"
+                    class="w-full h-full rounded-3xl portfolio-iframe opacity-0 transition-opacity duration-500 relative z-10"
                     style="border: none;"
-                    loading="lazy"
+                    loading="eager"
+                    allow="fullscreen"
+                    referrerpolicy="no-referrer-when-downgrade"
                     title="Hebrara website preview"></iframe>
                 </div>
                 <a
@@ -62,11 +70,19 @@
                   class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]"
                   style="width: 1440px; height: 900px;"
                 >
+                  <div class="iframe-placeholder absolute inset-0 flex items-center justify-center bg-gray-50 rounded-3xl z-0">
+                    <div class="text-center">
+                      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                      <p class="text-gray-400 font-medium">Cargando vista previa...</p>
+                    </div>
+                  </div>
                   <iframe
-                    src="https://www.turismoencasasyfincas.com.co/"
-                    class="w-full h-full rounded-3xl portfolio-iframe"
+                    data-src="https://www.turismoencasasyfincas.com.co/"
+                    class="w-full h-full rounded-3xl portfolio-iframe opacity-0 transition-opacity duration-500 relative z-10"
                     style="border: none;"
                     loading="lazy"
+                    allow="fullscreen"
+                    referrerpolicy="no-referrer-when-downgrade"
                     title="Turismo en Casas y Fincas website preview"></iframe>
                 </div>
                 <a
@@ -92,11 +108,19 @@
                   class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]"
                   style="width: 1440px; height: 900px;"
                 >
+                  <div class="iframe-placeholder absolute inset-0 flex items-center justify-center bg-gray-50 rounded-3xl z-0">
+                    <div class="text-center">
+                      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                      <p class="text-gray-400 font-medium">Cargando vista previa...</p>
+                    </div>
+                  </div>
                   <iframe
-                    src="https://hotelesilar.com/"
-                    class="w-full h-full rounded-3xl portfolio-iframe"
+                    data-src="https://hotelesilar.com/"
+                    class="w-full h-full rounded-3xl portfolio-iframe opacity-0 transition-opacity duration-500 relative z-10"
                     style="border: none;"
                     loading="lazy"
+                    allow="fullscreen"
+                    referrerpolicy="no-referrer-when-downgrade"
                     title="Hoteles Ilar website preview"></iframe>
                 </div>
                 <a
@@ -122,11 +146,19 @@
                   class="absolute top-0 left-1/2 -translate-x-1/2 origin-top transform scale-[0.4] md:scale-[0.5] xl:scale-[0.6]"
                   style="width: 1440px; height: 900px;"
                 >
+                  <div class="iframe-placeholder absolute inset-0 flex items-center justify-center bg-gray-50 rounded-3xl z-0">
+                    <div class="text-center">
+                      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                      <p class="text-gray-400 font-medium">Cargando vista previa...</p>
+                    </div>
+                  </div>
                   <iframe
-                    src="https://skeletonoficial.com/"
-                    class="w-full h-full rounded-3xl portfolio-iframe"
+                    data-src="https://skeletonoficial.com/"
+                    class="w-full h-full rounded-3xl portfolio-iframe opacity-0 transition-opacity duration-500 relative z-10"
                     style="border: none;"
                     loading="lazy"
+                    allow="fullscreen"
+                    referrerpolicy="no-referrer-when-downgrade"
                     title="Skeleton Oficial website preview"></iframe>
                 </div>
                 <a
@@ -190,7 +222,7 @@
       </span>
       
       <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-        {/* Placeholder para logos de empresas */}
+        <!-- Placeholder para logos de empresas -->
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div 
             class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer group"
@@ -246,28 +278,42 @@
       pointer-events: none;
       overflow: hidden;
     }
+  }
 
-    .portfolio-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 10;
-      cursor: pointer;
-      display: block;
+  /* En desktop, permitir interacción con iframes */
+  @media (min-width: 768px) {
+    .portfolio-iframe {
+      pointer-events: auto;
     }
+  }
+
+  .portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    cursor: pointer;
+    display: block;
   }
 </style>
 
 <script>
-  import EmblaCarousel from "embla-carousel";
-
-  document.addEventListener("DOMContentLoaded", () => {
+  // Lazy load Embla solo cuando sea necesario
+  let emblaLoaded = false;
+  let emblaObserver: IntersectionObserver | null = null;
+  
+  async function initPortfolioCarousel() {
+    if (emblaLoaded) return;
+    emblaLoaded = true;
+    
+    const EmblaCarousel = (await import("embla-carousel")).default;
+    
     const emblaNode = document.getElementById("embla-portfolio");
     if (!emblaNode) return;
 
-    const viewport = emblaNode.querySelector(".embla__viewport");
+    const viewport = emblaNode.querySelector(".embla__viewport") as HTMLElement;
     if (!viewport) return;
 
     const embla = EmblaCarousel(viewport, {
@@ -278,8 +324,79 @@
       dragFree: true, // Desactivar drag libre para que centre automáticamente
     });
 
+    // Función para cargar iframes lazy
+    function loadIframe(iframe: HTMLIFrameElement) {
+      const dataSrc = iframe.getAttribute("data-src") || iframe.src;
+      if (dataSrc) {
+        const placeholder = iframe.parentElement?.querySelector('.iframe-placeholder');
+        
+        iframe.onload = () => {
+          iframe.classList.remove('opacity-0');
+          if (placeholder) {
+            (placeholder as HTMLElement).style.display = 'none';
+          }
+        };
+
+        // Si ya tiene src (como el primero), verificar si ya cargó
+        if (iframe.src) {
+          try {
+            if (iframe.contentWindow && iframe.contentWindow.document.readyState === 'complete') {
+              iframe.classList.remove('opacity-0');
+              if (placeholder) (placeholder as HTMLElement).style.display = 'none';
+            }
+          } catch (e) {
+             // CORS error es normal si ya cargó de otro dominio
+             iframe.classList.remove('opacity-0');
+             if (placeholder) (placeholder as HTMLElement).style.display = 'none';
+          }
+        }
+
+        if (iframe.getAttribute("data-src")) {
+          iframe.src = dataSrc;
+          iframe.removeAttribute("data-src");
+        }
+      }
+    }
+
+    // Cargar iframes cuando se vuelvan visibles
+    function loadVisibleIframes() {
+      if (!emblaNode) return;
+      const slides = emblaNode.querySelectorAll(".embla__slide");
+      const selectedIndex = embla.selectedScrollSnap();
+      
+      // Cargar el slide actual y los adyacentes (hasta 2 a cada lado)
+      for (let offset = -2; offset <= 2; offset++) {
+        let index = selectedIndex + offset;
+        
+        // Manejar loop del carousel
+        if (index < 0) {
+          index = slides.length + index;
+        } else if (index >= slides.length) {
+          index = index - slides.length;
+        }
+        
+        if (index >= 0 && index < slides.length) {
+          const slide = slides[index] as HTMLElement;
+          const iframe = slide.querySelector("iframe");
+          if (iframe) {
+            loadIframe(iframe);
+          }
+        }
+      }
+    }
+
     // Start from the first slide (index 0)
     embla.scrollTo(0);
+
+    // Esperar a que el carousel esté listo antes de cargar iframes
+    setTimeout(() => {
+      loadVisibleIframes();
+    }, 100);
+
+    // Cargar iframes cuando cambie el slide
+    embla.on("select", () => {
+      loadVisibleIframes();
+    });
 
     const prevButton = emblaNode.querySelector(".embla__prev");
     const nextButton = emblaNode.querySelector(".embla__next");
@@ -300,7 +417,7 @@
       if (autoplayInterval) return;
       autoplayInterval = setInterval(() => {
         if (!isUserInteracting) {
-          embla.scrollTo(embla.selectedScrollSnap() + 1, {duration: 700,});
+          embla.scrollNext();
         }
       }, 6500); 
     }
@@ -328,13 +445,37 @@
     // Iniciar autoplay
     startAutoplay();
 
-    // Pausar cuando la ventana no está visible
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        stopAutoplay();
-      } else {
-        startAutoplay();
+      // Pausar cuando la ventana no está visible
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+      
+      // Limpiar observer
+      if (emblaObserver) {
+        emblaObserver.disconnect();
+        emblaObserver = null;
       }
+  }
+  
+  // IntersectionObserver para lazy loading
+  document.addEventListener("DOMContentLoaded", () => {
+    const emblaNode = document.getElementById("embla-portfolio");
+    if (!emblaNode) return;
+    
+    emblaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initPortfolioCarousel();
+        }
+      });
+    }, {
+      rootMargin: '200px'
     });
+    
+    emblaObserver.observe(emblaNode);
   });
 </script>

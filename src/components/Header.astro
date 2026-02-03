@@ -1,8 +1,8 @@
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 w-full z-[1000]
+  class="fixed top-0 left-0 right-0 w-full z-[1001]
          py-4 md:py-5
-         transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+         transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
          translate-y-0"
 >
   <div
@@ -13,51 +13,116 @@
     <!-- LOGO BOX -->
     <div
       id="logo-box"
-      class="header-box px-6 py-3 flex items-center justify-center
+      class="header-box px-4 md:px-6 py-2 md:py-3 flex items-center justify-center
              cursor-pointer transition-all duration-500"
     >
       <img
         id="logo-img"
         src="/LogoAzul.png"
         alt="SLE Development Logo"
-        class="h-7 md:h-8 w-auto shrink-0"
+        class="h-6 md:h-8 w-auto shrink-0"
+        width="64"
+        height="64"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
       />
 
       <span
         id="logo-text"
-        class="logo-text text-base font-semibold hidden sm:inline"
+        class="logo-text text-sm md:text-base font-semibold hidden sm:inline"
       >
         SLE DEVELOPMENT
       </span>
     </div>
-
-    <!-- NAV CENTRADO -->
-    <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2">
+    
+    <!-- NAV CENTRADO (DESKTOP) -->
+    <nav class="hidden lg:flex absolute left-1/2 -translate-x-1/2">
       <div class="header-box flex gap-10 lg:gap-6 items-center px-10 py-4 relative">
         <a href="#home" class="nav-link">
           Inicio
           <span class="nav-underline"></span>
         </a>
-        <a href="#about" class="nav-link">
-          Nosotros
-          <span class="nav-underline"></span>
-        </a>
-        <a href="#how-it-works" class="nav-link">
+        <a href="#services" class="nav-link">
           Cómo Funciona
           <span class="nav-underline"></span>
         </a>
-        <a href="#services" class="nav-link">
+        <a href="#portfolio" class="nav-link">
+          Portafolio
+          <span class="nav-underline"></span>
+        </a>
+        <a href="#services-accordion" class="nav-link">
           Servicios
+          <span class="nav-underline"></span>
+        </a>
+        <a href="/precios" class="nav-link">
+          Precios
           <span class="nav-underline"></span>
         </a>
       </div>
     </nav>
+    
+    <!-- MENU HAMBURGUESA (MOBILE/TABLET) -->
+    <button
+      id="mobile-menu-button"
+      class="lg:hidden flex flex-col gap-1.5 p-2 z-[1001] relative bg-transparent border-none cursor-pointer"
+      aria-label="Abrir menú"
+    >
+      <span class="mobile-menu-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+      <span class="mobile-menu-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+      <span class="mobile-menu-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+    </button>
+
+    <!-- MENU MOBILE -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-[1002] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+    >
+      <!-- Botón cerrar -->
+      <button
+        id="mobile-menu-close"
+        class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[1003]"
+        aria-label="Cerrar menú"
+      >
+        <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="flex flex-col h-full">
+        <nav class="flex flex-col gap-4 bg-white pt-20 px-6 pb-8">
+          <a href="#home" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Inicio
+          </a>
+          <a href="#services" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Cómo Funciona
+          </a>
+          <a href="#portfolio" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Portafolio
+          </a>
+          <a href="#services-accordion" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Servicios
+          </a>
+          <a href="/precios" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Precios
+          </a>
+          <a href="#contact" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+            Contacto
+          </a>
+        </nav>
+        <div class="mt-auto py-8 bg-white flex justify-center">
+          <a href="#contact" class="cta-button-mobile text-center block max-w-content mx-auto">
+            Empezar
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA -->
-    <div class="flex items-center gap-4 md:gap-6 ml-auto">
+    <div class="flex items-center gap-2 md:gap-6 ml-auto">
 
       <!-- CONTACTO -->
-      <div class="header-box px-6 py-3 hidden md:flex items-center">
+      <div class="header-box px-6 py-3 hidden lg:flex items-center">
         <a href="#contact" class="nav-link">
           Contacto
           <span class="nav-underline"></span>
@@ -65,7 +130,7 @@
       </div>
 
       <!-- EMPEZAR -->
-      <a href="#contact" class="cta-button">
+      <a href="#contact" class="cta-button hidden lg:inline-flex">
         Empezar
       </a>
     </div>
@@ -80,15 +145,87 @@
     --brand-blue-hover: #061a35;
   }
 
+  /* ========= HEADER ========= */
+  #main-header {
+    background-color: transparent;
+    transition: all 0.3s ease;
+    contain: layout style paint;
+  }
+  
+  #main-header.scrolled {
+    will-change: auto;
+  }
+
+  #main-header.scrolled {
+    background-color: transparent;
+    backdrop-filter: none;
+  }
+
+  /* Cambiar color del texto cuando está scrolled - transición azul */
+  #main-header.scrolled .nav-link {
+    color: var(--brand-blue);
+  }
+
+  #main-header.scrolled .logo-text {
+    color: #ffffff;
+  }
+
+  #main-header.scrolled .header-box .logo-text {
+    color: #ffffff;
+  }
+
+  /* Transiciones optimizadas - will-change solo durante hover */
+  .nav-link {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    will-change: transform;
+  }
+  
+  .nav-link:not(:hover) {
+    will-change: auto;
+  }
+
+  .logo-text {
+    transition: all 0.3s ease;
+  }
+  
+  #logo-box.logo-collapsed .logo-text {
+    will-change: opacity, transform, max-width;
+  }
+  
+  #logo-box:not(.logo-collapsed) .logo-text {
+    will-change: auto;
+  }
+
   /* ========= HEADER BOX ========= */
   .header-box {
     background: white;
     border-radius: 1rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transition:
-      background-color 0.6s cubic-bezier(0.4,0,0.2,1),
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    contain: layout style paint;
+  }
+  
+  .header-box:hover {
+    will-change: transform, box-shadow;
+  }
+  
+  .header-box:not(:hover) {
+    will-change: auto;
+  }
+  
+  #main-header.scrolled .header-box {
+    will-change: background;
+  }
+
+  #main-header.scrolled .header-box {
+    background: linear-gradient(90deg, #082347, #2563eb);
+  }
+
+  #main-header.scrolled .header-box .nav-link {
+    color: #ffffff;
   }
 
   .header-box:hover {
@@ -96,28 +233,28 @@
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
   }
 
+  #main-header.scrolled .header-box:hover {
+    box-shadow: 0 14px 32px rgba(8, 35, 71, 0.3);
+  }
+
   /* ========= LOGO TEXT ========= */
   .logo-text {
-    color: var(--brand-blue);
+    color: #4b5563;
     overflow: hidden;
     white-space: nowrap;
     max-width: 220px;
     opacity: 1;
     margin-left: 0.5rem;
-    transform: translateX(0);
-    transition:
-      max-width 0.5s ease,
-      margin-left 0.5s ease,
-      opacity 0.35s ease,
-      transform 0.5s ease,
-      color 0.6s cubic-bezier(0.4,0,0.2,1);
+    transform: translateX(0) scale(1);
+    will-change: opacity, transform, max-width;
+    transition: all 0.3s ease;
   }
 
   .logo-collapsed .logo-text {
     max-width: 0;
     margin-left: 0;
     opacity: 0;
-    transform: translateX(-14px);
+    transform: translateX(-14px) scale(0.95);
   }
 
   .logo-collapsed:hover .logo-text,
@@ -125,10 +262,15 @@
     max-width: 220px;
     margin-left: 0.5rem;
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 
   /* Centrar el logo al colapsar y hacerlo más compacto */
+  #logo-box {
+    will-change: padding;
+    transition: all 0.3s ease;
+  }
+
   #logo-box.logo-collapsed {
     padding-left: 0.8rem;
     padding-right: 0.8rem;
@@ -144,10 +286,10 @@
   .nav-link {
     position: relative;
     font-weight: 500;
-    color: var(--brand-blue);
+    color: #4b5563;
     letter-spacing: 0;
     transition:
-      color 0.6s cubic-bezier(0.4,0,0.2,1),
+      color 0.3s ease,
       transform 0.25s ease,
       letter-spacing 0.25s ease;
   }
@@ -165,8 +307,7 @@
     width: 0;
     background-color: var(--brand-blue);
     transition:
-      width 0.25s ease,
-      background-color 0.6s cubic-bezier(0.4,0,0.2,1);
+      width 0.25s ease;
   }
 
   .nav-link:hover .nav-underline,
@@ -193,9 +334,31 @@
     white-space: nowrap;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transform: scale(1);
-    transition:
-      transform 0.25s cubic-bezier(0.4,0,0.2,1),
-      box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    contain: layout style paint;
+  }
+  
+  .cta-button:hover {
+    will-change: transform;
+  }
+  
+  .cta-button:not(:hover) {
+    will-change: auto;
+  }
+  
+  #main-header.scrolled .cta-button {
+    will-change: background, color;
+  }
+
+  #main-header.scrolled .cta-button {
+    background: #ffffff;
+    color: var(--brand-blue);
+  }
+
+  @media (max-width: 768px) {
+    .header-box {
+      padding: 0.5rem 0.75rem;
+    }
   }
 
   .cta-button:hover {
@@ -208,31 +371,102 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   }
 
-  /* ========= HEADER SCROLLED ========= */
-  .header-scrolled .header-box {
+  /* ========= MOBILE MENU ========= */
+  #mobile-menu-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  #mobile-menu-button:focus {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  #mobile-menu-button.menu-open .mobile-menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  #mobile-menu-button.menu-open .mobile-menu-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu-button.menu-open .mobile-menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  #mobile-menu {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  #mobile-menu.menu-open {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    transform: translateX(0);
+  }
+
+  #mobile-menu-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s ease;
+  }
+
+  #mobile-menu-close:hover {
+    transform: rotate(90deg);
+  }
+
+  #mobile-menu-close:focus {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .mobile-nav-link {
+    border-bottom: 1px solid #e5e7eb;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: block;
+  }
+
+  .mobile-nav-link:active {
+    color: var(--brand-blue);
+    transform: translateX(4px);
+  }
+
+  .cta-button-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(90deg, #082347, #2563eb);
-  }
-
-  .header-scrolled .logo-text {
     color: #ffffff;
+    padding: 1rem 2rem;
+    line-height: 1;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
   }
 
-  .header-scrolled .nav-link {
-    color: #ffffff;
-  }
-
-  .header-scrolled .nav-underline {
-    background-color: #ffffff;
+  .cta-button-mobile:active {
+    transform: scale(0.98);
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('main-header');
-    const hero = document.getElementById('hero');
     const logoBox = document.getElementById('logo-box');
-    const logoImg = document.getElementById('logo-img');
     const navLinks = document.querySelectorAll('.nav-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
     let lastScrollY = window.scrollY;
 
@@ -244,44 +478,149 @@
       });
     });
 
-    // 🔹 CAMBIO DE ESTILO AL SALIR DEL HERO
-    if (hero && header) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) {
-            header.classList.add('header-scrolled');
-            if (logoImg instanceof HTMLImageElement) logoImg.src = '/LogoBlanco.png';
-          } else {
-            header.classList.remove('header-scrolled');
-            if (logoImg instanceof HTMLImageElement) logoImg.src = '/LogoAzul.png';
-          }
-        },
-        { threshold: 0.2 }
-      );
-
-      observer.observe(hero);
-    }
-
-    // Logo collapse
-    window.addEventListener('scroll', () => {
+    // Logo collapse y transición de color del header
+    const mainHeader = document.getElementById('main-header');
+    
+    // Optimización máxima: RAF + throttling + batch updates
+    let ticking = false;
+    let rafId: number | null = null;
+    
+    function updateHeader() {
       const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
 
+      // Solo actualizar si hay cambio significativo (optimización)
+      if (scrollDelta < 1 && currentScrollY > 50 && currentScrollY < 120) {
+        ticking = false;
+        return;
+      }
+
+      // Batch DOM updates
+      if (mainHeader) {
+        const shouldBeScrolled = currentScrollY > 50;
+        const isScrolled = mainHeader.classList.contains('scrolled');
+        
+        if (shouldBeScrolled !== isScrolled) {
+          mainHeader.classList.toggle('scrolled', shouldBeScrolled);
+        }
+      }
+
+      // Logo collapse
       if (logoBox) {
-        if (currentScrollY > lastScrollY && currentScrollY > 120) {
-          logoBox.classList.add('logo-collapsed');
-        } else if (currentScrollY < lastScrollY - 10 || currentScrollY <= 50) {
-          // Se abre al hacer scroll hacia arriba o estar cerca del top
-          logoBox.classList.remove('logo-collapsed');
+        const shouldCollapse = currentScrollY > lastScrollY && currentScrollY > 120;
+        const isCollapsed = logoBox.classList.contains('logo-collapsed');
+        
+        if (shouldCollapse !== isCollapsed) {
+          if (shouldCollapse) {
+            logoBox.classList.add('logo-collapsed');
+          } else if (currentScrollY < lastScrollY - 10 || currentScrollY <= 50) {
+            logoBox.classList.remove('logo-collapsed');
+          }
         }
       }
 
       lastScrollY = currentScrollY;
+      ticking = false;
+      rafId = null;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        rafId = window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+    
+    // Cleanup al desmontar
+    window.addEventListener('beforeunload', () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     });
 
     if (logoBox) {
       logoBox.addEventListener('click', () => {
-        logoBox.classList.toggle('logo-forced-open');
+        window.location.href = '#home';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+    // Mobile menu toggle
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    
+    function closeMobileMenu() {
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.classList.remove('menu-open');
+        mobileMenu.classList.remove('menu-open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openMobileMenu() {
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.classList.add('menu-open');
+        mobileMenu.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('menu-open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+    }
+
+    // Cerrar con el botón X
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Cerrar menú al hacer clic fuera (en el fondo)
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    // Smooth scroll para los enlaces de navegación
+    const allNavLinks = document.querySelectorAll('a[href^="#"]');
+    
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const headerHeight = document.getElementById('main-header')?.offsetHeight || 0;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Actualizar estado activo solo para nav-links
+            if (link.classList.contains('nav-link')) {
+              navLinks.forEach(l => l.classList.remove('active'));
+              link.classList.add('active');
+            }
+          }
+        }
+      });
+    });
   });
 </script>

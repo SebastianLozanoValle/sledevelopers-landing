@@ -416,8 +416,12 @@ const { isVisible = true, isComplete = false } = Astro.props;
       const loadingScreen = document.getElementById("loadingScreen");
       if (!loadingScreen) return;
 
-      // Mostrar loader por 4 segundos (tiempo de la animación completa)
-      const timer = setTimeout(() => {
+      let loaderHidden = false;
+
+      function hideLoader() {
+        if (loaderHidden) return;
+        loaderHidden = true;
+
         // Agregar clase para animación de cortina hacia arriba
         loadingScreen.classList.add("curtain-up");
 
@@ -427,9 +431,24 @@ const { isVisible = true, isComplete = false } = Astro.props;
             loadingScreen.parentNode.removeChild(loadingScreen);
           }
         }, 1000);
+      }
+
+      // Timeout máximo de 4 segundos
+      const maxTimeout = setTimeout(() => {
+        hideLoader();
       }, 4000);
 
-      return () => clearTimeout(timer);
+      // Verificar si la página ya está cargada
+      if (document.readyState === 'complete') {
+        clearTimeout(maxTimeout);
+        hideLoader();
+      } else {
+        // Esperar a que la página esté completamente cargada
+        window.addEventListener('load', () => {
+          clearTimeout(maxTimeout);
+          hideLoader();
+        });
+      }
     })();
   </script>
 </div>
