@@ -8,17 +8,37 @@ import ServicesAccordion from '../components/ServicesAccordion.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import LoadingScreen from '../components/LoadingScreen.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import "../styles/global.css";
 ---
 
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/LogoAzul.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="SLE Development - Desarrollo web y soluciones digitales" />
+		
+		<!-- SEO Basics -->
 		<title>SLE Development - Desarrollo Web y Soluciones Digitales</title>
+		<meta name="description" content="Especialistas en desarrollo web, software a medida e inteligencia artificial. Creamos soluciones digitales que transforman y escalan tu negocio." />
+		<meta name="keywords" content="desarrollo web, software, IA, inteligencia artificial, marketing digital, transformación digital" />
+		<link rel="canonical" href="https://sledevelopers.com/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://sledevelopers.com/" />
+		<meta property="og:title" content="SLE Development - Desarrollo Web y Soluciones Digitales" />
+		<meta property="og:description" content="Desarrollamos tecnología para que tu negocio escale. Soluciones en web, software e IA." />
+		<meta property="og:image" content="https://sledevelopers.com/LogoAzul.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://sledevelopers.com/" />
+		<meta property="twitter:title" content="SLE Development - Desarrollo Web y Soluciones Digitales" />
+		<meta property="twitter:description" content="Desarrollamos tecnología para que tu negocio escale." />
+		<meta property="twitter:image" content="https://sledevelopers.com/LogoAzul.png" />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -37,6 +57,7 @@ import "../styles/global.css";
 			<Contact />
 		</main>
 		<Footer />
+		<WhatsAppButton />
 	</body>
 </html>
 

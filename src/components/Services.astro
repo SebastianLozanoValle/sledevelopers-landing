@@ -114,46 +114,42 @@
     const { ScrollTrigger } = await import('gsap/ScrollTrigger');
     gsap.registerPlugin(ScrollTrigger);
 
-    const container = document.querySelector('.services-scroll-container') as HTMLElement;
+    const section = document.querySelector('#services') as HTMLElement;
     const content = document.querySelector('.services-scroll-content') as HTMLElement;
-    if (!container || !content) return;
+    if (!section || !content) return;
 
     const cards = content.querySelectorAll('.service-card');
     if (!cards.length) return;
 
-    const cardWidth = (cards[0] as HTMLElement).offsetWidth;
-    const gap = 40;
-
-    const totalWidth = (cardWidth + gap) * cards.length;
-    const containerWidth = container.offsetWidth;
-    const scrollDistance = Math.max(0, totalWidth - containerWidth);
-
-    const startOffset = cardWidth * 1.1;
+    // Calculamos el ancho real del contenido
+    const totalContentWidth = content.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    
+    // En simultáneo, queremos que las tarjetas se muevan de derecha a izquierda 
+    // mientras la sección cruza la pantalla.
+    const scrollDistance = totalContentWidth - (viewportWidth * 0.8);
 
     // Añadir clase para optimización durante animación
     content.classList.add('animating');
     
-    gsap.set(content, {
-      x: startOffset
-    });
+    // Empezamos con un pequeño offset positivo para que la primera tarjeta no esté pegada al borde
+    gsap.set(content, { x: 100 });
 
     gsap.to(content, {
       x: -scrollDistance,
       ease: 'none',
       scrollTrigger: {
-        trigger: container,
-        start: 'top bottom-=100',
-        end: 'bottom top',
-        scrub: 0.6,
+        trigger: section,
+        start: 'top bottom', // Empieza cuando el top entra por abajo
+        end: 'bottom top',   // Termina cuando el bottom sale por arriba
+        scrub: 1,
         invalidateOnRefresh: true,
         onUpdate: () => {
-          // Mantener will-change solo durante animación activa
           if (!content.classList.contains('animating')) {
             content.classList.add('animating');
           }
         },
         onLeave: () => {
-          // Remover will-change cuando termine la animación
           content.classList.remove('animating');
         }
       }
