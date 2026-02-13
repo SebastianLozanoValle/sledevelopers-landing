@@ -132,8 +132,10 @@
     // Añadir clase para optimización durante animación
     content.classList.add('animating');
     
-    // Empezamos con un pequeño offset positivo para que la primera tarjeta no esté pegada al borde
-    gsap.set(content, { x: 100 });
+    // Empezamos con un offset a la derecha para que las tarjetas entren gradualmente
+    // Esto da "tiempo de ver" mientras se hace scroll vertical.
+    const initialOffset = Math.min(viewportWidth * 0.6, 500);
+    gsap.set(content, { x: initialOffset });
 
     gsap.to(content, {
       x: -scrollDistance,
