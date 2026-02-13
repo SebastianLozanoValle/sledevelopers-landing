@@ -221,21 +221,99 @@
         Empresas que confían en nosotros
       </span>
       
-      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-        <!-- Placeholder para logos de empresas -->
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div 
-            class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer group"
-          >
-            <div class="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-300 group-hover:from-indigo-100 group-hover:to-purple-100 transition-colors duration-500 flex items-center justify-center text-gray-400 font-bold text-xs">
-              LOGO
-            </div>
-          </div>
-        ))}
+        <!-- Logos de aliados - Marquee infinito -->
+        <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+          <ul class="flex items-center justify-center md:justify-start [&_li]:mx-14 [&_img]:max-w-none animate-infinite-scroll">
+            {[
+              "Acaymas.webp",
+              "Casa Munkala.webp",
+              "La arequipenita.webp",
+              "La yunza.webp",
+              "Logo Skeleton Store.webp",
+              "Logo ai talent.webp",
+              "Logo bendek solutions.webp",
+              "Logo casaindigo.webp",
+              "Logo central pecuaria.webp",
+              "Logo comparcity.webp",
+              "Logo evergreen.webp",
+              "Logo imaginatrips.webp",
+              "Logo moqlonie.webp",
+              "Logo signu consulting.webp",
+              "Logo vero vista.webp",
+              "Tienda origen.webp",
+              "casas y rfincas.webp",
+              "memory mark.webp",
+              "serhidra.webp"
+            ].map((logo) => (
+              <li>
+                <div 
+                  class="w-32 h-20 flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-500 cursor-pointer group filter grayscale hover:grayscale-0"
+                >
+                  <img 
+                    src={`/logos-aliados/${logo}`} 
+                    alt={`Aliado ${logo.replace('.webp', '')}`}
+                    class="max-w-full max-h-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+          <ul class="flex items-center justify-center md:justify-start [&_li]:mx-14 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+            {[
+              "Acaymas.webp",
+              "Casa Munkala.webp",
+              "La arequipenita.webp",
+              "La yunza.webp",
+              "Logo Skeleton Store.webp",
+              "Logo ai talent.webp",
+              "Logo bendek solutions.webp",
+              "Logo casaindigo.webp",
+              "Logo central pecuaria.webp",
+              "Logo comparcity.webp",
+              "Logo evergreen.webp",
+              "Logo imaginatrips.webp",
+              "Logo moqlonie.webp",
+              "Logo signu consulting.webp",
+              "Logo vero vista.webp",
+              "Tienda origen.webp",
+              "casas y rfincas.webp",
+              "memory mark.webp",
+              "serhidra.webp"
+            ].map((logo) => (
+              <li>
+                <div 
+                  class="w-32 h-20 flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-500 cursor-pointer group filter grayscale hover:grayscale-0"
+                >
+                  <img 
+                    src={`/logos-aliados/${logo}`} 
+                    alt={`Aliado ${logo.replace('.webp', '')}`}
+                    class="max-w-full max-h-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 
 <style>
   .embla {
