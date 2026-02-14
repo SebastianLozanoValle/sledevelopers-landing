@@ -1,114 +1,141 @@
 ---
 const faqs = [
   {
-    question: "How can I contact Inkyy Team?",
-    answer: "You can reach us through our contact form on our website or by emailing us at hello@inkyy.com. We typically respond within 24 hours.",
-    open: true
+    question: "¿Qué beneficios ofrece el desarrollo de software a medida para mi empresa?",
+    answer: "El software a medida se adapta 100% a tus procesos, eliminando licencias innecesarias y permitiendo una escalabilidad total. A diferencia de las soluciones genéricas, un desarrollo propio crece con tu negocio y te otorga una ventaja competitiva única."
   },
   {
-    question: "What services do you offer?",
-    answer: "We offer a wide range of services including web design, UI/UX design, responsive design, Webflow development, custom development, and e-commerce solutions.",
-    open: false
+    question: "¿Cómo puede la Inteligencia Artificial optimizar mis costos operativos?",
+    answer: "La IA permite automatizar tareas repetitivas, predecir demandas y mejorar la atención al cliente mediante bots inteligentes. Esto reduce el error humano y libera a tu equipo para tareas de mayor valor estratégico, optimizando el ROI."
   },
   {
-    question: "Do you provide website maintenance services?",
-    answer: "Yes, we provide comprehensive website maintenance services to keep your site running smoothly and up-to-date.",
-    open: false
+    question: "¿En qué ciudades de Colombia ofrecen sus servicios de desarrollo?",
+    answer: "Tenemos base en Colombia y trabajamos con empresas en Bogotá, Medellín, Cali y Barranquilla. También ofrecemos servicios de desarrollo nearshore para empresas en Estados Unidos y Latinoamérica que buscan talento técnico de alta calidad."
   },
   {
-    question: "How long does it take to design and develop a website?",
-    answer: "The timeline varies depending on the project scope, but typically ranges from 4-12 weeks for a complete website design and development.",
-    open: false
-  },
-  {
-    question: "Do you require a deposit for projects?",
-    answer: "Yes, we typically require a 50% deposit to begin work, with the remaining balance due upon project completion.",
-    open: false
+    question: "¿Cuál es el tiempo promedio de entrega de un proyecto digital?",
+    answer: "Depende de la complejidad, pero trabajamos con metodologías ágiles que permiten entregas funcionales en semanas. Desde la consultoría inicial hasta el despliegue final, mantenemos una comunicación constante para asegurar el cumplimiento de hitos."
   }
 ];
 ---
 
-<section class="py-24 px-8 max-w-[1400px] mx-auto relative" id="faq">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-    <!-- Left Side - Title -->
-    <div class="relative">
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50 rounded-3xl blur-3xl -z-10"></div>
-      <h2 class="text-[clamp(3rem,5vw,5rem)] font-extrabold text-gray-900 leading-[1.1] m-0">
-        Frequently<br />
-        Asked<br />
-        Questions
-      </h2>
-    </div>
+<section class="py-24 px-8 max-w-[1000px] mx-auto relative overflow-hidden" id="faq">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60 -z-10 translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-50 rounded-full blur-3xl opacity-60 -z-10 -translate-x-1/2 translate-y-1/2"></div>
 
-    <!-- Right Side - FAQ Items -->
-    <div class="flex flex-col gap-4">
-      {faqs.map((faq, index) => (
-        <div class={`bg-gray-50 rounded-xl overflow-hidden transition-all ${faq.open ? '' : ''}`} data-faq-index={index}>
-          <button class="w-full p-6 flex justify-between items-center bg-transparent border-none text-left cursor-pointer font-bold text-gray-900 transition-colors hover:bg-gray-100">
-            <span class="text-base">{faq.question}</span>
-            {faq.open ? (
-              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            ) : (
-              <svg class="text-gray-600 flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            )}
-          </button>
-          <div class={`${faq.open ? 'block' : 'hidden'} px-6 pb-6 text-gray-600 text-sm leading-relaxed`}>
-            <p>{faq.answer}</p>
+  <div class="text-center mb-16 px-4">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+      Preguntas Frecuentes
+    </h2>
+    <div class="w-20 h-1.5 bg-gradient-to-r from-[#082347] to-blue-600 mx-auto rounded-full mb-6"></div>
+    <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+      Resolvemos tus dudas tecnológicas para ayudarte a tomar la mejor decisión para tu negocio.
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    {faqs.map((faq, index) => (
+      <div class="faq-item group bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5">
+        <button 
+          class="faq-trigger w-full px-8 py-6 flex justify-between items-center text-left transition-colors hover:bg-gray-50/50"
+          aria-expanded="false"
+        >
+          <span class="text-lg md:text-xl font-bold text-[#082347] pr-8 group-hover:text-blue-700 transition-colors">
+            {faq.question}
+          </span>
+          <div class="faq-icon-container relative w-6 h-6 flex-shrink-0">
+             <div class="absolute inset-0 flex items-center justify-center">
+               <div class="w-full h-0.5 bg-gray-400 rounded-full transition-transform duration-300 faq-line-h"></div>
+             </div>
+             <div class="absolute inset-0 flex items-center justify-center">
+               <div class="w-0.5 h-full bg-gray-400 rounded-full transition-transform duration-300 faq-line-v"></div>
+             </div>
+          </div>
+        </button>
+        
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div class="px-8 pb-8 pt-0">
+            <div class="h-px w-full bg-gray-100 mb-6"></div>
+            <p class="text-gray-600 leading-relaxed text-lg">
+              {faq.answer}
+            </p>
           </div>
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
   </div>
 </section>
 
-<script is:inline>
-  (function() {
-    document.addEventListener('DOMContentLoaded', function() {
-      const faqQuestions = document.querySelectorAll('[data-faq-index] button');
+<style>
+  .faq-icon-container .faq-line-v {
+    transform-origin: center;
+  }
+  
+  .faq-item.active .faq-line-v {
+    transform: rotate(90deg);
+  }
+  
+  .faq-item.active .faq-line-h {
+    background-color: #3b82f6;
+  }
+  
+  .faq-item.active .faq-line-v {
+    background-color: transparent;
+  }
+
+  .faq-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Animación suave para el contenido */
+  .faq-content {
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+
+<script>
+  function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content') as HTMLElement;
       
-      faqQuestions.forEach(function(question) {
-        question.addEventListener('click', function() {
-          const faqItem = question.closest('[data-faq-index]');
-          const answer = faqItem.querySelector('div');
-          const icon = faqItem.querySelector('button svg');
-          const isOpen = !answer.classList.contains('hidden');
-          
-          // Close all FAQ items
-          document.querySelectorAll('[data-faq-index]').forEach(function(item) {
-            const itemAnswer = item.querySelector('div');
-            const itemIcon = item.querySelector('button svg');
-            if (itemAnswer) {
-              itemAnswer.classList.add('hidden');
-              itemAnswer.classList.remove('block');
-            }
-            if (itemIcon) {
-              // Update icon to plus
-              itemIcon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-            }
-          });
-          
-          // Toggle current item
-          if (isOpen) {
-            // Close it
-            answer.classList.add('hidden');
-            answer.classList.remove('block');
-            if (icon) {
-              icon.innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-            }
-          } else {
-            // Open it
-            answer.classList.remove('hidden');
-            answer.classList.add('block');
-            if (icon) {
-              icon.innerHTML = '<path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-            }
+      if (!trigger || !content) return;
+      
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Cerrar otros si se desea (opcional, pero mejora limpieza)
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
+            const otherTrigger = otherItem.querySelector('.faq-trigger');
+            if (otherContent) otherContent.style.maxHeight = '0px';
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
           }
         });
+        
+        // Toggle actual
+        if (isActive) {
+          item.classList.remove('active');
+          content.style.maxHeight = '0px';
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          trigger.setAttribute('aria-expanded', 'true');
+        }
       });
     });
-  })();
+  }
+
+  // Inicializar
+  initFAQ();
+  
+  // Reinicializar si hay navegación de Astro (opcional si usas View Transitions)
+  document.addEventListener('astro:page-load', initFAQ);
 </script>

@@ -78,7 +78,7 @@ const services = [
       
       <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8">
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Conversemos sobre tu proyecto</h3>
-        <a href="#contact" id="schedule-call-btn" class="bg-gradient-to-r from-[#082347] to-blue-600 text-white border-none py-3 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full text-sm md:text-base inline-flex items-center justify-center">
+        <a href="/#contact" id="schedule-call-btn" class="bg-gradient-to-r from-[#082347] to-blue-600 text-white border-none py-3 md:py-3.5 px-6 md:px-8 rounded-lg font-semibold cursor-pointer transition-all hover:shadow-lg w-full text-sm md:text-base inline-flex items-center justify-center">
           Agendar llamada
         </a>
       </div>
@@ -115,7 +115,7 @@ const services = [
                     <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[services.length - 1].price}</span>
                     <span class="text-lg md:text-xl text-gray-500">{services[services.length - 1].period}</span>
                   </div>
-                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[services.length - 1].title}>
+                  <a href="/#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[services.length - 1].title}>
                     <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -150,7 +150,7 @@ const services = [
                     <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{service.price}</span>
                     <span class="text-lg md:text-xl text-gray-500">{service.period}</span>
                   </div>
-                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={service.title}>
+                  <a href="/#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={service.title}>
                     <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -186,7 +186,7 @@ const services = [
                     <span class="text-4xl md:text-6xl font-extrabold text-gray-900">{services[0].price}</span>
                     <span class="text-lg md:text-xl text-gray-500">{services[0].period}</span>
                   </div>
-                  <a href="#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[0].title}>
+                  <a href="/#contact" class="schedule-arrow-link flex-shrink-0" data-service-title={services[0].title}>
                     <svg width="20" height="20" class="md:w-6 md:h-6 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -326,7 +326,7 @@ const services = [
           const interest = titleToInterest[cardTitle];
           console.log('🔘 interest mapeado:', interest);
           if (interest) {
-            const href = `#contact?interest=${encodeURIComponent(interest)}`;
+            const href = `/#contact?interest=${encodeURIComponent(interest)}`;
             console.log('✅ scheduleBtn href actualizado a:', href);
             scheduleBtn.setAttribute('href', href);
           } else {
@@ -434,11 +434,11 @@ const services = [
             console.log(`🔗 Enlace ${index + 1} - interest mapeado:`, interest);
             
             if (interest) {
-              const href = `#contact?interest=${encodeURIComponent(interest)}`;
+              const href = `/#contact?interest=${encodeURIComponent(interest)}`;
               console.log(`✅ Enlace ${index + 1} - href actualizado a:`, href);
               link.setAttribute('href', href);
             } else {
-              link.setAttribute('href', '#contact');
+              link.setAttribute('href', '/#contact');
             }
           });
         }
@@ -524,7 +524,7 @@ const services = [
             
             const href = arrowLink.getAttribute('href');
             if (href) {
-              window.location.hash = href.replace('#', '');
+              window.location.hash = href.replace('/#', '');
               
               const contactSection = document.getElementById('contact');
               if (contactSection) {

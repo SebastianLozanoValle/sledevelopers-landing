@@ -39,19 +39,19 @@
     <!-- NAV CENTRADO (DESKTOP) -->
     <nav class="hidden lg:flex absolute left-1/2 -translate-x-1/2">
       <div class="header-box flex gap-10 lg:gap-6 items-center px-10 py-4 relative">
-        <a href="#home" class="nav-link">
+        <a href="/#home" class="nav-link">
           Inicio
           <span class="nav-underline"></span>
         </a>
-        <a href="#services" class="nav-link">
+        <a href="/#services" class="nav-link">
           Cómo Funciona
           <span class="nav-underline"></span>
         </a>
-        <a href="#portfolio" class="nav-link">
+        <a href="/#portfolio" class="nav-link">
           Portafolio
           <span class="nav-underline"></span>
         </a>
-        <a href="#services-accordion" class="nav-link">
+        <a href="/#services-accordion" class="nav-link">
           Servicios
           <span class="nav-underline"></span>
         </a>
@@ -91,27 +91,27 @@
 
       <div class="flex flex-col h-full">
         <nav class="flex flex-col gap-4 bg-white pt-20 px-6 pb-8">
-          <a href="#home" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+          <a href="/#home" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Inicio
           </a>
-          <a href="#services" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+          <a href="/#services" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Cómo Funciona
           </a>
-          <a href="#portfolio" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+          <a href="/#portfolio" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Portafolio
           </a>
-          <a href="#services-accordion" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+          <a href="/#services-accordion" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Servicios
           </a>
           <a href="/precios" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Precios
           </a>
-          <a href="#contact" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
+          <a href="/#contact" class="mobile-nav-link text-xl font-semibold text-gray-900 py-3">
             Contacto
           </a>
         </nav>
         <div class="mt-auto py-8 bg-white flex justify-center">
-          <a href="#contact" class="cta-button-mobile text-center block max-w-content mx-auto">
+          <a href="/#contact" class="cta-button-mobile text-center block max-w-content mx-auto">
             Empezar
           </a>
         </div>
@@ -123,14 +123,14 @@
 
       <!-- CONTACTO -->
       <div class="header-box px-6 py-3 hidden lg:flex items-center">
-        <a href="#contact" class="nav-link">
+        <a href="/#contact" class="nav-link">
           Contacto
           <span class="nav-underline"></span>
         </a>
       </div>
 
       <!-- EMPEZAR -->
-      <a href="#contact" class="cta-button hidden lg:inline-flex">
+      <a href="/#contact" class="cta-button hidden lg:inline-flex">
         Empezar
       </a>
     </div>
@@ -540,8 +540,7 @@
 
     if (logoBox) {
       logoBox.addEventListener('click', () => {
-        window.location.href = '#home';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.location.href = '/#home';
       });
     }
 
